@@ -16,9 +16,6 @@ export CFLAGS="-I$PREFIX/include"
             --enable-libxml2=$PREFIX \
             $OPTS
 
-
 make
-if [[ $(uname) == Linux ]]; then
-  eval ${LIBRARY_SEARCH_VAR}=$PREFIX/lib make check
-fi
+eval ${LIBRARY_SEARCH_VAR}=$PREFIX/lib make check
 make install
