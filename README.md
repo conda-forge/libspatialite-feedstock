@@ -5,7 +5,7 @@ Home: https://www.gaia-gis.it/fossil/libspatialite/index
 
 Package license: LGPL-2.1
 
-Feedstock license: BSD
+Feedstock license: BSD 3-Clause
 
 Summary: Extend the SQLite core to support fully fledged Spatial SQL capabilities
 

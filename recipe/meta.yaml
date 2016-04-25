@@ -33,6 +33,7 @@ requirements:
         - freexl
         - zlib 1.2*
         - libxml2
+        - libgcc
 
 test:
     commands:
