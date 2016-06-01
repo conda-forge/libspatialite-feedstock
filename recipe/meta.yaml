@@ -14,12 +14,12 @@ source:
         - skip_failing_test.patch  # [osx]
 
 build:
-    number: 4
+    number: 5
     skip: True  # [win]
 
 requirements:
     build:
-        - sqlite 3.9*
+        - sqlite 3.9.*
         - geos
         - proj.4
         - freexl
@@ -27,7 +27,7 @@ requirements:
         - libxml2
         - pkg-config
     run:
-        - sqlite 3.9*
+        - sqlite 3.9.*
         - geos
         - proj.4
         - freexl
