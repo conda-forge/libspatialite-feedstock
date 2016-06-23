@@ -25,7 +25,7 @@ build:
 
 requirements:
     build:
-        - sqlite
+        - sqlite 3.13.*
         - geos
         - proj.4
         - freexl
@@ -33,7 +33,7 @@ requirements:
         - libxml2
         - pkg-config  # [not win]
     run:
-        - sqlite
+        - sqlite 3.13.*
         - geos
         - proj.4
         - freexl
