@@ -25,6 +25,7 @@ build:
 
 requirements:
     build:
+        - python  # [win]
         - sqlite 3.13.*
         - geos
         - proj.4
