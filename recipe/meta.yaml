@@ -12,22 +12,29 @@ source:
         # Skips 3 tests (check_extension, check_sql_stmt, and check_get_normal_zoom_extension_load) that are failing on OS X.
         # Re-visit this once a new release is out.
         - skip_failing_test.patch  # [osx]
+        - makefile.vc.patch  # [win]
+        - config-msvc.patch  # [win]
+        - gg_extras.patch  # [win]
 
 build:
-    number: 7
-    skip: True  # [win]
+    number: 8
+    features:
+        - vc9  # [win and py27]
+        - vc10  # [win and py34]
+        - vc14  # [win and py35]
 
 requirements:
     build:
-        - sqlite 3.9.*
+        - python  # [win]
+        - sqlite 3.13.*
         - geos
         - proj.4
         - freexl
         - zlib 1.2.*
         - libxml2
-        - pkg-config
+        - pkg-config  # [not win]
     run:
-        - sqlite 3.9.*
+        - sqlite 3.13.*
         - geos
         - proj.4
         - freexl
@@ -35,10 +42,9 @@ requirements:
         - libxml2
 
 test:
+    requires:
+        - python {{ environ['PY_VER'] + '*' }}  # [win]
     commands:
-        - test -f ${PREFIX}/lib/libspatialite.a  # [unix]
-        - test -f ${PREFIX}/lib/libspatialite.so  # [linux]
-        - test -f ${PREFIX}/lib/libspatialite.dylib  # [osx]
         - conda inspect linkages -n _test libspatialite  # [linux]
 
 about:
