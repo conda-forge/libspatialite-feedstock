@@ -17,7 +17,7 @@ source:
         - gg_extras.patch  # [win]
 
 build:
-    number: 9
+    number: 10
     features:
         - vc9  # [win and py27]
         - vc10  # [win and py34]
@@ -28,7 +28,7 @@ requirements:
         - python  # [win]
         - sqlite 3.13.*
         - geos 3.4.*
-        - proj.4
+        - proj.4 4.9.3
         - freexl
         - zlib 1.2.*
         - libxml2
@@ -36,7 +36,7 @@ requirements:
     run:
         - sqlite 3.13.*
         - geos 3.4.*
-        - proj.4
+        - proj.4 4.9.3
         - freexl
         - zlib 1.2.*
         - libxml2
