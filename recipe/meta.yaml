@@ -44,8 +44,8 @@ requirements:
 test:
     requires:
         - python {{ environ['PY_VER'] + '*' }}  # [win]
-    commands:
-        - conda inspect linkages -n _test libspatialite  # [not win]
+    #commands:
+        #- conda inspect linkages -p $PREFIX libspatialite  # [not win]
 
 about:
     home: https://www.gaia-gis.it/fossil/libspatialite/index
