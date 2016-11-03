@@ -17,7 +17,7 @@ source:
     - gg_extras.patch  # [win]
 
 build:
-  number: 11
+  number: 12
   features:
     - vc9  # [win and py27]
     - vc10  # [win and py34]
@@ -31,7 +31,7 @@ requirements:
     - proj4 4.9.3
     - freexl
     - zlib 1.2.*
-    - libxml2
+    - libxml2 2.9.3
     - pkg-config  # [not win]
     - vc 9  # [win and py27]
     - vc 10  # [win and py34]
@@ -42,7 +42,7 @@ requirements:
     - proj4 4.9.3
     - freexl
     - zlib 1.2.*
-    - libxml2
+    - libxml2 2.9.3
     - vc 9  # [win and py27]
     - vc 10  # [win and py34]
     - vc 14  # [win and py35]
