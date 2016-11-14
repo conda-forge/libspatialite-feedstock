@@ -47,8 +47,8 @@ requirements:
     - vc 10  # [win and py34]
     - vc 14  # [win and py35]
 
-test:
-  commands:
+#test:
+  #commands:
     #- conda inspect linkages -p $PREFIX libspatialite  # [not win]
     #- conda inspect objects -p $PREFIX libspatialite  # [osx]
 
