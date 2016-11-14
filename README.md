@@ -33,7 +33,6 @@ conda search libspatialite --channel conda-forge
 ```
 
 
-
 About conda-forge
 =================
 

@@ -7,7 +7,7 @@ package:
 source:
   fn: libspatialite-{{ version }}.tar.gz
   url: http://www.gaia-gis.it/gaia-sins/libspatialite-{{ version }}.tar.gz
-  md5: 6b380b332c00da6f76f432b10a1a338c
+  sha256: 88900030a4762904a7880273f292e5e8ca6b15b7c6c3fb88ffa9e67ee8a5a499
   patches:
     # Skips 3 tests (check_extension, check_sql_stmt, and check_get_normal_zoom_extension_load) that are failing on OS X.
     # Re-visit this once a new release is out.
@@ -17,7 +17,7 @@ source:
     - gg_extras.patch  # [win]
 
 build:
-  number: 12
+  number: 13
   features:
     - vc9  # [win and py27]
     - vc10  # [win and py34]
@@ -27,7 +27,7 @@ requirements:
   build:
     - python  # [win]
     - sqlite 3.13.*
-    - geos 3.4.*
+    - geos 3.5.*
     - proj4 4.9.3
     - freexl
     - zlib 1.2.*
@@ -38,7 +38,7 @@ requirements:
     - vc 14  # [win and py35]
   run:
     - sqlite 3.13.*
-    - geos 3.4.*
+    - geos 3.5.*
     - proj4 4.9.3
     - freexl
     - zlib 1.2.*
@@ -47,8 +47,8 @@ requirements:
     - vc 10  # [win and py34]
     - vc 14  # [win and py35]
 
-test:
-  commands:
+#test:
+  #commands:
     #- conda inspect linkages -p $PREFIX libspatialite  # [not win]
     #- conda inspect objects -p $PREFIX libspatialite  # [osx]
 
