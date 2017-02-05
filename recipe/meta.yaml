@@ -17,7 +17,7 @@ source:
     - gg_extras.patch  # [win]
 
 build:
-  number: 13
+  number: 14
   features:
     - vc9  # [win and py27]
     - vc10  # [win and py34]
@@ -47,10 +47,10 @@ requirements:
     - vc 10  # [win and py34]
     - vc 14  # [win and py35]
 
-#test:
-  #commands:
-    #- conda inspect linkages -p $PREFIX libspatialite  # [not win]
-    #- conda inspect objects -p $PREFIX libspatialite  # [osx]
+test:
+  commands:
+    - conda inspect linkages -p $PREFIX libspatialite  # [not win]
+    - conda inspect objects -p $PREFIX libspatialite  # [osx]
 
 about:
   home: https://www.gaia-gis.it/fossil/libspatialite/index
