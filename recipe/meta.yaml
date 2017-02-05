@@ -31,7 +31,7 @@ requirements:
     - proj4 4.9.3
     - freexl
     - zlib 1.2.*
-    - libxml2 2.9.3
+    - libxml2 2.9.*
     - pkg-config  # [not win]
     - vc 9  # [win and py27]
     - vc 10  # [win and py34]
@@ -42,7 +42,7 @@ requirements:
     - proj4 4.9.3
     - freexl
     - zlib 1.2.*
-    - libxml2 2.9.3
+    - libxml2 2.9.*
     - vc 9  # [win and py27]
     - vc 10  # [win and py34]
     - vc 14  # [win and py35]
