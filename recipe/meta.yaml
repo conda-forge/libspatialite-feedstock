@@ -16,11 +16,10 @@ source:
     - gg_extras.patch  # [win]
 
 build:
-  number: 16
+  number: 17
   features:
     - vc9  # [win and py27]
-    - vc10  # [win and py34]
-    - vc14  # [win and py35]
+    - vc14  # [win and (py35 or py36)]
 
 requirements:
   build:
@@ -29,27 +28,25 @@ requirements:
     - geos 3.6.2
     - proj4 4.9.3
     - freexl
-    - zlib 1.2.8
+    - zlib 1.2.11
     - libxml2 2.9.*
     - pkg-config  # [not win]
     - vc 9  # [win and py27]
-    - vc 10  # [win and py34]
-    - vc 14  # [win and py35]
+    - vc 14  # [win and (py35 or py36)]
   run:
     - sqlite 3.13.*
     - geos 3.6.2
     - proj4 4.9.3
     - freexl
-    - zlib 1.2.8
+    - zlib 1.2.11
     - libxml2 2.9.*
     - vc 9  # [win and py27]
-    - vc 10  # [win and py34]
-    - vc 14  # [win and py35]
+    - vc 14  # [win and (py35 or py36)]
 
 test:
   commands:
-    - conda inspect linkages -p $PREFIX libspatialite  # [not win]
-    - conda inspect objects -p $PREFIX libspatialite  # [osx]
+    - conda inspect linkages -p $PREFIX $PKG_NAME  # [not win]
+    - conda inspect objects -p $PREFIX $PKG_NAME  # [osx]
 
 about:
   home: https://www.gaia-gis.it/fossil/libspatialite/index
