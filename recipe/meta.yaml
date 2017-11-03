@@ -5,7 +5,6 @@ package:
   version: {{ version }}
 
 source:
-  fn: libspatialite-{{ version }}.tar.gz
   url: http://www.gaia-gis.it/gaia-sins/libspatialite-{{ version }}.tar.gz
   sha256: 88900030a4762904a7880273f292e5e8ca6b15b7c6c3fb88ffa9e67ee8a5a499
   patches:
@@ -17,7 +16,7 @@ source:
     - gg_extras.patch  # [win]
 
 build:
-  number: 15
+  number: 16
   features:
     - vc9  # [win and py27]
     - vc10  # [win and py34]
@@ -27,10 +26,10 @@ requirements:
   build:
     - python  # [win]
     - sqlite 3.13.*
-    - geos 3.5.1
+    - geos 3.6.2
     - proj4 4.9.3
     - freexl
-    - zlib 1.2.*
+    - zlib 1.2.8
     - libxml2 2.9.*
     - pkg-config  # [not win]
     - vc 9  # [win and py27]
@@ -38,10 +37,10 @@ requirements:
     - vc 14  # [win and py35]
   run:
     - sqlite 3.13.*
-    - geos 3.5.1
+    - geos 3.6.2
     - proj4 4.9.3
     - freexl
-    - zlib 1.2.*
+    - zlib 1.2.8
     - libxml2 2.9.*
     - vc 9  # [win and py27]
     - vc 10  # [win and py34]
