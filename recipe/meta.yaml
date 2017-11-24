@@ -16,7 +16,7 @@ source:
     - gg_extras.patch  # [win]
 
 build:
-  number: 17
+  number: 18
   features:
     - vc9  # [win and py27]
     - vc14  # [win and (py35 or py36)]
