@@ -4,15 +4,11 @@ cxx_compiler:
 - toolchain_cxx
 geos:
 - 3.6.2
-libiconv:
-- '1.15'
 libxml2:
 - '2.9'
 pin_run_as_build:
   geos:
     max_pin: x.x.x
-  libiconv:
-    max_pin: x.x
   libxml2:
     max_pin: x.x
   proj4:
