@@ -14,14 +14,16 @@ Summary: Extend the SQLite core to support fully fledged Spatial SQL capabilitie
 Current build status
 ====================
 
-Linux: [![Circle CI](https://circleci.com/gh/conda-forge/libspatialite-feedstock.svg?style=shield)](https://circleci.com/gh/conda-forge/libspatialite-feedstock)
-OSX: [![TravisCI](https://travis-ci.org/conda-forge/libspatialite-feedstock.svg?branch=master)](https://travis-ci.org/conda-forge/libspatialite-feedstock)
-Windows: [![AppVeyor](https://ci.appveyor.com/api/projects/status/github/conda-forge/libspatialite-feedstock?svg=True)](https://ci.appveyor.com/project/conda-forge/libspatialite-feedstock/branch/master)
+[![Linux](https://img.shields.io/circleci/project/github/conda-forge/libspatialite-feedstock/master.svg?label=Linux)](https://circleci.com/gh/conda-forge/libspatialite-feedstock)
+[![OSX](https://img.shields.io/travis/conda-forge/libspatialite-feedstock/master.svg?label=macOS)](https://travis-ci.org/conda-forge/libspatialite-feedstock)
+[![Windows](https://img.shields.io/appveyor/ci/conda-forge/libspatialite-feedstock/master.svg?label=Windows)](https://ci.appveyor.com/project/conda-forge/libspatialite-feedstock/branch/master)
 
 Current release info
 ====================
-Version: [![Anaconda-Server Badge](https://anaconda.org/conda-forge/libspatialite/badges/version.svg)](https://anaconda.org/conda-forge/libspatialite)
-Downloads: [![Anaconda-Server Badge](https://anaconda.org/conda-forge/libspatialite/badges/downloads.svg)](https://anaconda.org/conda-forge/libspatialite)
+
+| Name | Downloads | Version | Platforms |
+| --- | --- | --- | --- |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-libspatialite-green.svg)](https://anaconda.org/conda-forge/libspatialite) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/libspatialite.svg)](https://anaconda.org/conda-forge/libspatialite) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/libspatialite.svg)](https://anaconda.org/conda-forge/libspatialite) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/libspatialite.svg)](https://anaconda.org/conda-forge/libspatialite) |
 
 Installing libspatialite
 ========================
