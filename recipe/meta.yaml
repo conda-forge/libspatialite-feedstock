@@ -16,32 +16,35 @@ source:
     - gg_extras.patch  # [win]
 
 build:
-  number: 19
-  features:
-    - vc9  # [win and py27]
-    - vc14  # [win and (py35 or py36)]
+  number: 20
+  run_exports:
+    # No idea.  Staying with minor version pin.
+    - {{ pin_subpackage('libspatialite', max_pin='x.x') }}
 
 requirements:
   build:
-    - python  # [win]
-    - sqlite 3.20.*
-    - geos 3.6.2
-    - proj4 4.9.3
-    - freexl
-    - zlib 1.2.11
-    - libxml2 2.9.*
+    - autoconf  # [linux]
+    - automake  # [linux]
+    - libtool   # [linux]
     - pkg-config  # [not win]
-    - vc 9  # [win and py27]
-    - vc 14  # [win and (py35 or py36)]
-  run:
-    - sqlite 3.20.*
-    - geos 3.6.2
-    - proj4 4.9.3
+    - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
+  host:
+    - libiconv  # [osx]
+    - sqlite
+    - geos
+    - proj4
     - freexl
-    - zlib 1.2.11
-    - libxml2 2.9.*
-    - vc 9  # [win and py27]
-    - vc 14  # [win and (py35 or py36)]
+    - zlib
+    - libxml2
+  run:
+    - libiconv  # [osx]
+    - sqlite
+    - geos
+    - proj4
+    - freexl
+    - zlib
+    - libxml2
 
 test:
   commands:
