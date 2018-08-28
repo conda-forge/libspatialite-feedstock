@@ -2,6 +2,10 @@ MACOSX_DEPLOYMENT_TARGET:
 - '10.9'
 c_compiler:
 - toolchain_c
+channel_sources:
+- conda-forge,defaults
+channel_targets:
+- conda-forge main
 cxx_compiler:
 - toolchain_cxx
 geos:
@@ -28,7 +32,7 @@ pin_run_as_build:
   zlib:
     max_pin: x.x
 proj4:
-- 4.9.3
+- 5.1.0
 sqlite:
 - '3'
 zlib:
