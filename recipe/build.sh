@@ -16,3 +16,5 @@ make
 # FAIL: check_virtualtable
 # make check
 make install
+
+find $PREFIX -name '*.la' -delete
