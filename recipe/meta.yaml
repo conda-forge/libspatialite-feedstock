@@ -16,7 +16,7 @@ source:
     - gg_extras.patch  # [win]
 
 build:
-  number: 23
+  number: 1023
   run_exports:
     # No idea.  Staying with minor version pin.
     - {{ pin_subpackage('libspatialite', max_pin='x.x') }}
