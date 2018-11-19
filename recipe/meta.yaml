@@ -37,6 +37,14 @@ requirements:
     - freexl
     - zlib
     - libxml2
+  run:
+    - libiconv  # [osx]
+    - sqlite
+    - geos
+    - proj4
+    - freexl
+    - zlib
+    - libxml2
 
 test:
   commands:
