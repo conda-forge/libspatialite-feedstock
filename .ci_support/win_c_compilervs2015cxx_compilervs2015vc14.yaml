@@ -1,11 +1,11 @@
 c_compiler:
-- vs2008
+- vs2015
 channel_sources:
 - conda-forge,defaults
 channel_targets:
 - conda-forge main
 cxx_compiler:
-- vs2008
+- vs2015
 geos:
 - 3.7.0
 libxml2:
@@ -19,14 +19,19 @@ pin_run_as_build:
     max_pin: x.x.x
   sqlite:
     max_pin: x
+  vc:
+    max_pin: x
   zlib:
     max_pin: x.x
 proj4:
 - 5.2.0
 sqlite:
 - '3'
+vc:
+- '14'
 zip_keys:
-- - c_compiler
+- - vc
+  - c_compiler
   - cxx_compiler
 zlib:
 - '1.2'
