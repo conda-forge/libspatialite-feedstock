@@ -17,6 +17,7 @@ source:
 
 build:
   number: 1025
+  skip: True  # [win and vc<14]
   run_exports:
     # No idea.  Staying with minor version pin.
     - {{ pin_subpackage('libspatialite', max_pin='x.x') }}
