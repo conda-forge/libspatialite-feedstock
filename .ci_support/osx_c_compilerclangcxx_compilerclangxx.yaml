@@ -11,7 +11,7 @@ channel_targets:
 cxx_compiler:
 - clangxx
 geos:
-- 3.6.2
+- 3.7.0
 libiconv:
 - '1.15'
 libxml2:

@@ -16,7 +16,8 @@ source:
     - gg_extras.patch  # [win]
 
 build:
-  number: 1024
+  number: 1025
+  skip: True  # [win and vc<14]
   run_exports:
     # No idea.  Staying with minor version pin.
     - {{ pin_subpackage('libspatialite', max_pin='x.x') }}
@@ -46,16 +47,11 @@ requirements:
     - zlib
     - libxml2
 
-test:
-  commands:
-    - conda inspect linkages -p $PREFIX $PKG_NAME  # [not win]
-    - conda inspect objects -p $PREFIX $PKG_NAME  # [osx]
-
 about:
   home: https://www.gaia-gis.it/fossil/libspatialite/index
   license: LGPL-2.1
   license_file: COPYING
-  summary: 'Extend the SQLite core to support fully fledged Spatial SQL capabilities.'
+  summary: 'Extend the SQLite core to support fully fledged Spatial SQL capabilities'
 
 extra:
   recipe-maintainers:

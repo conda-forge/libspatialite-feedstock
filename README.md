@@ -7,7 +7,7 @@ Package license: LGPL-2.1
 
 Feedstock license: BSD 3-Clause
 
-Summary: Extend the SQLite core to support fully fledged Spatial SQL capabilities.
+Summary: Extend the SQLite core to support fully fledged Spatial SQL capabilities
 
 
 
