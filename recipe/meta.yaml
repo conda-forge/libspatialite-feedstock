@@ -14,6 +14,7 @@ source:
     - makefile.vc.patch  # [win]
     - config-msvc.patch  # [win]
     - gg_extras.patch  # [win]
+    - proj_api.patch  # [win]
 
 build:
   number: 1027
