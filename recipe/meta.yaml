@@ -14,9 +14,10 @@ source:
     - makefile.vc.patch  # [win]
     - config-msvc.patch  # [win]
     - gg_extras.patch  # [win]
+    - proj_api.patch  # [win]
 
 build:
-  number: 1026
+  number: 1027
   skip: True  # [win and vc<14]
   run_exports:
     # No idea.  Staying with minor version pin.
