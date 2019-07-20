@@ -19,14 +19,10 @@ libxml2:
 pin_run_as_build:
   libxml2:
     max_pin: x.x
-  proj4:
-    max_pin: x.x.x
   sqlite:
     max_pin: x
   zlib:
     max_pin: x.x
-proj4:
-- 6.1.0
 sqlite:
 - '3'
 zlib:
