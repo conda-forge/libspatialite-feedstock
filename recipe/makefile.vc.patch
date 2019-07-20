@@ -25,7 +25,7 @@
 -		C:\OSGeo4w\lib\freexl_i.lib C:\OSGeo4w\lib\iconv.lib \
 -		C:\OSGeo4W\lib\sqlite3_i.lib C:\OSGeo4W\lib\zlib.lib \
 -		C:\OSGeo4W\lib\libxml2.lib
-+		$(LIBRARY_LIB)\proj_6_1.lib $(LIBRARY_LIB)\geos_c.lib \
++		$(LIBRARY_LIB)\proj.lib $(LIBRARY_LIB)\geos_c.lib \
 +		$(LIBRARY_LIB)\freexl_i.lib $(LIBRARY_LIB)\iconv.lib $(LIBRARY_LIB)\charset.lib \
 +		$(LIBRARY_LIB)\sqlite3.lib $(LIBRARY_LIB)\zlib.lib \
 +		$(LIBRARY_LIB)\libxml2.lib
