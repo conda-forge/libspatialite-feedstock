@@ -17,7 +17,7 @@ source:
     - proj_api.patch  # [win]
 
 build:
-  number: 1031
+  number: 1032
   skip: True  # [win and vc<14]
   run_exports:
     # No idea.  Staying with minor version pin.
@@ -59,3 +59,4 @@ extra:
     - danclewley
     - gillins
     - ocefpaf
+    - xylar
