@@ -15,13 +15,11 @@ cxx_compiler_version:
 geos:
 - 3.8.1
 libiconv:
-- '1.15'
+- '1.16'
 libxml2:
 - '2.9'
 macos_machine:
 - x86_64-apple-darwin13.4.0
-macos_min_version:
-- '10.9'
 pin_run_as_build:
   libiconv:
     max_pin: x.x
@@ -32,8 +30,10 @@ pin_run_as_build:
   zlib:
     max_pin: x.x
 proj:
-- 7.1.0
+- 7.1.1
 sqlite:
 - '3'
+target_platform:
+- osx-64
 zlib:
 - '1.2'
