@@ -10,11 +10,9 @@ source:
   patches:
     # Skips 7 tests (check_extension, check_sql_stmt*, and
     # check_get_normal_zoom_extension_load) that are failing on OSX.
-    - skip_failing_test.patch  # [osx]
-    - makefile.vc.patch  # [win]
-    # - config-msvc.patch  # [win]
-    # - gg_extras.patch  # [win]
-    # - proj_api.patch  # [win]
+    - 0001-skip_failing_test.patch  # [osx]
+    # Patch Win to fix build path and disable librttopo (no feedstock)
+    - 0002-win_fix_paths_and_disable_rttopo.patch  # [win]
 
 build:
   number: 0
