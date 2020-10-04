@@ -1,4 +1,4 @@
-{% set version = "4.3.0a" %}
+{% set version = "5.0.0" %}
 
 package:
   name: libspatialite
@@ -6,18 +6,18 @@ package:
 
 source:
   url: http://www.gaia-gis.it/gaia-sins/libspatialite-{{ version }}.tar.gz
-  sha256: 88900030a4762904a7880273f292e5e8ca6b15b7c6c3fb88ffa9e67ee8a5a499
-  patches:
+  sha256: 7b7fd70243f5a0b175696d87c46dde0ace030eacc27f39241c24bac5dfac6dac
+  #patches:
     # Skips 3 tests (check_extension, check_sql_stmt, and check_get_normal_zoom_extension_load) that are failing on OS X.
     # Re-visit this once a new release is out.
-    - skip_failing_test.patch  # [osx]
-    - makefile.vc.patch  # [win]
-    - config-msvc.patch  # [win]
-    - gg_extras.patch  # [win]
-    - proj_api.patch  # [win]
+    # - skip_failing_test.patch  # [osx]
+    # - makefile.vc.patch  # [win]
+    # - config-msvc.patch  # [win]
+    # - gg_extras.patch  # [win]
+    # - proj_api.patch  # [win]
 
 build:
-  number: 1040
+  number: 0
   skip: True  # [win and vc<14]
   run_exports:
     # No idea.  Staying with minor version pin.
@@ -47,6 +47,15 @@ requirements:
     - freexl
     - zlib
     - libxml2
+
+test:
+  commands:
+    - test -f ${PREFIX}/include/spatialite.h  # [not win]
+    - test -f ${PREFIX}/lib/libspatialite${SHLIB_EXT}  # [not win]
+    - test -f ${PREFIX}/lib/mod_spatialite${SHLIB_EXT}  # [not win]
+    - if not exist %LIBRARY_INC%\\spatialite.h exit 1  # [win]
+    - if not exist %LIBRARY_BIN%\\libspatialite.dll exit 1  # [win]
+    - if not exist %LIBRARY_BIN%\\mod_spatialite.dll exit 1  # [win]
 
 about:
   home: https://www.gaia-gis.it/fossil/libspatialite/index
