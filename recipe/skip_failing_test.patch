@@ -1,17 +1,15 @@
 diff -Naur test/Makefile.am test/Makefile.am
---- test/Makefile.am	2015-07-01 03:59:16.000000000 -0300
-+++ test/Makefile.am	2016-04-06 09:58:47.928241641 -0300
-@@ -27,9 +27,7 @@
+--- test/Makefile.am	2020-08-23 18:46:23.000000000 +0200
++++ test/Makefile.am	2020-10-04 16:59:13.976893454 +0200
+@@ -29,7 +29,6 @@
  		check_math_funcs \
  		check_gaia_util \
  		check_gaia_utf8 \
 -		check_extension \
  		check_recover_geom \
--		check_sql_stmt \
- 		check_multithread \
- 		check_virtualtable1 \
- 		check_virtualtable2 \
-@@ -75,7 +73,6 @@
+ 		check_sql_stmt \
+ 		check_sql_stmt_tiny \
+@@ -98,7 +97,6 @@
  		check_get_normal_row_bad_geopackage \
  		check_get_normal_row_bad_geopackage2 \
  		check_get_normal_zoom \
@@ -20,20 +18,18 @@ diff -Naur test/Makefile.am test/Makefile.am
  		check_get_normal_zoom_bad_geopackage2 \
  		check_gpkgGetImageFormat \
 diff -Naur test/Makefile.in test/Makefile.in
---- test/Makefile.in	2015-09-07 10:56:46.000000000 -0300
-+++ test/Makefile.in	2016-04-06 10:21:13.789308669 -0300
-@@ -100,8 +100,8 @@
+--- test/Makefile.in	2020-08-23 18:46:23.000000000 +0200
++++ test/Makefile.in	2020-10-04 17:00:25.967538756 +0200
+@@ -101,7 +101,7 @@
  	shape_3d$(EXEEXT) check_clone_table$(EXEEXT) \
  	check_xls_load$(EXEEXT) check_math_funcs$(EXEEXT) \
  	check_gaia_util$(EXEEXT) check_gaia_utf8$(EXEEXT) \
 -	check_extension$(EXEEXT) check_recover_geom$(EXEEXT) \
--	check_sql_stmt$(EXEEXT) check_multithread$(EXEEXT) \
 +	check_recover_geom$(EXEEXT) \
-+	check_multithread$(EXEEXT) \
- 	check_virtualtable1$(EXEEXT) check_virtualtable2$(EXEEXT) \
- 	check_virtualtable3$(EXEEXT) check_virtualtable4$(EXEEXT) \
- 	check_virtualtable5$(EXEEXT) check_virtualtable6$(EXEEXT) \
-@@ -133,7 +133,6 @@
+ 	check_sql_stmt$(EXEEXT) check_sql_stmt_tiny$(EXEEXT) \
+ 	check_sql_stmt_legacy$(EXEEXT) \
+ 	check_sql_stmt_extension$(EXEEXT) check_multithread$(EXEEXT) \
+@@ -145,7 +145,6 @@
  @ENABLE_GEOPACKAGE_TRUE@		check_get_normal_row_bad_geopackage \
  @ENABLE_GEOPACKAGE_TRUE@		check_get_normal_row_bad_geopackage2 \
  @ENABLE_GEOPACKAGE_TRUE@		check_get_normal_zoom \
@@ -41,7 +37,7 @@ diff -Naur test/Makefile.in test/Makefile.in
  @ENABLE_GEOPACKAGE_TRUE@		check_get_normal_zoom_bad_geopackage \
  @ENABLE_GEOPACKAGE_TRUE@		check_get_normal_zoom_bad_geopackage2 \
  @ENABLE_GEOPACKAGE_TRUE@		check_gpkgGetImageFormat \
-@@ -177,7 +176,6 @@
+@@ -189,7 +188,6 @@
  @ENABLE_GEOPACKAGE_TRUE@	check_get_normal_row_bad_geopackage$(EXEEXT) \
  @ENABLE_GEOPACKAGE_TRUE@	check_get_normal_row_bad_geopackage2$(EXEEXT) \
  @ENABLE_GEOPACKAGE_TRUE@	check_get_normal_zoom$(EXEEXT) \
@@ -49,7 +45,7 @@ diff -Naur test/Makefile.in test/Makefile.in
  @ENABLE_GEOPACKAGE_TRUE@	check_get_normal_zoom_bad_geopackage$(EXEEXT) \
  @ENABLE_GEOPACKAGE_TRUE@	check_get_normal_zoom_bad_geopackage2$(EXEEXT) \
  @ENABLE_GEOPACKAGE_TRUE@	check_gpkgGetImageFormat$(EXEEXT) \
-@@ -230,9 +228,6 @@
+@@ -248,9 +246,6 @@
  check_exif2_SOURCES = check_exif2.c
  check_exif2_OBJECTS = check_exif2.$(OBJEXT)
  check_exif2_LDADD = $(LDADD)
@@ -59,7 +55,7 @@ diff -Naur test/Makefile.in test/Makefile.in
  check_extra_relations_fncts_SOURCES = check_extra_relations_fncts.c
  check_extra_relations_fncts_OBJECTS =  \
  	check_extra_relations_fncts.$(OBJEXT)
-@@ -290,11 +285,6 @@
+@@ -308,11 +303,6 @@
  check_get_normal_zoom_bad_geopackage2_OBJECTS =  \
  	check_get_normal_zoom_bad_geopackage2.$(OBJEXT)
  check_get_normal_zoom_bad_geopackage2_LDADD = $(LDADD)
@@ -71,26 +67,33 @@ diff -Naur test/Makefile.in test/Makefile.in
  check_gpkgConvert_SOURCES = check_gpkgConvert.c
  check_gpkgConvert_OBJECTS = check_gpkgConvert.$(OBJEXT)
  check_gpkgConvert_LDADD = $(LDADD)
-@@ -415,9 +405,6 @@
- check_spatialindex_SOURCES = check_spatialindex.c
- check_spatialindex_OBJECTS = check_spatialindex.$(OBJEXT)
- check_spatialindex_LDADD = $(LDADD)
--check_sql_stmt_SOURCES = check_sql_stmt.c
--check_sql_stmt_OBJECTS = check_sql_stmt.$(OBJEXT)
--check_sql_stmt_LDADD = $(LDADD)
- check_srid_fncts_SOURCES = check_srid_fncts.c
- check_srid_fncts_OBJECTS = check_srid_fncts.$(OBJEXT)
- check_srid_fncts_LDADD = $(LDADD)
-@@ -519,7 +506,7 @@
- 	check_add_tile_triggers_bad_table_name.c check_bufovflw.c \
+@@ -586,7 +576,7 @@
+ 	./$(DEPDIR)/check_cutter.Po ./$(DEPDIR)/check_dbf_load.Po \
+ 	./$(DEPDIR)/check_drop_rename.Po ./$(DEPDIR)/check_dxf.Po \
+ 	./$(DEPDIR)/check_endian.Po ./$(DEPDIR)/check_exif.Po \
+-	./$(DEPDIR)/check_exif2.Po ./$(DEPDIR)/check_extension.Po \
++	./$(DEPDIR)/check_exif2.Po \
+ 	./$(DEPDIR)/check_extra_relations_fncts.Po \
+ 	./$(DEPDIR)/check_fdo1.Po ./$(DEPDIR)/check_fdo2.Po \
+ 	./$(DEPDIR)/check_fdo3.Po ./$(DEPDIR)/check_fdo_bufovflw.Po \
+@@ -600,7 +590,6 @@
+ 	./$(DEPDIR)/check_get_normal_zoom.Po \
+ 	./$(DEPDIR)/check_get_normal_zoom_bad_geopackage.Po \
+ 	./$(DEPDIR)/check_get_normal_zoom_bad_geopackage2.Po \
+-	./$(DEPDIR)/check_get_normal_zoom_extension_load.Po \
+ 	./$(DEPDIR)/check_gpkgConvert.Po \
+ 	./$(DEPDIR)/check_gpkgCreateFeaturesTable.Po \
+ 	./$(DEPDIR)/check_gpkgCreateTilesTable.Po \
+@@ -684,7 +673,7 @@
  	check_clone_table.c check_control_points.c check_create.c \
- 	check_createBaseTables.c check_dbf_load.c check_dxf.c \
--	check_endian.c check_exif.c check_exif2.c check_extension.c \
-+	check_endian.c check_exif.c check_exif2.c \
- 	check_extra_relations_fncts.c check_fdo1.c check_fdo2.c \
- 	check_fdo3.c check_fdo_bufovflw.c check_gaia_utf8.c \
- 	check_gaia_util.c check_geom_aux.c check_geometry_cols.c \
-@@ -528,7 +515,7 @@
+ 	check_createBaseTables.c check_cutter.c check_dbf_load.c \
+ 	check_drop_rename.c check_dxf.c check_endian.c check_exif.c \
+-	check_exif2.c check_extension.c check_extra_relations_fncts.c \
++	check_exif2.c check_extra_relations_fncts.c \
+ 	check_fdo1.c check_fdo2.c check_fdo3.c check_fdo_bufovflw.c \
+ 	check_gaia_utf8.c check_gaia_util.c check_geom_aux.c \
+ 	check_geometry_cols.c check_geoscvt_fncts.c \
+@@ -692,7 +681,7 @@
  	check_get_normal_row_bad_geopackage2.c check_get_normal_zoom.c \
  	check_get_normal_zoom_bad_geopackage.c \
  	check_get_normal_zoom_bad_geopackage2.c \
@@ -99,25 +102,16 @@ diff -Naur test/Makefile.in test/Makefile.in
  	check_gpkgCreateFeaturesTable.c check_gpkgCreateTilesTable.c \
  	check_gpkgCreateTilesTableMissingSRID.c \
  	check_gpkgCreateTilesZoomLevel.c check_gpkgGetImageFormat.c \
-@@ -546,7 +533,7 @@
- 	check_mbrcache.c check_md5.c check_metacatalog.c \
- 	check_multithread.c check_recover_geom.c \
- 	check_relations_fncts.c check_shp_load.c check_shp_load_3d.c \
--	check_spatialindex.c check_sql_stmt.c check_srid_fncts.c \
-+	check_spatialindex.c check_srid_fncts.c \
- 	check_styling.c check_version.c check_virtual_ovflw.c \
- 	check_virtualbbox.c check_virtualelem.c check_virtualtable1.c \
- 	check_virtualtable2.c check_virtualtable3.c \
-@@ -558,7 +545,7 @@
- 	check_add_tile_triggers_bad_table_name.c check_bufovflw.c \
+@@ -730,7 +719,7 @@
  	check_clone_table.c check_control_points.c check_create.c \
- 	check_createBaseTables.c check_dbf_load.c check_dxf.c \
--	check_endian.c check_exif.c check_exif2.c check_extension.c \
-+	check_endian.c check_exif.c check_exif2.c \
- 	check_extra_relations_fncts.c check_fdo1.c check_fdo2.c \
- 	check_fdo3.c check_fdo_bufovflw.c check_gaia_utf8.c \
- 	check_gaia_util.c check_geom_aux.c check_geometry_cols.c \
-@@ -567,7 +554,7 @@
+ 	check_createBaseTables.c check_cutter.c check_dbf_load.c \
+ 	check_drop_rename.c check_dxf.c check_endian.c check_exif.c \
+-	check_exif2.c check_extension.c check_extra_relations_fncts.c \
++	check_exif2.c check_extra_relations_fncts.c \
+ 	check_fdo1.c check_fdo2.c check_fdo3.c check_fdo_bufovflw.c \
+ 	check_gaia_utf8.c check_gaia_util.c check_geom_aux.c \
+ 	check_geometry_cols.c check_geoscvt_fncts.c \
+@@ -738,7 +727,7 @@
  	check_get_normal_row_bad_geopackage2.c check_get_normal_zoom.c \
  	check_get_normal_zoom_bad_geopackage.c \
  	check_get_normal_zoom_bad_geopackage2.c \
@@ -126,16 +120,7 @@ diff -Naur test/Makefile.in test/Makefile.in
  	check_gpkgCreateFeaturesTable.c check_gpkgCreateTilesTable.c \
  	check_gpkgCreateTilesTableMissingSRID.c \
  	check_gpkgCreateTilesZoomLevel.c check_gpkgGetImageFormat.c \
-@@ -585,7 +572,7 @@
- 	check_mbrcache.c check_md5.c check_metacatalog.c \
- 	check_multithread.c check_recover_geom.c \
- 	check_relations_fncts.c check_shp_load.c check_shp_load_3d.c \
--	check_spatialindex.c check_sql_stmt.c check_srid_fncts.c \
-+	check_spatialindex.c check_srid_fncts.c \
- 	check_styling.c check_version.c check_virtual_ovflw.c \
- 	check_virtualbbox.c check_virtualelem.c check_virtualtable1.c \
- 	check_virtualtable2.c check_virtualtable3.c \
-@@ -1185,10 +1172,6 @@
+@@ -1394,10 +1383,6 @@
  	@rm -f check_exif2$(EXEEXT)
  	$(AM_V_CCLD)$(LINK) $(check_exif2_OBJECTS) $(check_exif2_LDADD) $(LIBS)
  
@@ -146,7 +131,7 @@ diff -Naur test/Makefile.in test/Makefile.in
  check_extra_relations_fncts$(EXEEXT): $(check_extra_relations_fncts_OBJECTS) $(check_extra_relations_fncts_DEPENDENCIES) $(EXTRA_check_extra_relations_fncts_DEPENDENCIES) 
  	@rm -f check_extra_relations_fncts$(EXEEXT)
  	$(AM_V_CCLD)$(LINK) $(check_extra_relations_fncts_OBJECTS) $(check_extra_relations_fncts_LDADD) $(LIBS)
-@@ -1253,10 +1236,6 @@
+@@ -1462,10 +1447,6 @@
  	@rm -f check_get_normal_zoom_bad_geopackage2$(EXEEXT)
  	$(AM_V_CCLD)$(LINK) $(check_get_normal_zoom_bad_geopackage2_OBJECTS) $(check_get_normal_zoom_bad_geopackage2_LDADD) $(LIBS)
  
@@ -157,42 +142,23 @@ diff -Naur test/Makefile.in test/Makefile.in
  check_gpkgConvert$(EXEEXT): $(check_gpkgConvert_OBJECTS) $(check_gpkgConvert_DEPENDENCIES) $(EXTRA_check_gpkgConvert_DEPENDENCIES) 
  	@rm -f check_gpkgConvert$(EXEEXT)
  	$(AM_V_CCLD)$(LINK) $(check_gpkgConvert_OBJECTS) $(check_gpkgConvert_LDADD) $(LIBS)
-@@ -1385,10 +1364,6 @@
- 	@rm -f check_spatialindex$(EXEEXT)
- 	$(AM_V_CCLD)$(LINK) $(check_spatialindex_OBJECTS) $(check_spatialindex_LDADD) $(LIBS)
- 
--check_sql_stmt$(EXEEXT): $(check_sql_stmt_OBJECTS) $(check_sql_stmt_DEPENDENCIES) $(EXTRA_check_sql_stmt_DEPENDENCIES) 
--	@rm -f check_sql_stmt$(EXEEXT)
--	$(AM_V_CCLD)$(LINK) $(check_sql_stmt_OBJECTS) $(check_sql_stmt_LDADD) $(LIBS)
--
- check_srid_fncts$(EXEEXT): $(check_srid_fncts_OBJECTS) $(check_srid_fncts_DEPENDENCIES) $(EXTRA_check_srid_fncts_DEPENDENCIES) 
- 	@rm -f check_srid_fncts$(EXEEXT)
- 	$(AM_V_CCLD)$(LINK) $(check_srid_fncts_OBJECTS) $(check_srid_fncts_LDADD) $(LIBS)
-@@ -1491,7 +1466,6 @@
- @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/check_endian.Po@am__quote@
- @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/check_exif.Po@am__quote@
- @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/check_exif2.Po@am__quote@
--@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/check_extension.Po@am__quote@
- @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/check_extra_relations_fncts.Po@am__quote@
- @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/check_fdo1.Po@am__quote@
- @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/check_fdo2.Po@am__quote@
-@@ -1508,7 +1482,6 @@
- @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/check_get_normal_zoom.Po@am__quote@
- @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/check_get_normal_zoom_bad_geopackage.Po@am__quote@
- @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/check_get_normal_zoom_bad_geopackage2.Po@am__quote@
--@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/check_get_normal_zoom_extension_load.Po@am__quote@
- @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/check_gpkgConvert.Po@am__quote@
- @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/check_gpkgCreateFeaturesTable.Po@am__quote@
- @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/check_gpkgCreateTilesTable.Po@am__quote@
-@@ -1541,7 +1514,6 @@
- @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/check_shp_load.Po@am__quote@
- @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/check_shp_load_3d.Po@am__quote@
- @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/check_spatialindex.Po@am__quote@
--@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/check_sql_stmt.Po@am__quote@
- @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/check_srid_fncts.Po@am__quote@
- @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/check_styling.Po@am__quote@
- @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/check_version.Po@am__quote@
-@@ -2020,13 +1992,6 @@
+@@ -1786,7 +1767,6 @@
+ @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/check_endian.Po@am__quote@ # am--include-marker
+ @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/check_exif.Po@am__quote@ # am--include-marker
+ @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/check_exif2.Po@am__quote@ # am--include-marker
+-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/check_extension.Po@am__quote@ # am--include-marker
+ @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/check_extra_relations_fncts.Po@am__quote@ # am--include-marker
+ @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/check_fdo1.Po@am__quote@ # am--include-marker
+ @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/check_fdo2.Po@am__quote@ # am--include-marker
+@@ -1803,7 +1783,6 @@
+ @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/check_get_normal_zoom.Po@am__quote@ # am--include-marker
+ @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/check_get_normal_zoom_bad_geopackage.Po@am__quote@ # am--include-marker
+ @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/check_get_normal_zoom_bad_geopackage2.Po@am__quote@ # am--include-marker
+-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/check_get_normal_zoom_extension_load.Po@am__quote@ # am--include-marker
+ @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/check_gpkgConvert.Po@am__quote@ # am--include-marker
+ @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/check_gpkgCreateFeaturesTable.Po@am__quote@ # am--include-marker
+ @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/check_gpkgCreateTilesTable.Po@am__quote@ # am--include-marker
+@@ -2356,13 +2335,6 @@
  	--log-file $$b.log --trs-file $$b.trs \
  	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
  	"$$tst" $(AM_TESTS_FD_REDIRECT)
@@ -206,31 +172,49 @@ diff -Naur test/Makefile.in test/Makefile.in
  check_recover_geom.log: check_recover_geom$(EXEEXT)
  	@p='check_recover_geom$(EXEEXT)'; \
  	b='check_recover_geom'; \
-@@ -2034,13 +1999,6 @@
+@@ -2825,13 +2797,6 @@
  	--log-file $$b.log --trs-file $$b.trs \
  	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
  	"$$tst" $(AM_TESTS_FD_REDIRECT)
--check_sql_stmt.log: check_sql_stmt$(EXEEXT)
--	@p='check_sql_stmt$(EXEEXT)'; \
--	b='check_sql_stmt'; \
--	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
--	--log-file $$b.log --trs-file $$b.trs \
--	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
--	"$$tst" $(AM_TESTS_FD_REDIRECT)
- check_multithread.log: check_multithread$(EXEEXT)
- 	@p='check_multithread$(EXEEXT)'; \
- 	b='check_multithread'; \
-@@ -2341,13 +2299,6 @@
- 	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
- 	--log-file $$b.log --trs-file $$b.trs \
- 	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
--	"$$tst" $(AM_TESTS_FD_REDIRECT)
 -check_get_normal_zoom_extension_load.log: check_get_normal_zoom_extension_load$(EXEEXT)
 -	@p='check_get_normal_zoom_extension_load$(EXEEXT)'; \
 -	b='check_get_normal_zoom_extension_load'; \
 -	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
 -	--log-file $$b.log --trs-file $$b.trs \
 -	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
- 	"$$tst" $(AM_TESTS_FD_REDIRECT)
+-	"$$tst" $(AM_TESTS_FD_REDIRECT)
  check_get_normal_zoom_bad_geopackage.log: check_get_normal_zoom_bad_geopackage$(EXEEXT)
  	@p='check_get_normal_zoom_bad_geopackage$(EXEEXT)'; \
+ 	b='check_get_normal_zoom_bad_geopackage'; \
+@@ -3036,7 +3001,6 @@
+ 	-rm -f ./$(DEPDIR)/check_endian.Po
+ 	-rm -f ./$(DEPDIR)/check_exif.Po
+ 	-rm -f ./$(DEPDIR)/check_exif2.Po
+-	-rm -f ./$(DEPDIR)/check_extension.Po
+ 	-rm -f ./$(DEPDIR)/check_extra_relations_fncts.Po
+ 	-rm -f ./$(DEPDIR)/check_fdo1.Po
+ 	-rm -f ./$(DEPDIR)/check_fdo2.Po
+@@ -3053,7 +3017,6 @@
+ 	-rm -f ./$(DEPDIR)/check_get_normal_zoom.Po
+ 	-rm -f ./$(DEPDIR)/check_get_normal_zoom_bad_geopackage.Po
+ 	-rm -f ./$(DEPDIR)/check_get_normal_zoom_bad_geopackage2.Po
+-	-rm -f ./$(DEPDIR)/check_get_normal_zoom_extension_load.Po
+ 	-rm -f ./$(DEPDIR)/check_gpkgConvert.Po
+ 	-rm -f ./$(DEPDIR)/check_gpkgCreateFeaturesTable.Po
+ 	-rm -f ./$(DEPDIR)/check_gpkgCreateTilesTable.Po
+@@ -3188,7 +3151,6 @@
+ 	-rm -f ./$(DEPDIR)/check_endian.Po
+ 	-rm -f ./$(DEPDIR)/check_exif.Po
+ 	-rm -f ./$(DEPDIR)/check_exif2.Po
+-	-rm -f ./$(DEPDIR)/check_extension.Po
+ 	-rm -f ./$(DEPDIR)/check_extra_relations_fncts.Po
+ 	-rm -f ./$(DEPDIR)/check_fdo1.Po
+ 	-rm -f ./$(DEPDIR)/check_fdo2.Po
+@@ -3205,7 +3167,6 @@
+ 	-rm -f ./$(DEPDIR)/check_get_normal_zoom.Po
+ 	-rm -f ./$(DEPDIR)/check_get_normal_zoom_bad_geopackage.Po
+ 	-rm -f ./$(DEPDIR)/check_get_normal_zoom_bad_geopackage2.Po
+-	-rm -f ./$(DEPDIR)/check_get_normal_zoom_extension_load.Po
+ 	-rm -f ./$(DEPDIR)/check_gpkgConvert.Po
+ 	-rm -f ./$(DEPDIR)/check_gpkgCreateFeaturesTable.Po
+ 	-rm -f ./$(DEPDIR)/check_gpkgCreateTilesTable.Po
