@@ -59,7 +59,7 @@ test:
 
 about:
   home: https://www.gaia-gis.it/fossil/libspatialite/index
-  license: LGPL-2.1
+  license: MPL-1.1
   license_file: COPYING
   summary: 'Extend the SQLite core to support fully fledged Spatial SQL capabilities'
 
