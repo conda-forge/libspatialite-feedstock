@@ -46,13 +46,6 @@ requirements:
     - zlib
     - libxml2
 
-test:
-  commands:
-    - test -f ${PREFIX}/include/spatialite.h  # [not win]
-    - test -f ${PREFIX}/lib/libspatialite${SHLIB_EXT}  # [not win]
-    - if not exist %LIBRARY_INC%\\spatialite.h exit 1  # [win]
-    - if not exist %LIBRARY_BIN%\\libspatialite.dll exit 1  # [win]
-
 about:
   home: https://www.gaia-gis.it/fossil/libspatialite/index
   license: MPL-1.1
