@@ -13,6 +13,8 @@ source:
     - 0001-skip_failing_test.patch  # [osx]
     # Patch Win to fix build path and disable librttopo (no feedstock)
     - 0002-win_fix_paths_and_disable_rttopo.patch  # [win]
+    # Patch configure for OSX to make sure we get dylib, not so
+    - 0003-osx_fix_lib_ext.patch  # [osx]
 
 build:
   number: 0
