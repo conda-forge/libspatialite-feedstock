@@ -36,7 +36,7 @@ diff -Naur makefile_mod.vc makefile_mod.vc
  
  CFLAGS = /nologo -I.\src\headers -I.\src\topology \
 -	-I. -IC:\OSGeo4W\include $(OPTFLAGS)
-+	-I. $(LIBRARY_INC) $(OPTFLAGS)
++	-I. -I$(LIBRARY_INC) $(OPTFLAGS)
  
  default:	all
  
