@@ -1,4 +1,4 @@
-{% set version = "4.3.0a" %}
+{% set version = "5.0.0" %}
 
 package:
   name: libspatialite
@@ -6,18 +6,18 @@ package:
 
 source:
   url: http://www.gaia-gis.it/gaia-sins/libspatialite-{{ version }}.tar.gz
-  sha256: 88900030a4762904a7880273f292e5e8ca6b15b7c6c3fb88ffa9e67ee8a5a499
+  sha256: 7b7fd70243f5a0b175696d87c46dde0ace030eacc27f39241c24bac5dfac6dac
   patches:
-    # Skips 3 tests (check_extension, check_sql_stmt, and check_get_normal_zoom_extension_load) that are failing on OS X.
-    # Re-visit this once a new release is out.
-    - skip_failing_test.patch  # [osx]
-    - makefile.vc.patch  # [win]
-    - config-msvc.patch  # [win]
-    - gg_extras.patch  # [win]
-    - proj_api.patch  # [win]
+    # Skips 7 tests (check_extension, check_sql_stmt*, and
+    # check_get_normal_zoom_extension_load) that are failing on OSX.
+    - 0001-skip_failing_test.patch  # [osx]
+    # Patch Win to fix build path and disable librttopo (no feedstock)
+    - 0002-win_fix_paths_and_disable_rttopo.patch  # [win]
+    # Patch configure for OSX to make sure we get dylib, not so
+    - 0003-osx_fix_lib_ext.patch  # [osx]
 
 build:
-  number: 1040
+  number: 0
   skip: True  # [win and vc<14]
   run_exports:
     # No idea.  Staying with minor version pin.
@@ -50,7 +50,7 @@ requirements:
 
 about:
   home: https://www.gaia-gis.it/fossil/libspatialite/index
-  license: LGPL-2.1
+  license: MPL-1.1
   license_file: COPYING
   summary: 'Extend the SQLite core to support fully fledged Spatial SQL capabilities'
 

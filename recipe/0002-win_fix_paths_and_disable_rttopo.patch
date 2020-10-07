@@ -1,0 +1,94 @@
+diff -Naur config-msvc.h config-msvc.h
+--- config-msvc.h	2020-10-04 17:56:21.767077715 +0200
++++ config-msvc.h	2020-10-04 17:56:58.140686238 +0200
+@@ -1,7 +1,7 @@
+ /* config.h.  Generated from config.h.in by configure.  */
+ /* config.h.in.  Generated from configure.ac by autoheader.  */
+-/* 
+-/ Sandro: manually adjusted so to support the MSVC compiler 
++/*
++/ Sandro: manually adjusted so to support the MSVC compiler
+ /         using the OsGeo4W libraries
+ */
+ 
+@@ -18,7 +18,7 @@
+ /* #undef ENABLE_MINIZIP */
+ 
+ /* Should be defined in order to enable RTTOPO support. */
+-#define ENABLE_RTTOPO 1
++/* #define ENABLE_RTTOPO 1 */
+ 
+ /* Should be defined in order to enable GEOS_370 support. */
+ #define GEOS_370 1
+diff -Naur makefile_mod.vc makefile_mod.vc
+--- makefile_mod.vc	2020-10-05 09:03:45.687597973 +0200
++++ makefile_mod.vc	2020-10-05 09:08:21.595577459 +0200
+@@ -3,6 +3,7 @@
+ # NMAKE Makefile to build libspatialite on Windows
+ #
+ !INCLUDE nmake_mod.opt
++INSTDIR=$(LIBRARY_PREFIX)
+ 
+ LIBOBJ = src\gaiaaux\gg_sqlaux.obj src\gaiaaux\gg_utf8.obj \
+ 	src\gaiaexif\gaia_exif.obj src\gaiageo\gg_advanced.obj \
+@@ -93,7 +94,7 @@
+ MOD_SPATIALITE_DLL = mod_spatialite$(VERSION).dll
+ 
+ CFLAGS = /nologo -I.\src\headers -I.\src\topology \
+-	-I. -IC:\OSGeo4W\include $(OPTFLAGS)
++	-I. -I$(LIBRARY_INC) $(OPTFLAGS)
+ 
+ default:	all
+ 
+@@ -109,10 +110,11 @@
+ mod_spatialite_i.lib:     $(LIBOBJ)
+ 	link /dll /out:$(MOD_SPATIALITE_DLL) \
+ 		/implib:mod_spatialite_i.lib $(LIBOBJ) \
+-		C:\OSGeo4W\lib\proj_i.lib C:\OSGeo4W\lib\geos_c.lib \
+-		C:\OSGeo4w\lib\freexl_i.lib C:\OSGeo4w\lib\iconv.lib \
+-		C:\OSGeo4W\lib\sqlite3_i.lib C:\OSGeo4W\lib\zlib.lib \
+-		C:\OSGeo4W\lib\libxml2.lib C:\OSGeo4W\lib\librttopo.lib
++		$(LIBRARY_LIB)\proj.lib $(LIBRARY_LIB)\geos_c.lib \
++		$(LIBRARY_LIB)\freexl_i.lib $(LIBRARY_LIB)\iconv.lib \
++                $(LIBRARY_LIB)\charset.lib \
++		$(LIBRARY_LIB)\sqlite3.lib $(LIBRARY_LIB)\zlib.lib \
++		$(LIBRARY_LIB)\libxml2.lib
+ 	if exist $(MOD_SPATIALITE_DLL).manifest mt -manifest \
+ 		$(MOD_SPATIALITE_DLL).manifest -outputresource:$(MOD_SPATIALITE_DLL);2
+ 		
+diff -Naur makefile.vc makefile.vc
+--- makefile.vc	2020-10-04 16:34:57.347133472 +0200
++++ makefile.vc	2020-10-05 08:00:32.662883862 +0200
+@@ -3,6 +3,7 @@
+ # NMAKE Makefile to build libspatialite on Windows
+ #
+ !INCLUDE nmake.opt
++INSTDIR=$(LIBRARY_PREFIX)
+ 
+ LIBOBJ = src\gaiaaux\gg_sqlaux.obj src\gaiaaux\gg_utf8.obj \
+ 	src\gaiaexif\gaia_exif.obj src\gaiageo\gg_advanced.obj \
+@@ -93,7 +94,7 @@
+ SPATIALITE_DLL = spatialite$(VERSION).dll
+ 
+ CFLAGS = /nologo -I.\src\headers -I.\src\topology \
+-	-I. -IC:\OSGeo4W\include $(OPTFLAGS)
++	-I. -I$(LIBRARY_INC) $(OPTFLAGS)
+ 
+ default:	all
+ 
+@@ -109,10 +110,11 @@
+ spatialite_i.lib:     $(LIBOBJ)
+ 	link /dll /out:$(SPATIALITE_DLL) \
+ 		/implib:spatialite_i.lib $(LIBOBJ) \
+-		C:\OSGeo4W\lib\proj_i.lib C:\OSGeo4W\lib\geos_c.lib \
+-		C:\OSGeo4w\lib\freexl_i.lib C:\OSGeo4w\lib\iconv.lib \
+-		C:\OSGeo4W\lib\sqlite3_i.lib C:\OSGeo4W\lib\zlib.lib \
+-		C:\OSGeo4W\lib\libxml2.lib C:\OSGeo4W\lib\librttopo.lib
++		$(LIBRARY_LIB)\proj.lib $(LIBRARY_LIB)\geos_c.lib \
++		$(LIBRARY_LIB)\freexl_i.lib $(LIBRARY_LIB)\iconv.lib \
++                $(LIBRARY_LIB)\charset.lib \
++		$(LIBRARY_LIB)\sqlite3.lib $(LIBRARY_LIB)\zlib.lib \
++		$(LIBRARY_LIB)\libxml2.lib
+ 	if exist $(SPATIALITE_DLL).manifest mt -manifest \
+ 		$(SPATIALITE_DLL).manifest -outputresource:$(SPATIALITE_DLL);2
+ 		
