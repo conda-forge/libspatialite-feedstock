@@ -30,10 +30,6 @@ libfreexl = ctypes.CDLL(path)
 # Test loading the resulting SQLite3 extension
 db = sqlite3.connect(':memory:')
 db.enable_load_extension(True)
-if sys.platform == 'win32':
-    # not loading successfully without this
-    db.execute("SELECT load_extension(?, 'spatialite_init_ex')", [path])
-else:
-    db.execute("SELECT load_extension(?)", [path])
+db.execute("SELECT load_extension(?)", [path])
 db.enable_load_extension(False)
 db.close()
