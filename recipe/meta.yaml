@@ -1,20 +1,20 @@
-{% set version = "5.0.0" %}
+{% set version = "5.0.1rc0" %}
 
 package:
   name: libspatialite
   version: {{ version }}
 
 source:
-  url: http://www.gaia-gis.it/gaia-sins/libspatialite-{{ version }}.tar.gz
-  sha256: 7b7fd70243f5a0b175696d87c46dde0ace030eacc27f39241c24bac5dfac6dac
-  patches:
+  url: http://www.gaia-gis.it/gaia-sins/libspatialite-5.0.1-rc0.tar.gz
+  sha256: acfc87d40a5dc73e108f92215821d3f775187499fd72e25174f6924dfc40752d
+  #patches:
     # Skips 7 tests (check_extension, check_sql_stmt*, and
     # check_get_normal_zoom_extension_load) that are failing on OSX.
-    - 0001-skip_failing_test.patch  # [osx]
+    #- 0001-skip_failing_test.patch  # [osx]
     # Patch Win to fix build path and disable librttopo (no feedstock)
-    - 0002-win_fix_paths_and_disable_rttopo.patch  # [win]
+    #- 0002-win_fix_paths_and_disable_rttopo.patch  # [win]
     # Patch configure for OSX to make sure we get dylib, not so
-    - 0003-osx_fix_lib_ext.patch  # [osx]
+    #- 0003-osx_fix_lib_ext.patch  # [osx]
 
 build:
   number: 0
