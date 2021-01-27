@@ -39,6 +39,7 @@ requirements:
     - freexl
     - zlib
     - libxml2
+    - librttopo
   run:
     - libiconv  # [osx]
     - sqlite
@@ -47,6 +48,7 @@ requirements:
     - freexl
     - zlib
     - libxml2
+    - librttopo
 
 about:
   home: https://www.gaia-gis.it/fossil/libspatialite/index
