@@ -12,9 +12,6 @@ source:
     - 0001-win_fix_paths.patch  # [win]
     # Patch configure for OSX to make sure we get dylib, not so
     - 0002-osx_fix_lib_ext.patch  # [osx]
-    # Skips 7 tests (check_extension, check_sql_stmt*, and
-    # check_get_normal_zoom_extension_load) that are failing on OSX.
-    #- 0001-skip_failing_test.patch  # [osx]
 
 build:
   number: 0
