@@ -3,15 +3,15 @@ MACOSX_DEPLOYMENT_TARGET:
 c_compiler:
 - clang
 c_compiler_version:
-- '10'
+- '11'
 channel_sources:
 - conda-forge,defaults
 channel_targets:
-- conda-forge main
+- conda-forge libspatialite_dev
 cxx_compiler:
 - clangxx
 cxx_compiler_version:
-- '10'
+- '11'
 geos:
 - 3.8.1
 libiconv:
@@ -35,5 +35,8 @@ sqlite:
 - '3'
 target_platform:
 - osx-64
+zip_keys:
+- - c_compiler_version
+  - cxx_compiler_version
 zlib:
 - '1.2'
