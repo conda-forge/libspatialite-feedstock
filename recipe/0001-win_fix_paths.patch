@@ -1,7 +1,15 @@
 diff -ruN ../libspatialite-5.0.1-rc0_base/makefile64.vc ./makefile64.vc
 --- makefile64.vc	2021-01-27 09:49:19.735973040 +0100
-+++ makefile64.vc	2021-01-27 14:43:14.341895121 +0100
-@@ -93,7 +93,7 @@
++++ makefile64.vc	2021-02-01 23:42:00.235970576 +0100
+@@ -3,6 +3,7 @@
+ # NMAKE Makefile to build libspatialite on Windows
+ #
+ !INCLUDE nmake64.opt
++INSTDIR=$(LIBRARY_PREFIX)
+ 
+ LIBOBJ = src\gaiaaux\gg_sqlaux.obj src\gaiaaux\gg_utf8.obj \
+ 	src\gaiaexif\gaia_exif.obj src\gaiageo\gg_advanced.obj \
+@@ -93,7 +94,7 @@
  SPATIALITE_DLL = spatialite$(VERSION).dll
  
  CFLAGS = /nologo -I.\src\headers -I.\src\topology \
@@ -10,7 +18,7 @@ diff -ruN ../libspatialite-5.0.1-rc0_base/makefile64.vc ./makefile64.vc
  
  default:	all
  
-@@ -109,10 +109,11 @@
+@@ -109,10 +110,11 @@
  spatialite_i.lib:     $(LIBOBJ)
  	link /dll /out:$(SPATIALITE_DLL) \
  		/implib:spatialite_i.lib $(LIBOBJ) \
@@ -28,8 +36,16 @@ diff -ruN ../libspatialite-5.0.1-rc0_base/makefile64.vc ./makefile64.vc
  		
 diff -ruN ../libspatialite-5.0.1-rc0_base/makefile_mod64.vc ./makefile_mod64.vc
 --- makefile_mod64.vc	2021-01-27 09:49:19.735973040 +0100
-+++ makefile_mod64.vc	2021-01-27 14:43:23.913898549 +0100
-@@ -93,7 +93,7 @@
++++ makefile_mod64.vc	2021-02-01 23:42:06.071936236 +0100
+@@ -3,6 +3,7 @@
+ # NMAKE Makefile to build libspatialite on Windows
+ #
+ !INCLUDE nmake_mod64.opt
++INSTDIR=$(LIBRARY_PREFIX)
+ 
+ LIBOBJ = src\gaiaaux\gg_sqlaux.obj src\gaiaaux\gg_utf8.obj \
+ 	src\gaiaexif\gaia_exif.obj src\gaiageo\gg_advanced.obj \
+@@ -93,7 +94,7 @@
  MOD_SPATIALITE_DLL = mod_spatialite$(VERSION).dll
  
  CFLAGS = /nologo -I.\src\headers -I.\src\topology \
@@ -38,7 +54,7 @@ diff -ruN ../libspatialite-5.0.1-rc0_base/makefile_mod64.vc ./makefile_mod64.vc
  
  default:	all
  
-@@ -109,10 +109,11 @@
+@@ -109,10 +110,11 @@
  mod_spatialite_i.lib:     $(LIBOBJ)
  	link /dll /out:$(MOD_SPATIALITE_DLL) \
  		/implib:mod_spatialite_i.lib $(LIBOBJ) \
@@ -56,8 +72,16 @@ diff -ruN ../libspatialite-5.0.1-rc0_base/makefile_mod64.vc ./makefile_mod64.vc
  		
 diff -ruN ../libspatialite-5.0.1-rc0_base/makefile_mod.vc ./makefile_mod.vc
 --- makefile_mod.vc	2021-01-27 09:49:19.735973040 +0100
-+++ makefile_mod.vc	2021-01-27 14:43:28.733900268 +0100
-@@ -93,7 +93,7 @@
++++ makefile_mod.vc	2021-02-01 23:42:10.147912507 +0100
+@@ -3,6 +3,7 @@
+ # NMAKE Makefile to build libspatialite on Windows
+ #
+ !INCLUDE nmake_mod.opt
++INSTDIR=$(LIBRARY_PREFIX)
+ 
+ LIBOBJ = src\gaiaaux\gg_sqlaux.obj src\gaiaaux\gg_utf8.obj \
+ 	src\gaiaexif\gaia_exif.obj src\gaiageo\gg_advanced.obj \
+@@ -93,7 +94,7 @@
  MOD_SPATIALITE_DLL = mod_spatialite$(VERSION).dll
  
  CFLAGS = /nologo -I.\src\headers -I.\src\topology \
@@ -66,7 +90,7 @@ diff -ruN ../libspatialite-5.0.1-rc0_base/makefile_mod.vc ./makefile_mod.vc
  
  default:	all
  
-@@ -109,10 +109,11 @@
+@@ -109,10 +110,11 @@
  mod_spatialite_i.lib:     $(LIBOBJ)
  	link /dll /out:$(MOD_SPATIALITE_DLL) \
  		/implib:mod_spatialite_i.lib $(LIBOBJ) \
@@ -84,8 +108,16 @@ diff -ruN ../libspatialite-5.0.1-rc0_base/makefile_mod.vc ./makefile_mod.vc
  		
 diff -ruN ../libspatialite-5.0.1-rc0_base/makefile.vc ./makefile.vc
 --- makefile.vc	2021-01-27 09:49:19.735973040 +0100
-+++ makefile.vc	2021-01-27 14:43:31.981901421 +0100
-@@ -93,7 +93,7 @@
++++ makefile.vc	2021-02-01 23:42:14.955884782 +0100
+@@ -3,6 +3,7 @@
+ # NMAKE Makefile to build libspatialite on Windows
+ #
+ !INCLUDE nmake.opt
++INSTDIR=$(LIBRARY_PREFIX)
+ 
+ LIBOBJ = src\gaiaaux\gg_sqlaux.obj src\gaiaaux\gg_utf8.obj \
+ 	src\gaiaexif\gaia_exif.obj src\gaiageo\gg_advanced.obj \
+@@ -93,7 +94,7 @@
  SPATIALITE_DLL = spatialite$(VERSION).dll
  
  CFLAGS = /nologo -I.\src\headers -I.\src\topology \
@@ -94,7 +126,7 @@ diff -ruN ../libspatialite-5.0.1-rc0_base/makefile.vc ./makefile.vc
  
  default:	all
  
-@@ -109,10 +109,11 @@
+@@ -109,10 +110,11 @@
  spatialite_i.lib:     $(LIBOBJ)
  	link /dll /out:$(SPATIALITE_DLL) \
  		/implib:spatialite_i.lib $(LIBOBJ) \
