@@ -1,0 +1,21 @@
+diff -ruN ../libspatialite-5.0.1-rc0_base/configure ./configure
+--- configure	2021-01-27 09:49:19.731972974 +0100
++++ configure	2021-01-27 14:48:06.645504614 +0100
+@@ -12341,7 +12341,7 @@
+   soname_spec='${libname}${release}${major}$shared_ext'
+   shlibpath_overrides_runpath=yes
+   shlibpath_var=DYLD_LIBRARY_PATH
+-  shrext_cmds='`test .$module = .yes && echo .so || echo .dylib`'
++  shrext_cmds='.dylib'
+ 
+   sys_lib_search_path_spec="$sys_lib_search_path_spec /usr/local/lib"
+   sys_lib_dlsearch_path_spec='/usr/local/lib /lib /usr/lib'
+@@ -16179,7 +16179,7 @@
+   soname_spec='${libname}${release}${major}$shared_ext'
+   shlibpath_overrides_runpath=yes
+   shlibpath_var=DYLD_LIBRARY_PATH
+-  shrext_cmds='`test .$module = .yes && echo .so || echo .dylib`'
++  shrext_cmds='.dylib'
+ 
+   sys_lib_dlsearch_path_spec='/usr/local/lib /lib /usr/lib'
+   ;;

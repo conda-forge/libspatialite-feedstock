@@ -8,13 +8,10 @@ source:
   url: http://www.gaia-gis.it/gaia-sins/libspatialite-{{ version }}.tar.gz
   sha256: eecbc94311c78012d059ebc0fae86ea5ef6eecb13303e6e82b3753c1b3409e98
   patches:
-    # Skips 7 tests (check_extension, check_sql_stmt*, and
-    # check_get_normal_zoom_extension_load) that are failing on OSX.
-    - 0001-skip_failing_test.patch  # [osx]
     # Patch Win to fix build path and disable librttopo (no feedstock)
-    - 0002-win_fix_paths_and_disable_rttopo.patch  # [win]
+    - 0001-win_fix_paths.patch  # [win]
     # Patch configure for OSX to make sure we get dylib, not so
-    - 0003-osx_fix_lib_ext.patch  # [osx]
+    - 0002-osx_fix_lib_ext.patch  # [osx]
 
 build:
   number: 0
@@ -39,6 +36,7 @@ requirements:
     - freexl
     - zlib
     - libxml2
+    - librttopo
   run:
     - libiconv  # [osx]
     - sqlite
@@ -47,6 +45,7 @@ requirements:
     - freexl
     - zlib
     - libxml2
+    - librttopo
 
 about:
   home: https://www.gaia-gis.it/fossil/libspatialite/index
