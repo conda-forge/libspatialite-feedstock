@@ -12,7 +12,9 @@ export CFLAGS="-I${PREFIX}/include  ${CFLAGS}"
             --host=${HOST} \
             --build=${BUILD} \
             --enable-static=no \
-            --enable-minizip=no
+            --enable-minizip=no \
+            --enable-rttopo=yes \
+            --enable-gcp=yes
 
 make
 make check
