@@ -1,4 +1,6 @@
 #!/bin/bash
+# Get an updated config.sub and config.guess
+cp $BUILD_PREFIX/share/gnuconfig/config.* .
 
 export LDFLAGS="-L${PREFIX}/lib ${LDFLAGS}"
 export CFLAGS="-I${PREFIX}/include  ${CFLAGS}"
@@ -17,5 +19,7 @@ export CFLAGS="-I${PREFIX}/include  ${CFLAGS}"
             --enable-gcp=yes
 
 make
+if [[ "${CONDA_BUILD_CROSS_COMPILATION}" != "1" ]]; then
 make check
+fi
 make install
