@@ -12,9 +12,11 @@ source:
     - 0001-win_fix_paths.patch  # [win]
     # Patch configure for OSX to make sure we get dylib, not so
     - 0002-osx_fix_lib_ext.patch  # [osx]
+    # Skip some tests that should pass with latest geos
+    - skip_tests.patch
 
 build:
-  number: 2
+  number: 3
   skip: true  # [win and vc<14]
   run_exports:
     # No idea.  Staying with minor version pin.

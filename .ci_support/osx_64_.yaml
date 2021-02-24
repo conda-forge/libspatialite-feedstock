@@ -13,7 +13,7 @@ cxx_compiler:
 cxx_compiler_version:
 - '11'
 geos:
-- 3.9.0
+- 3.9.1
 libiconv:
 - '1.16'
 libxml2:
