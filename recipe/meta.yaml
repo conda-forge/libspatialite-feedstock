@@ -16,7 +16,7 @@ source:
     - skip_tests.patch
 
 build:
-  number: 3
+  number: 4
   skip: true  # [win and vc<14]
   run_exports:
     # No idea.  Staying with minor version pin.
