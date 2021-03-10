@@ -8,7 +8,7 @@ source:
   url: http://www.gaia-gis.it/gaia-sins/libspatialite-{{ version }}.tar.gz
   sha256: eecbc94311c78012d059ebc0fae86ea5ef6eecb13303e6e82b3753c1b3409e98
   patches:
-    # Patch Win to fix build path and disable librttopo (no feedstock)
+    # Patch Win to fix build path
     - 0001-win_fix_paths.patch  # [win]
     # Patch configure for OSX to make sure we get dylib, not so
     - 0002-osx_fix_lib_ext.patch  # [osx]
@@ -28,6 +28,7 @@ requirements:
     - automake  # [linux]
     - libtool   # [linux]
     - pkg-config  # [not win]
+    - make  # [unix]
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
   host:
