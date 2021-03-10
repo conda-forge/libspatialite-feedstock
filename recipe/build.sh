@@ -25,5 +25,5 @@ curl -o config.sub 'https://git.savannah.gnu.org/gitweb/?p=config.git;a=blob_pla
             --enable-gcp=yes
 
 make
-make check
+make check || (cat test/test-suite.log; exit 1)
 make install
