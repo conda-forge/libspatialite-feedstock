@@ -1,0 +1,269 @@
+diff -r -u libspatialite-5.0.1.orig/test/Makefile.am libspatialite-5.0.1/test/Makefile.am
+--- libspatialite-5.0.1.orig/test/Makefile.am	2021-03-12 08:08:23.645913233 +1000
++++ libspatialite-5.0.1/test/Makefile.am	2021-03-12 08:11:19.521212366 +1000
+@@ -31,10 +31,6 @@
+ 		check_gaia_utf8 \
+ 		check_extension \
+ 		check_recover_geom \
+-		check_sql_stmt \
+-		check_sql_stmt_tiny \
+-		check_sql_stmt_legacy \
+-		check_sql_stmt_extension \
+ 		check_multithread \
+ 		check_virtualtable1 \
+ 		check_virtualtable2 \
+@@ -64,7 +60,6 @@
+ 		check_cutter \
+ 		check_topology2d \
+ 		check_topology3d \
+-		check_toponoface2d \
+ 		check_topoplus \
+ 		check_toposnap \
+ 		check_network2d \
+@@ -127,7 +122,6 @@
+ 	fnmatch4win.h \
+ 	scandir4win.h \
+ 	test_helpers.h \
+-	check_sql_stmt.h \
+ 	shapetest1.dbf \
+ 	shapetest1.prj \
+ 	shapetest1.qpj \
+diff -r -u libspatialite-5.0.1.orig/test/Makefile.in libspatialite-5.0.1/test/Makefile.in
+--- libspatialite-5.0.1.orig/test/Makefile.in	2021-03-12 08:08:23.645913233 +1000
++++ libspatialite-5.0.1/test/Makefile.in	2021-03-12 08:12:55.975497616 +1000
+@@ -102,9 +102,7 @@
+ 	check_xls_load$(EXEEXT) check_math_funcs$(EXEEXT) \
+ 	check_gaia_util$(EXEEXT) check_gaia_utf8$(EXEEXT) \
+ 	check_extension$(EXEEXT) check_recover_geom$(EXEEXT) \
+-	check_sql_stmt$(EXEEXT) check_sql_stmt_tiny$(EXEEXT) \
+-	check_sql_stmt_legacy$(EXEEXT) \
+-	check_sql_stmt_extension$(EXEEXT) check_multithread$(EXEEXT) \
++	check_multithread$(EXEEXT) \
+ 	check_virtualtable1$(EXEEXT) check_virtualtable2$(EXEEXT) \
+ 	check_virtualtable3$(EXEEXT) check_virtualtable4$(EXEEXT) \
+ 	check_virtualtable5$(EXEEXT) check_virtualtable6$(EXEEXT) \
+@@ -119,7 +117,7 @@
+ 	check_metacatalog$(EXEEXT) check_virtualelem$(EXEEXT) \
+ 	check_srid_fncts$(EXEEXT) check_control_points$(EXEEXT) \
+ 	check_cutter$(EXEEXT) check_topology2d$(EXEEXT) \
+-	check_topology3d$(EXEEXT) check_toponoface2d$(EXEEXT) \
++	check_topology3d$(EXEEXT) \
+ 	check_topoplus$(EXEEXT) check_toposnap$(EXEEXT) \
+ 	check_network2d$(EXEEXT) check_network3d$(EXEEXT) \
+ 	check_network_log$(EXEEXT) check_virtualknn$(EXEEXT) \
+@@ -455,18 +453,6 @@
+ check_spatialindex_SOURCES = check_spatialindex.c
+ check_spatialindex_OBJECTS = check_spatialindex.$(OBJEXT)
+ check_spatialindex_LDADD = $(LDADD)
+-check_sql_stmt_SOURCES = check_sql_stmt.c
+-check_sql_stmt_OBJECTS = check_sql_stmt.$(OBJEXT)
+-check_sql_stmt_LDADD = $(LDADD)
+-check_sql_stmt_extension_SOURCES = check_sql_stmt_extension.c
+-check_sql_stmt_extension_OBJECTS = check_sql_stmt_extension.$(OBJEXT)
+-check_sql_stmt_extension_LDADD = $(LDADD)
+-check_sql_stmt_legacy_SOURCES = check_sql_stmt_legacy.c
+-check_sql_stmt_legacy_OBJECTS = check_sql_stmt_legacy.$(OBJEXT)
+-check_sql_stmt_legacy_LDADD = $(LDADD)
+-check_sql_stmt_tiny_SOURCES = check_sql_stmt_tiny.c
+-check_sql_stmt_tiny_OBJECTS = check_sql_stmt_tiny.$(OBJEXT)
+-check_sql_stmt_tiny_LDADD = $(LDADD)
+ check_srid_fncts_SOURCES = check_srid_fncts.c
+ check_srid_fncts_OBJECTS = check_srid_fncts.$(OBJEXT)
+ check_srid_fncts_LDADD = $(LDADD)
+@@ -485,9 +471,6 @@
+ check_topology3d_SOURCES = check_topology3d.c
+ check_topology3d_OBJECTS = check_topology3d.$(OBJEXT)
+ check_topology3d_LDADD = $(LDADD)
+-check_toponoface2d_SOURCES = check_toponoface2d.c
+-check_toponoface2d_OBJECTS = check_toponoface2d.$(OBJEXT)
+-check_toponoface2d_LDADD = $(LDADD)
+ check_topoplus_SOURCES = check_topoplus.c
+ check_topoplus_OBJECTS = check_topoplus.$(OBJEXT)
+ check_topoplus_LDADD = $(LDADD)
+@@ -636,15 +619,10 @@
+ 	./$(DEPDIR)/check_sequence.Po ./$(DEPDIR)/check_shp_load.Po \
+ 	./$(DEPDIR)/check_shp_load_3d.Po \
+ 	./$(DEPDIR)/check_spatialindex.Po \
+-	./$(DEPDIR)/check_sql_stmt.Po \
+-	./$(DEPDIR)/check_sql_stmt_extension.Po \
+-	./$(DEPDIR)/check_sql_stmt_legacy.Po \
+-	./$(DEPDIR)/check_sql_stmt_tiny.Po \
+ 	./$(DEPDIR)/check_srid_fncts.Po \
+ 	./$(DEPDIR)/check_stored_proc.Po ./$(DEPDIR)/check_styling.Po \
+ 	./$(DEPDIR)/check_tempgeom.Po ./$(DEPDIR)/check_topology2d.Po \
+ 	./$(DEPDIR)/check_topology3d.Po \
+-	./$(DEPDIR)/check_toponoface2d.Po \
+ 	./$(DEPDIR)/check_topoplus.Po ./$(DEPDIR)/check_toposnap.Po \
+ 	./$(DEPDIR)/check_version.Po \
+ 	./$(DEPDIR)/check_virtual_ovflw.Po \
+@@ -716,11 +694,9 @@
+ 	check_network2d.c check_network3d.c check_network_log.c \
+ 	check_recover_geom.c check_relations_fncts.c check_sequence.c \
+ 	check_shp_load.c check_shp_load_3d.c check_spatialindex.c \
+-	check_sql_stmt.c check_sql_stmt_extension.c \
+-	check_sql_stmt_legacy.c check_sql_stmt_tiny.c \
+ 	check_srid_fncts.c check_stored_proc.c check_styling.c \
+ 	check_tempgeom.c check_topology2d.c check_topology3d.c \
+-	check_toponoface2d.c check_topoplus.c check_toposnap.c \
++	check_topoplus.c check_toposnap.c \
+ 	check_version.c check_virtual_ovflw.c check_virtualbbox.c \
+ 	check_virtualelem.c check_virtualknn.c check_virtualtable1.c \
+ 	check_virtualtable2.c check_virtualtable3.c \
+@@ -762,11 +738,9 @@
+ 	check_network2d.c check_network3d.c check_network_log.c \
+ 	check_recover_geom.c check_relations_fncts.c check_sequence.c \
+ 	check_shp_load.c check_shp_load_3d.c check_spatialindex.c \
+-	check_sql_stmt.c check_sql_stmt_extension.c \
+-	check_sql_stmt_legacy.c check_sql_stmt_tiny.c \
+ 	check_srid_fncts.c check_stored_proc.c check_styling.c \
+ 	check_tempgeom.c check_topology2d.c check_topology3d.c \
+-	check_toponoface2d.c check_topoplus.c check_toposnap.c \
++	check_topoplus.c check_toposnap.c \
+ 	check_version.c check_virtual_ovflw.c check_virtualbbox.c \
+ 	check_virtualelem.c check_virtualknn.c check_virtualtable1.c \
+ 	check_virtualtable2.c check_virtualtable3.c \
+@@ -1186,7 +1160,6 @@
+ 	fnmatch4win.h \
+ 	scandir4win.h \
+ 	test_helpers.h \
+-	check_sql_stmt.h \
+ 	shapetest1.dbf \
+ 	shapetest1.prj \
+ 	shapetest1.qpj \
+@@ -1625,22 +1598,6 @@
+ 	@rm -f check_spatialindex$(EXEEXT)
+ 	$(AM_V_CCLD)$(LINK) $(check_spatialindex_OBJECTS) $(check_spatialindex_LDADD) $(LIBS)
+ 
+-check_sql_stmt$(EXEEXT): $(check_sql_stmt_OBJECTS) $(check_sql_stmt_DEPENDENCIES) $(EXTRA_check_sql_stmt_DEPENDENCIES) 
+-	@rm -f check_sql_stmt$(EXEEXT)
+-	$(AM_V_CCLD)$(LINK) $(check_sql_stmt_OBJECTS) $(check_sql_stmt_LDADD) $(LIBS)
+-
+-check_sql_stmt_extension$(EXEEXT): $(check_sql_stmt_extension_OBJECTS) $(check_sql_stmt_extension_DEPENDENCIES) $(EXTRA_check_sql_stmt_extension_DEPENDENCIES) 
+-	@rm -f check_sql_stmt_extension$(EXEEXT)
+-	$(AM_V_CCLD)$(LINK) $(check_sql_stmt_extension_OBJECTS) $(check_sql_stmt_extension_LDADD) $(LIBS)
+-
+-check_sql_stmt_legacy$(EXEEXT): $(check_sql_stmt_legacy_OBJECTS) $(check_sql_stmt_legacy_DEPENDENCIES) $(EXTRA_check_sql_stmt_legacy_DEPENDENCIES) 
+-	@rm -f check_sql_stmt_legacy$(EXEEXT)
+-	$(AM_V_CCLD)$(LINK) $(check_sql_stmt_legacy_OBJECTS) $(check_sql_stmt_legacy_LDADD) $(LIBS)
+-
+-check_sql_stmt_tiny$(EXEEXT): $(check_sql_stmt_tiny_OBJECTS) $(check_sql_stmt_tiny_DEPENDENCIES) $(EXTRA_check_sql_stmt_tiny_DEPENDENCIES) 
+-	@rm -f check_sql_stmt_tiny$(EXEEXT)
+-	$(AM_V_CCLD)$(LINK) $(check_sql_stmt_tiny_OBJECTS) $(check_sql_stmt_tiny_LDADD) $(LIBS)
+-
+ check_srid_fncts$(EXEEXT): $(check_srid_fncts_OBJECTS) $(check_srid_fncts_DEPENDENCIES) $(EXTRA_check_srid_fncts_DEPENDENCIES) 
+ 	@rm -f check_srid_fncts$(EXEEXT)
+ 	$(AM_V_CCLD)$(LINK) $(check_srid_fncts_OBJECTS) $(check_srid_fncts_LDADD) $(LIBS)
+@@ -1665,10 +1622,6 @@
+ 	@rm -f check_topology3d$(EXEEXT)
+ 	$(AM_V_CCLD)$(LINK) $(check_topology3d_OBJECTS) $(check_topology3d_LDADD) $(LIBS)
+ 
+-check_toponoface2d$(EXEEXT): $(check_toponoface2d_OBJECTS) $(check_toponoface2d_DEPENDENCIES) $(EXTRA_check_toponoface2d_DEPENDENCIES) 
+-	@rm -f check_toponoface2d$(EXEEXT)
+-	$(AM_V_CCLD)$(LINK) $(check_toponoface2d_OBJECTS) $(check_toponoface2d_LDADD) $(LIBS)
+-
+ check_topoplus$(EXEEXT): $(check_topoplus_OBJECTS) $(check_topoplus_DEPENDENCIES) $(EXTRA_check_topoplus_DEPENDENCIES) 
+ 	@rm -f check_topoplus$(EXEEXT)
+ 	$(AM_V_CCLD)$(LINK) $(check_topoplus_OBJECTS) $(check_topoplus_LDADD) $(LIBS)
+@@ -1849,17 +1802,12 @@
+ @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/check_shp_load.Po@am__quote@ # am--include-marker
+ @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/check_shp_load_3d.Po@am__quote@ # am--include-marker
+ @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/check_spatialindex.Po@am__quote@ # am--include-marker
+-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/check_sql_stmt.Po@am__quote@ # am--include-marker
+-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/check_sql_stmt_extension.Po@am__quote@ # am--include-marker
+-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/check_sql_stmt_legacy.Po@am__quote@ # am--include-marker
+-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/check_sql_stmt_tiny.Po@am__quote@ # am--include-marker
+ @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/check_srid_fncts.Po@am__quote@ # am--include-marker
+ @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/check_stored_proc.Po@am__quote@ # am--include-marker
+ @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/check_styling.Po@am__quote@ # am--include-marker
+ @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/check_tempgeom.Po@am__quote@ # am--include-marker
+ @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/check_topology2d.Po@am__quote@ # am--include-marker
+ @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/check_topology3d.Po@am__quote@ # am--include-marker
+-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/check_toponoface2d.Po@am__quote@ # am--include-marker
+ @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/check_topoplus.Po@am__quote@ # am--include-marker
+ @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/check_toposnap.Po@am__quote@ # am--include-marker
+ @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/check_version.Po@am__quote@ # am--include-marker
+@@ -2377,34 +2325,6 @@
+ 	--log-file $$b.log --trs-file $$b.trs \
+ 	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+ 	"$$tst" $(AM_TESTS_FD_REDIRECT)
+-check_sql_stmt.log: check_sql_stmt$(EXEEXT)
+-	@p='check_sql_stmt$(EXEEXT)'; \
+-	b='check_sql_stmt'; \
+-	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
+-	--log-file $$b.log --trs-file $$b.trs \
+-	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+-	"$$tst" $(AM_TESTS_FD_REDIRECT)
+-check_sql_stmt_tiny.log: check_sql_stmt_tiny$(EXEEXT)
+-	@p='check_sql_stmt_tiny$(EXEEXT)'; \
+-	b='check_sql_stmt_tiny'; \
+-	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
+-	--log-file $$b.log --trs-file $$b.trs \
+-	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+-	"$$tst" $(AM_TESTS_FD_REDIRECT)
+-check_sql_stmt_legacy.log: check_sql_stmt_legacy$(EXEEXT)
+-	@p='check_sql_stmt_legacy$(EXEEXT)'; \
+-	b='check_sql_stmt_legacy'; \
+-	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
+-	--log-file $$b.log --trs-file $$b.trs \
+-	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+-	"$$tst" $(AM_TESTS_FD_REDIRECT)
+-check_sql_stmt_extension.log: check_sql_stmt_extension$(EXEEXT)
+-	@p='check_sql_stmt_extension$(EXEEXT)'; \
+-	b='check_sql_stmt_extension'; \
+-	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
+-	--log-file $$b.log --trs-file $$b.trs \
+-	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+-	"$$tst" $(AM_TESTS_FD_REDIRECT)
+ check_multithread.log: check_multithread$(EXEEXT)
+ 	@p='check_multithread$(EXEEXT)'; \
+ 	b='check_multithread'; \
+@@ -2608,13 +2528,6 @@
+ 	--log-file $$b.log --trs-file $$b.trs \
+ 	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+ 	"$$tst" $(AM_TESTS_FD_REDIRECT)
+-check_toponoface2d.log: check_toponoface2d$(EXEEXT)
+-	@p='check_toponoface2d$(EXEEXT)'; \
+-	b='check_toponoface2d'; \
+-	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
+-	--log-file $$b.log --trs-file $$b.trs \
+-	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+-	"$$tst" $(AM_TESTS_FD_REDIRECT)
+ check_topoplus.log: check_topoplus$(EXEEXT)
+ 	@p='check_topoplus$(EXEEXT)'; \
+ 	b='check_topoplus'; \
+@@ -3099,17 +3012,12 @@
+ 	-rm -f ./$(DEPDIR)/check_shp_load.Po
+ 	-rm -f ./$(DEPDIR)/check_shp_load_3d.Po
+ 	-rm -f ./$(DEPDIR)/check_spatialindex.Po
+-	-rm -f ./$(DEPDIR)/check_sql_stmt.Po
+-	-rm -f ./$(DEPDIR)/check_sql_stmt_extension.Po
+-	-rm -f ./$(DEPDIR)/check_sql_stmt_legacy.Po
+-	-rm -f ./$(DEPDIR)/check_sql_stmt_tiny.Po
+ 	-rm -f ./$(DEPDIR)/check_srid_fncts.Po
+ 	-rm -f ./$(DEPDIR)/check_stored_proc.Po
+ 	-rm -f ./$(DEPDIR)/check_styling.Po
+ 	-rm -f ./$(DEPDIR)/check_tempgeom.Po
+ 	-rm -f ./$(DEPDIR)/check_topology2d.Po
+ 	-rm -f ./$(DEPDIR)/check_topology3d.Po
+-	-rm -f ./$(DEPDIR)/check_toponoface2d.Po
+ 	-rm -f ./$(DEPDIR)/check_topoplus.Po
+ 	-rm -f ./$(DEPDIR)/check_toposnap.Po
+ 	-rm -f ./$(DEPDIR)/check_version.Po
+@@ -3251,17 +3159,12 @@
+ 	-rm -f ./$(DEPDIR)/check_shp_load.Po
+ 	-rm -f ./$(DEPDIR)/check_shp_load_3d.Po
+ 	-rm -f ./$(DEPDIR)/check_spatialindex.Po
+-	-rm -f ./$(DEPDIR)/check_sql_stmt.Po
+-	-rm -f ./$(DEPDIR)/check_sql_stmt_extension.Po
+-	-rm -f ./$(DEPDIR)/check_sql_stmt_legacy.Po
+-	-rm -f ./$(DEPDIR)/check_sql_stmt_tiny.Po
+ 	-rm -f ./$(DEPDIR)/check_srid_fncts.Po
+ 	-rm -f ./$(DEPDIR)/check_stored_proc.Po
+ 	-rm -f ./$(DEPDIR)/check_styling.Po
+ 	-rm -f ./$(DEPDIR)/check_tempgeom.Po
+ 	-rm -f ./$(DEPDIR)/check_topology2d.Po
+ 	-rm -f ./$(DEPDIR)/check_topology3d.Po
+-	-rm -f ./$(DEPDIR)/check_toponoface2d.Po
+ 	-rm -f ./$(DEPDIR)/check_topoplus.Po
+ 	-rm -f ./$(DEPDIR)/check_toposnap.Po
+ 	-rm -f ./$(DEPDIR)/check_version.Po
