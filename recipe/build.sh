@@ -1,4 +1,6 @@
 #!/bin/bash
+# Get an updated config.sub and config.guess
+cp $BUILD_PREFIX/share/gnuconfig/config.* .
 
 export LDFLAGS="-L${PREFIX}/lib ${LDFLAGS}"
 export CFLAGS="-I${PREFIX}/include  ${CFLAGS}"
@@ -25,5 +27,7 @@ curl -o config.sub 'https://git.savannah.gnu.org/gitweb/?p=config.git;a=blob_pla
             --enable-gcp=yes
 
 make
+if [[ "${CONDA_BUILD_CROSS_COMPILATION}" != "1" ]]; then
 make check || (cat test/test-suite.log; exit 1)
+fi
 make install
