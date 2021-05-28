@@ -19,7 +19,7 @@ source:
     - skip_toponoface2d_test.patch  # [aarch64 or ppc64le]
 
 build:
-  number: 4
+  number: 5
   skip: true  # [win and vc<14]
   run_exports:
     # No idea.  Staying with minor version pin.
