@@ -64,6 +64,7 @@ about:
 
 extra:
   recipe-maintainers:
+    - akrherz
     - danclewley
     - gillins
     - ocefpaf
