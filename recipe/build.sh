@@ -3,7 +3,8 @@
 cp $BUILD_PREFIX/share/gnuconfig/config.* .
 
 export LDFLAGS="-L${PREFIX}/lib ${LDFLAGS}"
-export CFLAGS="-I${PREFIX}/include  ${CFLAGS}"
+# workaround #71 sqlite 3.36 issue
+export CFLAGS="-I${PREFIX}/include -DSQLITE_ALLOW_ROWID_IN_VIEW ${CFLAGS}"
 
 # these files have hardcoded paths in them.  We don't need .la files anyway, so just remove it.
 # if [ -f ${PREFIX}/${HOST}/lib/libstdc++.la ]; then
