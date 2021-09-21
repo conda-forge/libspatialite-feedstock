@@ -46,7 +46,7 @@ requirements:
     - librttopo
   run:
     - libiconv  # [osx]
-    - sqlite
+    - sqlite <3.36
     - geos
     - proj
     - freexl
