@@ -1,0 +1,28 @@
+--- libspatialite-5.0.1.orig/src/spatialite/extra_tables.c	2021-02-07 09:53:46.000000000 -0600
++++ libspatialite-5.0.1/src/spatialite/extra_tables.c	2021-09-21 15:34:37.068397680 -0500
+@@ -4788,9 +4788,9 @@
+ 	"WHERE NEW.reference_scope IN ('table','column') AND NEW.row_id_value <> 0;\n"
+ 	"SELECT RAISE(ROLLBACK, 'insert on table ISO_metadata_reference violates constraint: "
+ 	"row_id_value must exist in specified table when reference_scope is ''row'' or ''row/col''')\n"
+-	"WHERE NEW.reference_scope IN ('row','row/col') AND NOT EXISTS\n"
+-	"(SELECT rowid FROM (SELECT NEW.table_name AS table_name) "
+-	"WHERE rowid = NEW.row_id_value);\nEND";
++	"WHERE NEW.reference_scope IN ('row','row/col') AND\n"
++	"(SELECT eval('SELECT rowid FROM ' || NEW.table_name || "
++	"' WHERE rowid = ' || NEW.row_id_value)) IS NULL;\nEND";
+     ret = sqlite3_exec (sqlite, sql, NULL, NULL, &err_msg);
+     if (ret != SQLITE_OK)
+       {
+@@ -4806,9 +4806,9 @@
+ 	"WHERE NEW.reference_scope IN ('table','column') AND NEW.row_id_value <> 0;\n"
+ 	"SELECT RAISE(ROLLBACK, 'update on ISO_table metadata_reference violates constraint: "
+ 	"row_id_value must exist in specified table when reference_scope is ''row'' or ''row/col''')\n"
+-	"WHERE NEW.reference_scope IN ('row','row/col') AND NOT EXISTS\n"
+-	"(SELECT rowid FROM (SELECT NEW.table_name AS table_name) "
+-	"WHERE rowid = NEW.row_id_value);\nEND";
++	"WHERE NEW.reference_scope IN ('row','row/col') AND\n"
++	"(SELECT eval('SELECT rowid FROM ' || NEW.table_name || "
++	"' WHERE rowid = ' || NEW.row_id_value)) IS NULL;\nEND";
+     ret = sqlite3_exec (sqlite, sql, NULL, NULL, &err_msg);
+     if (ret != SQLITE_OK)
+       {
