@@ -17,9 +17,11 @@ source:
     # Skip a test that fails on non-x86 - to be investigated
     # Note: needs to be applied after skip_tests.patch
     - skip_toponoface2d_test.patch  # [aarch64 or ppc64le]
+    # GH71 build issue
+    - gh71_check_drop_rename.patch
 
 build:
-  number: 5
+  number: 6
   skip: true  # [win and vc<14]
   run_exports:
     # No idea.  Staying with minor version pin.
@@ -62,6 +64,7 @@ about:
 
 extra:
   recipe-maintainers:
+    - akrherz
     - danclewley
     - gillins
     - ocefpaf
