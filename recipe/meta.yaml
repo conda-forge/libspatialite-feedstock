@@ -21,7 +21,7 @@ source:
     - gh71_check_drop_rename.patch
 
 build:
-  number: 6
+  number: 7
   skip: true  # [win and vc<14]
   run_exports:
     # No idea.  Staying with minor version pin.
