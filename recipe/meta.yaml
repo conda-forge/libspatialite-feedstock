@@ -21,11 +21,15 @@ source:
     - gh71_check_drop_rename.patch
 
 build:
-  number: 7
+  number: 8
   skip: true  # [win and vc<14]
   run_exports:
     # No idea.  Staying with minor version pin.
     - {{ pin_subpackage('libspatialite', max_pin='x.x') }}
+
+# workaround unknown Travis-CI hangs on PPC64LE
+build_platform:
+  linux-ppc64le: linux-64
 
 requirements:
   build:
