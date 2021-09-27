@@ -14,13 +14,6 @@ Current build status
 
 
 <table><tr>
-    <td>Travis</td>
-    <td>
-      <a href="https://travis-ci.com/conda-forge/libspatialite-feedstock">
-        <img alt="macOS" src="https://img.shields.io/travis/com/conda-forge/libspatialite-feedstock/master.svg?label=macOS">
-      </a>
-    </td>
-  </tr><tr>
     <td>Drone</td>
     <td>
       <a href="https://cloud.drone.io/conda-forge/libspatialite-feedstock">
@@ -183,7 +176,7 @@ In order to produce a uniquely identifiable distribution:
 Feedstock Maintainers
 =====================
 
-
+* [@akrherz](https://github.com/akrherz/)
 * [@danclewley](https://github.com/danclewley/)
 * [@gillins](https://github.com/gillins/)
 * [@ocefpaf](https://github.com/ocefpaf/)
