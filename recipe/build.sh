@@ -27,7 +27,7 @@ curl -o config.sub 'https://git.savannah.gnu.org/gitweb/?p=config.git;a=blob_pla
             --enable-gcp=yes
 
 make
-if [[ "${CONDA_BUILD_CROSS_COMPILATION}" != "1" ]]; then
+if [[ "${CONDA_BUILD_CROSS_COMPILATION:-}" != "1" || "${CROSSCOMPILING_EMULATOR}" != "" ]]; then
 make check || (cat test/test-suite.log; exit 1)
 fi
 make install
