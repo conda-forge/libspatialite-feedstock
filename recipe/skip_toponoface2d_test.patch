@@ -1,7 +1,7 @@
-diff -r -u libspatialite-5.0.1.orig/test/Makefile.am libspatialite-5.0.1/test/Makefile.am
---- libspatialite-5.0.1.orig/test/Makefile.am	2021-03-12 08:32:25.908095102 +1000
-+++ libspatialite-5.0.1/test/Makefile.am	2021-03-12 08:26:12.117319993 +1000
-@@ -60,7 +60,6 @@
+diff -r -u libspatialite-5.0.1.orig2/test/Makefile.am libspatialite-5.0.1/test/Makefile.am
+--- libspatialite-5.0.1.orig2/test/Makefile.am	2022-06-07 18:00:13.956418135 +1000
++++ libspatialite-5.0.1/test/Makefile.am	2022-06-07 18:00:47.755933375 +1000
+@@ -59,7 +59,6 @@
  		check_cutter \
  		check_topology2d \
  		check_topology3d \
@@ -9,9 +9,9 @@ diff -r -u libspatialite-5.0.1.orig/test/Makefile.am libspatialite-5.0.1/test/Ma
  		check_topoplus \
  		check_toposnap \
  		check_network2d \
-diff -r -u libspatialite-5.0.1.orig/test/Makefile.in libspatialite-5.0.1/test/Makefile.in
---- libspatialite-5.0.1.orig/test/Makefile.in	2021-03-12 08:32:25.908095102 +1000
-+++ libspatialite-5.0.1/test/Makefile.in	2021-03-12 08:27:06.041980923 +1000
+diff -r -u libspatialite-5.0.1.orig2/test/Makefile.in libspatialite-5.0.1/test/Makefile.in
+--- libspatialite-5.0.1.orig2/test/Makefile.in	2022-06-07 18:00:13.788420545 +1000
++++ libspatialite-5.0.1/test/Makefile.in	2022-06-07 18:01:30.695318053 +1000
 @@ -117,7 +117,7 @@
  	check_metacatalog$(EXEEXT) check_virtualelem$(EXEEXT) \
  	check_srid_fncts$(EXEEXT) check_control_points$(EXEEXT) \
@@ -31,7 +31,7 @@ diff -r -u libspatialite-5.0.1.orig/test/Makefile.in libspatialite-5.0.1/test/Ma
  check_topoplus_SOURCES = check_topoplus.c
  check_topoplus_OBJECTS = check_topoplus.$(OBJEXT)
  check_topoplus_LDADD = $(LDADD)
-@@ -626,7 +623,6 @@
+@@ -623,7 +620,6 @@
  	./$(DEPDIR)/check_stored_proc.Po ./$(DEPDIR)/check_styling.Po \
  	./$(DEPDIR)/check_tempgeom.Po ./$(DEPDIR)/check_topology2d.Po \
  	./$(DEPDIR)/check_topology3d.Po \
@@ -39,7 +39,7 @@ diff -r -u libspatialite-5.0.1.orig/test/Makefile.in libspatialite-5.0.1/test/Ma
  	./$(DEPDIR)/check_topoplus.Po ./$(DEPDIR)/check_toposnap.Po \
  	./$(DEPDIR)/check_version.Po \
  	./$(DEPDIR)/check_virtual_ovflw.Po \
-@@ -700,7 +696,7 @@
+@@ -696,7 +692,7 @@
  	check_shp_load.c check_shp_load_3d.c check_spatialindex.c \
  	check_srid_fncts.c check_stored_proc.c check_styling.c \
  	check_tempgeom.c check_topology2d.c check_topology3d.c \
@@ -48,7 +48,7 @@ diff -r -u libspatialite-5.0.1.orig/test/Makefile.in libspatialite-5.0.1/test/Ma
  	check_version.c check_virtual_ovflw.c check_virtualbbox.c \
  	check_virtualelem.c check_virtualknn.c check_virtualtable1.c \
  	check_virtualtable2.c check_virtualtable3.c \
-@@ -744,7 +740,7 @@
+@@ -740,7 +736,7 @@
  	check_shp_load.c check_shp_load_3d.c check_spatialindex.c \
  	check_srid_fncts.c check_stored_proc.c check_styling.c \
  	check_tempgeom.c check_topology2d.c check_topology3d.c \
@@ -57,7 +57,7 @@ diff -r -u libspatialite-5.0.1.orig/test/Makefile.in libspatialite-5.0.1/test/Ma
  	check_version.c check_virtual_ovflw.c check_virtualbbox.c \
  	check_virtualelem.c check_virtualknn.c check_virtualtable1.c \
  	check_virtualtable2.c check_virtualtable3.c \
-@@ -1626,10 +1622,6 @@
+@@ -1622,10 +1618,6 @@
  	@rm -f check_topology3d$(EXEEXT)
  	$(AM_V_CCLD)$(LINK) $(check_topology3d_OBJECTS) $(check_topology3d_LDADD) $(LIBS)
  
@@ -68,7 +68,7 @@ diff -r -u libspatialite-5.0.1.orig/test/Makefile.in libspatialite-5.0.1/test/Ma
  check_topoplus$(EXEEXT): $(check_topoplus_OBJECTS) $(check_topoplus_DEPENDENCIES) $(EXTRA_check_topoplus_DEPENDENCIES) 
  	@rm -f check_topoplus$(EXEEXT)
  	$(AM_V_CCLD)$(LINK) $(check_topoplus_OBJECTS) $(check_topoplus_LDADD) $(LIBS)
-@@ -1816,7 +1808,6 @@
+@@ -1808,7 +1800,6 @@
  @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/check_tempgeom.Po@am__quote@ # am--include-marker
  @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/check_topology2d.Po@am__quote@ # am--include-marker
  @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/check_topology3d.Po@am__quote@ # am--include-marker
@@ -76,7 +76,7 @@ diff -r -u libspatialite-5.0.1.orig/test/Makefile.in libspatialite-5.0.1/test/Ma
  @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/check_topoplus.Po@am__quote@ # am--include-marker
  @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/check_toposnap.Po@am__quote@ # am--include-marker
  @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/check_version.Po@am__quote@ # am--include-marker
-@@ -2537,13 +2528,6 @@
+@@ -2521,13 +2512,6 @@
  	--log-file $$b.log --trs-file $$b.trs \
  	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
  	"$$tst" $(AM_TESTS_FD_REDIRECT)
@@ -90,7 +90,7 @@ diff -r -u libspatialite-5.0.1.orig/test/Makefile.in libspatialite-5.0.1/test/Ma
  check_topoplus.log: check_topoplus$(EXEEXT)
  	@p='check_topoplus$(EXEEXT)'; \
  	b='check_topoplus'; \
-@@ -3034,7 +3018,6 @@
+@@ -3018,7 +3002,6 @@
  	-rm -f ./$(DEPDIR)/check_tempgeom.Po
  	-rm -f ./$(DEPDIR)/check_topology2d.Po
  	-rm -f ./$(DEPDIR)/check_topology3d.Po
@@ -98,7 +98,7 @@ diff -r -u libspatialite-5.0.1.orig/test/Makefile.in libspatialite-5.0.1/test/Ma
  	-rm -f ./$(DEPDIR)/check_topoplus.Po
  	-rm -f ./$(DEPDIR)/check_toposnap.Po
  	-rm -f ./$(DEPDIR)/check_version.Po
-@@ -3182,7 +3165,6 @@
+@@ -3165,7 +3148,6 @@
  	-rm -f ./$(DEPDIR)/check_tempgeom.Po
  	-rm -f ./$(DEPDIR)/check_topology2d.Po
  	-rm -f ./$(DEPDIR)/check_topology3d.Po
