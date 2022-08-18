@@ -9,7 +9,7 @@ cxx_compiler:
 geos:
 - 3.11.0
 libxml2:
-- '2.9'
+- '2.10'
 pin_run_as_build:
   libxml2:
     max_pin: x.x
