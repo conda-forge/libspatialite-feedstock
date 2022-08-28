@@ -1,16 +1,16 @@
 
-nmake /f makefile.vc
+nmake /f makefile64.vc
 if errorlevel 1 exit 1
 
-nmake /f makefile.vc install
+nmake /f makefile64.vc install
 if errorlevel 1 exit 1
 
-nmake /f makefile.vc clean
+nmake /f makefile64.vc clean
 if errorlevel 1 exit 1
 
-nmake /f makefile_mod.vc
+nmake /f makefile_mod64.vc
 if errorlevel 1 exit 1
 
-nmake /f makefile_mod.vc install
+nmake /f makefile_mod64.vc install
 if errorlevel 1 exit 1
 
