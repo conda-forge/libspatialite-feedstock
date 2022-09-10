@@ -15,7 +15,7 @@ cxx_compiler_version:
 geos:
 - 3.11.0
 libiconv:
-- '1.16'
+- '1.17'
 libxml2:
 - '2.10'
 macos_machine:
