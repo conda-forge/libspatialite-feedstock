@@ -13,22 +13,13 @@ cxx_compiler:
 cxx_compiler_version:
 - '14'
 geos:
-- 3.11.0
+- 3.11.1
 libiconv:
-- '1.17'
+- '1'
 libxml2:
 - '2.10'
 macos_machine:
 - x86_64-apple-darwin13.4.0
-pin_run_as_build:
-  libiconv:
-    max_pin: x.x
-  libxml2:
-    max_pin: x.x
-  sqlite:
-    max_pin: x
-  zlib:
-    max_pin: x.x
 proj:
 - 9.1.0
 sqlite:
