@@ -11,7 +11,7 @@ geos:
 libxml2:
 - '2.10'
 proj:
-- 9.1.0
+- 9.1.1
 sqlite:
 - '3'
 target_platform:
