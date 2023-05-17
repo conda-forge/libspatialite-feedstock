@@ -9,7 +9,7 @@ cxx_compiler:
 geos:
 - 3.11.2
 libxml2:
-- '2.10'
+- '2.11'
 proj:
 - 9.2.0
 sqlite:
