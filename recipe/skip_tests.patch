@@ -1,7 +1,15 @@
-diff -r -u libspatialite-5.0.1.orig/test/Makefile.am libspatialite-5.0.1/test/Makefile.am
---- libspatialite-5.0.1.orig/test/Makefile.am	2022-06-07 17:52:21.335248553 +1000
-+++ libspatialite-5.0.1/test/Makefile.am	2022-06-07 17:55:23.360603966 +1000
-@@ -31,17 +31,12 @@
+diff -ru libspatialite-5.0.1-orig/test/Makefile.am libspatialite-5.0.1/test/Makefile.am
+--- libspatialite-5.0.1-orig/test/Makefile.am	2023-06-29 10:34:23.063491889 +1000
++++ libspatialite-5.0.1/test/Makefile.am	2023-06-29 10:36:55.622076437 +1000
+@@ -19,7 +19,6 @@
+ 		check_shp_load \
+ 		check_shp_load_3d \
+ 		shape_cp1252 \
+-		shape_primitives \
+ 		shape_utf8_1 \
+ 		shape_utf8_1ex \
+ 		shape_utf8_2 \
+@@ -31,17 +30,12 @@
  		check_gaia_utf8 \
  		check_extension \
  		check_recover_geom \
@@ -19,18 +27,25 @@ diff -r -u libspatialite-5.0.1.orig/test/Makefile.am libspatialite-5.0.1/test/Ma
  		check_virtual_ovflw \
  		check_mbrcache \
  		check_spatialindex \
-@@ -127,7 +122,6 @@
- 	fnmatch4win.h \
- 	scandir4win.h \
- 	test_helpers.h \
--	check_sql_stmt.h \
- 	shapetest1.dbf \
- 	shapetest1.prj \
- 	shapetest1.qpj \
-diff -r -u libspatialite-5.0.1.orig/test/Makefile.in libspatialite-5.0.1/test/Makefile.in
---- libspatialite-5.0.1.orig/test/Makefile.in	2022-06-07 17:52:21.335248553 +1000
-+++ libspatialite-5.0.1/test/Makefile.in	2022-06-07 17:56:48.983366763 +1000
-@@ -102,12 +102,10 @@
+@@ -64,7 +58,6 @@
+ 		check_cutter \
+ 		check_topology2d \
+ 		check_topology3d \
+-		check_toponoface2d \
+ 		check_topoplus \
+ 		check_toposnap \
+ 		check_network2d \
+diff -ru libspatialite-5.0.1-orig/test/Makefile.in libspatialite-5.0.1/test/Makefile.in
+--- libspatialite-5.0.1-orig/test/Makefile.in	2023-06-29 10:34:23.063491889 +1000
++++ libspatialite-5.0.1/test/Makefile.in	2023-06-29 10:41:43.371737549 +1000
+@@ -96,18 +96,16 @@
+ 	check_fdo_bufovflw$(EXEEXT) check_md5$(EXEEXT) \
+ 	check_dbf_load$(EXEEXT) check_shp_load$(EXEEXT) \
+ 	check_shp_load_3d$(EXEEXT) shape_cp1252$(EXEEXT) \
+-	shape_primitives$(EXEEXT) shape_utf8_1$(EXEEXT) \
++	shape_utf8_1$(EXEEXT) \
+ 	shape_utf8_1ex$(EXEEXT) shape_utf8_2$(EXEEXT) \
+ 	shape_3d$(EXEEXT) check_clone_table$(EXEEXT) \
  	check_xls_load$(EXEEXT) check_math_funcs$(EXEEXT) \
  	check_gaia_util$(EXEEXT) check_gaia_utf8$(EXEEXT) \
  	check_extension$(EXEEXT) check_recover_geom$(EXEEXT) \
@@ -45,6 +60,15 @@ diff -r -u libspatialite-5.0.1.orig/test/Makefile.in libspatialite-5.0.1/test/Ma
  	check_virtual_ovflw$(EXEEXT) check_mbrcache$(EXEEXT) \
  	check_spatialindex$(EXEEXT) check_exif$(EXEEXT) \
  	check_exif2$(EXEEXT) check_relations_fncts$(EXEEXT) \
+@@ -119,7 +117,7 @@
+ 	check_metacatalog$(EXEEXT) check_virtualelem$(EXEEXT) \
+ 	check_srid_fncts$(EXEEXT) check_control_points$(EXEEXT) \
+ 	check_cutter$(EXEEXT) check_topology2d$(EXEEXT) \
+-	check_topology3d$(EXEEXT) check_toponoface2d$(EXEEXT) \
++	check_topology3d$(EXEEXT) \
+ 	check_topoplus$(EXEEXT) check_toposnap$(EXEEXT) \
+ 	check_network2d$(EXEEXT) check_network3d$(EXEEXT) \
+ 	check_network_log$(EXEEXT) check_virtualknn$(EXEEXT) \
 @@ -455,18 +453,6 @@
  check_spatialindex_SOURCES = check_spatialindex.c
  check_spatialindex_OBJECTS = check_spatialindex.$(OBJEXT)
@@ -64,7 +88,17 @@ diff -r -u libspatialite-5.0.1.orig/test/Makefile.in libspatialite-5.0.1/test/Ma
  check_srid_fncts_SOURCES = check_srid_fncts.c
  check_srid_fncts_OBJECTS = check_srid_fncts.$(OBJEXT)
  check_srid_fncts_LDADD = $(LDADD)
-@@ -524,9 +510,6 @@
+@@ -485,9 +471,6 @@
+ check_topology3d_SOURCES = check_topology3d.c
+ check_topology3d_OBJECTS = check_topology3d.$(OBJEXT)
+ check_topology3d_LDADD = $(LDADD)
+-check_toponoface2d_SOURCES = check_toponoface2d.c
+-check_toponoface2d_OBJECTS = check_toponoface2d.$(OBJEXT)
+-check_toponoface2d_LDADD = $(LDADD)
+ check_topoplus_SOURCES = check_topoplus.c
+ check_topoplus_OBJECTS = check_topoplus.$(OBJEXT)
+ check_topoplus_LDADD = $(LDADD)
+@@ -524,9 +507,6 @@
  check_virtualtable5_SOURCES = check_virtualtable5.c
  check_virtualtable5_OBJECTS = check_virtualtable5.$(OBJEXT)
  check_virtualtable5_LDADD = $(LDADD)
@@ -74,7 +108,17 @@ diff -r -u libspatialite-5.0.1.orig/test/Makefile.in libspatialite-5.0.1/test/Ma
  check_virtualxpath_SOURCES = check_virtualxpath.c
  check_virtualxpath_OBJECTS = check_virtualxpath.$(OBJEXT)
  check_virtualxpath_LDADD = $(LDADD)
-@@ -636,10 +619,6 @@
+@@ -554,9 +534,6 @@
+ shape_cp1252_SOURCES = shape_cp1252.c
+ shape_cp1252_OBJECTS = shape_cp1252.$(OBJEXT)
+ shape_cp1252_LDADD = $(LDADD)
+-shape_primitives_SOURCES = shape_primitives.c
+-shape_primitives_OBJECTS = shape_primitives.$(OBJEXT)
+-shape_primitives_LDADD = $(LDADD)
+ shape_utf8_1_SOURCES = shape_utf8_1.c
+ shape_utf8_1_OBJECTS = shape_utf8_1.$(OBJEXT)
+ shape_utf8_1_LDADD = $(LDADD)
+@@ -636,15 +613,10 @@
  	./$(DEPDIR)/check_sequence.Po ./$(DEPDIR)/check_shp_load.Po \
  	./$(DEPDIR)/check_shp_load_3d.Po \
  	./$(DEPDIR)/check_spatialindex.Po \
@@ -85,7 +129,12 @@ diff -r -u libspatialite-5.0.1.orig/test/Makefile.in libspatialite-5.0.1/test/Ma
  	./$(DEPDIR)/check_srid_fncts.Po \
  	./$(DEPDIR)/check_stored_proc.Po ./$(DEPDIR)/check_styling.Po \
  	./$(DEPDIR)/check_tempgeom.Po ./$(DEPDIR)/check_topology2d.Po \
-@@ -656,7 +635,6 @@
+ 	./$(DEPDIR)/check_topology3d.Po \
+-	./$(DEPDIR)/check_toponoface2d.Po \
+ 	./$(DEPDIR)/check_topoplus.Po ./$(DEPDIR)/check_toposnap.Po \
+ 	./$(DEPDIR)/check_version.Po \
+ 	./$(DEPDIR)/check_virtual_ovflw.Po \
+@@ -656,12 +628,11 @@
  	./$(DEPDIR)/check_virtualtable3.Po \
  	./$(DEPDIR)/check_virtualtable4.Po \
  	./$(DEPDIR)/check_virtualtable5.Po \
@@ -93,7 +142,13 @@ diff -r -u libspatialite-5.0.1.orig/test/Makefile.in libspatialite-5.0.1/test/Ma
  	./$(DEPDIR)/check_virtualxpath.Po ./$(DEPDIR)/check_wfsin.Po \
  	./$(DEPDIR)/check_wms.Po ./$(DEPDIR)/check_xls_load.Po \
  	./$(DEPDIR)/check_zipshp.Po ./$(DEPDIR)/geojson_test.Po \
-@@ -716,8 +694,6 @@
+ 	./$(DEPDIR)/routing_test.Po ./$(DEPDIR)/shape_3d.Po \
+-	./$(DEPDIR)/shape_cp1252.Po ./$(DEPDIR)/shape_primitives.Po \
++	./$(DEPDIR)/shape_cp1252.Po \
+ 	./$(DEPDIR)/shape_utf8_1.Po ./$(DEPDIR)/shape_utf8_1ex.Po \
+ 	./$(DEPDIR)/shape_utf8_2.Po
+ am__mv = mv -f
+@@ -716,18 +687,16 @@
  	check_network2d.c check_network3d.c check_network_log.c \
  	check_recover_geom.c check_relations_fncts.c check_sequence.c \
  	check_shp_load.c check_shp_load_3d.c check_spatialindex.c \
@@ -101,17 +156,21 @@ diff -r -u libspatialite-5.0.1.orig/test/Makefile.in libspatialite-5.0.1/test/Ma
 -	check_sql_stmt_legacy.c check_sql_stmt_tiny.c \
  	check_srid_fncts.c check_stored_proc.c check_styling.c \
  	check_tempgeom.c check_topology2d.c check_topology3d.c \
- 	check_toponoface2d.c check_topoplus.c check_toposnap.c \
-@@ -725,7 +701,7 @@
+-	check_toponoface2d.c check_topoplus.c check_toposnap.c \
++	check_topoplus.c check_toposnap.c \
+ 	check_version.c check_virtual_ovflw.c check_virtualbbox.c \
  	check_virtualelem.c check_virtualknn.c check_virtualtable1.c \
  	check_virtualtable2.c check_virtualtable3.c \
  	check_virtualtable4.c check_virtualtable5.c \
 -	check_virtualtable6.c check_virtualxpath.c check_wfsin.c \
 +	check_virtualxpath.c check_wfsin.c \
  	check_wms.c check_xls_load.c check_zipshp.c geojson_test.c \
- 	routing_test.c shape_3d.c shape_cp1252.c shape_primitives.c \
+-	routing_test.c shape_3d.c shape_cp1252.c shape_primitives.c \
++	routing_test.c shape_3d.c shape_cp1252.c \
  	shape_utf8_1.c shape_utf8_1ex.c shape_utf8_2.c
-@@ -762,8 +738,6 @@
+ DIST_SOURCES = check_add_tile_triggers.c \
+ 	check_add_tile_triggers_bad_table_name.c check_bufovflw.c \
+@@ -762,18 +731,16 @@
  	check_network2d.c check_network3d.c check_network_log.c \
  	check_recover_geom.c check_relations_fncts.c check_sequence.c \
  	check_shp_load.c check_shp_load_3d.c check_spatialindex.c \
@@ -119,25 +178,21 @@ diff -r -u libspatialite-5.0.1.orig/test/Makefile.in libspatialite-5.0.1/test/Ma
 -	check_sql_stmt_legacy.c check_sql_stmt_tiny.c \
  	check_srid_fncts.c check_stored_proc.c check_styling.c \
  	check_tempgeom.c check_topology2d.c check_topology3d.c \
- 	check_toponoface2d.c check_topoplus.c check_toposnap.c \
-@@ -771,7 +745,7 @@
+-	check_toponoface2d.c check_topoplus.c check_toposnap.c \
++	check_topoplus.c check_toposnap.c \
+ 	check_version.c check_virtual_ovflw.c check_virtualbbox.c \
  	check_virtualelem.c check_virtualknn.c check_virtualtable1.c \
  	check_virtualtable2.c check_virtualtable3.c \
  	check_virtualtable4.c check_virtualtable5.c \
 -	check_virtualtable6.c check_virtualxpath.c check_wfsin.c \
 +	check_virtualxpath.c check_wfsin.c \
  	check_wms.c check_xls_load.c check_zipshp.c geojson_test.c \
- 	routing_test.c shape_3d.c shape_cp1252.c shape_primitives.c \
+-	routing_test.c shape_3d.c shape_cp1252.c shape_primitives.c \
++	routing_test.c shape_3d.c shape_cp1252.c \
  	shape_utf8_1.c shape_utf8_1ex.c shape_utf8_2.c
-@@ -1186,7 +1160,6 @@
- 	fnmatch4win.h \
- 	scandir4win.h \
- 	test_helpers.h \
--	check_sql_stmt.h \
- 	shapetest1.dbf \
- 	shapetest1.prj \
- 	shapetest1.qpj \
-@@ -1625,22 +1598,6 @@
+ RECURSIVE_TARGETS = all-recursive check-recursive cscopelist-recursive \
+ 	ctags-recursive dvi-recursive html-recursive info-recursive \
+@@ -1625,22 +1592,6 @@
  	@rm -f check_spatialindex$(EXEEXT)
  	$(AM_V_CCLD)$(LINK) $(check_spatialindex_OBJECTS) $(check_spatialindex_LDADD) $(LIBS)
  
@@ -160,7 +215,18 @@ diff -r -u libspatialite-5.0.1.orig/test/Makefile.in libspatialite-5.0.1/test/Ma
  check_srid_fncts$(EXEEXT): $(check_srid_fncts_OBJECTS) $(check_srid_fncts_DEPENDENCIES) $(EXTRA_check_srid_fncts_DEPENDENCIES) 
  	@rm -f check_srid_fncts$(EXEEXT)
  	$(AM_V_CCLD)$(LINK) $(check_srid_fncts_OBJECTS) $(check_srid_fncts_LDADD) $(LIBS)
-@@ -1717,10 +1674,6 @@
+@@ -1665,10 +1616,6 @@
+ 	@rm -f check_topology3d$(EXEEXT)
+ 	$(AM_V_CCLD)$(LINK) $(check_topology3d_OBJECTS) $(check_topology3d_LDADD) $(LIBS)
+ 
+-check_toponoface2d$(EXEEXT): $(check_toponoface2d_OBJECTS) $(check_toponoface2d_DEPENDENCIES) $(EXTRA_check_toponoface2d_DEPENDENCIES) 
+-	@rm -f check_toponoface2d$(EXEEXT)
+-	$(AM_V_CCLD)$(LINK) $(check_toponoface2d_OBJECTS) $(check_toponoface2d_LDADD) $(LIBS)
+-
+ check_topoplus$(EXEEXT): $(check_topoplus_OBJECTS) $(check_topoplus_DEPENDENCIES) $(EXTRA_check_topoplus_DEPENDENCIES) 
+ 	@rm -f check_topoplus$(EXEEXT)
+ 	$(AM_V_CCLD)$(LINK) $(check_topoplus_OBJECTS) $(check_topoplus_LDADD) $(LIBS)
+@@ -1717,10 +1664,6 @@
  	@rm -f check_virtualtable5$(EXEEXT)
  	$(AM_V_CCLD)$(LINK) $(check_virtualtable5_OBJECTS) $(check_virtualtable5_LDADD) $(LIBS)
  
@@ -171,7 +237,18 @@ diff -r -u libspatialite-5.0.1.orig/test/Makefile.in libspatialite-5.0.1/test/Ma
  check_virtualxpath$(EXEEXT): $(check_virtualxpath_OBJECTS) $(check_virtualxpath_DEPENDENCIES) $(EXTRA_check_virtualxpath_DEPENDENCIES) 
  	@rm -f check_virtualxpath$(EXEEXT)
  	$(AM_V_CCLD)$(LINK) $(check_virtualxpath_OBJECTS) $(check_virtualxpath_LDADD) $(LIBS)
-@@ -1849,10 +1802,6 @@
+@@ -1757,10 +1700,6 @@
+ 	@rm -f shape_cp1252$(EXEEXT)
+ 	$(AM_V_CCLD)$(LINK) $(shape_cp1252_OBJECTS) $(shape_cp1252_LDADD) $(LIBS)
+ 
+-shape_primitives$(EXEEXT): $(shape_primitives_OBJECTS) $(shape_primitives_DEPENDENCIES) $(EXTRA_shape_primitives_DEPENDENCIES) 
+-	@rm -f shape_primitives$(EXEEXT)
+-	$(AM_V_CCLD)$(LINK) $(shape_primitives_OBJECTS) $(shape_primitives_LDADD) $(LIBS)
+-
+ shape_utf8_1$(EXEEXT): $(shape_utf8_1_OBJECTS) $(shape_utf8_1_DEPENDENCIES) $(EXTRA_shape_utf8_1_DEPENDENCIES) 
+ 	@rm -f shape_utf8_1$(EXEEXT)
+ 	$(AM_V_CCLD)$(LINK) $(shape_utf8_1_OBJECTS) $(shape_utf8_1_LDADD) $(LIBS)
+@@ -1849,17 +1788,12 @@
  @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/check_shp_load.Po@am__quote@ # am--include-marker
  @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/check_shp_load_3d.Po@am__quote@ # am--include-marker
  @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/check_spatialindex.Po@am__quote@ # am--include-marker
@@ -182,7 +259,14 @@ diff -r -u libspatialite-5.0.1.orig/test/Makefile.in libspatialite-5.0.1/test/Ma
  @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/check_srid_fncts.Po@am__quote@ # am--include-marker
  @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/check_stored_proc.Po@am__quote@ # am--include-marker
  @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/check_styling.Po@am__quote@ # am--include-marker
-@@ -1872,7 +1821,6 @@
+ @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/check_tempgeom.Po@am__quote@ # am--include-marker
+ @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/check_topology2d.Po@am__quote@ # am--include-marker
+ @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/check_topology3d.Po@am__quote@ # am--include-marker
+-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/check_toponoface2d.Po@am__quote@ # am--include-marker
+ @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/check_topoplus.Po@am__quote@ # am--include-marker
+ @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/check_toposnap.Po@am__quote@ # am--include-marker
+ @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/check_version.Po@am__quote@ # am--include-marker
+@@ -1872,7 +1806,6 @@
  @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/check_virtualtable3.Po@am__quote@ # am--include-marker
  @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/check_virtualtable4.Po@am__quote@ # am--include-marker
  @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/check_virtualtable5.Po@am__quote@ # am--include-marker
@@ -190,7 +274,29 @@ diff -r -u libspatialite-5.0.1.orig/test/Makefile.in libspatialite-5.0.1/test/Ma
  @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/check_virtualxpath.Po@am__quote@ # am--include-marker
  @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/check_wfsin.Po@am__quote@ # am--include-marker
  @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/check_wms.Po@am__quote@ # am--include-marker
-@@ -2377,34 +2325,6 @@
+@@ -1882,7 +1815,6 @@
+ @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/routing_test.Po@am__quote@ # am--include-marker
+ @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/shape_3d.Po@am__quote@ # am--include-marker
+ @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/shape_cp1252.Po@am__quote@ # am--include-marker
+-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/shape_primitives.Po@am__quote@ # am--include-marker
+ @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/shape_utf8_1.Po@am__quote@ # am--include-marker
+ @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/shape_utf8_1ex.Po@am__quote@ # am--include-marker
+ @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/shape_utf8_2.Po@am__quote@ # am--include-marker
+@@ -2293,13 +2225,6 @@
+ 	--log-file $$b.log --trs-file $$b.trs \
+ 	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+ 	"$$tst" $(AM_TESTS_FD_REDIRECT)
+-shape_primitives.log: shape_primitives$(EXEEXT)
+-	@p='shape_primitives$(EXEEXT)'; \
+-	b='shape_primitives'; \
+-	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
+-	--log-file $$b.log --trs-file $$b.trs \
+-	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+-	"$$tst" $(AM_TESTS_FD_REDIRECT)
+ shape_utf8_1.log: shape_utf8_1$(EXEEXT)
+ 	@p='shape_utf8_1$(EXEEXT)'; \
+ 	b='shape_utf8_1'; \
+@@ -2377,34 +2302,6 @@
  	--log-file $$b.log --trs-file $$b.trs \
  	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
  	"$$tst" $(AM_TESTS_FD_REDIRECT)
@@ -225,7 +331,7 @@ diff -r -u libspatialite-5.0.1.orig/test/Makefile.in libspatialite-5.0.1/test/Ma
  check_multithread.log: check_multithread$(EXEEXT)
  	@p='check_multithread$(EXEEXT)'; \
  	b='check_multithread'; \
-@@ -2447,13 +2367,6 @@
+@@ -2447,13 +2344,6 @@
  	--log-file $$b.log --trs-file $$b.trs \
  	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
  	"$$tst" $(AM_TESTS_FD_REDIRECT)
@@ -239,7 +345,21 @@ diff -r -u libspatialite-5.0.1.orig/test/Makefile.in libspatialite-5.0.1/test/Ma
  check_virtual_ovflw.log: check_virtual_ovflw$(EXEEXT)
  	@p='check_virtual_ovflw$(EXEEXT)'; \
  	b='check_virtual_ovflw'; \
-@@ -3099,10 +3012,6 @@
+@@ -2608,13 +2498,6 @@
+ 	--log-file $$b.log --trs-file $$b.trs \
+ 	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+ 	"$$tst" $(AM_TESTS_FD_REDIRECT)
+-check_toponoface2d.log: check_toponoface2d$(EXEEXT)
+-	@p='check_toponoface2d$(EXEEXT)'; \
+-	b='check_toponoface2d'; \
+-	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
+-	--log-file $$b.log --trs-file $$b.trs \
+-	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+-	"$$tst" $(AM_TESTS_FD_REDIRECT)
+ check_topoplus.log: check_topoplus$(EXEEXT)
+ 	@p='check_topoplus$(EXEEXT)'; \
+ 	b='check_topoplus'; \
+@@ -3099,17 +2982,12 @@
  	-rm -f ./$(DEPDIR)/check_shp_load.Po
  	-rm -f ./$(DEPDIR)/check_shp_load_3d.Po
  	-rm -f ./$(DEPDIR)/check_spatialindex.Po
@@ -250,7 +370,14 @@ diff -r -u libspatialite-5.0.1.orig/test/Makefile.in libspatialite-5.0.1/test/Ma
  	-rm -f ./$(DEPDIR)/check_srid_fncts.Po
  	-rm -f ./$(DEPDIR)/check_stored_proc.Po
  	-rm -f ./$(DEPDIR)/check_styling.Po
-@@ -3122,7 +3031,6 @@
+ 	-rm -f ./$(DEPDIR)/check_tempgeom.Po
+ 	-rm -f ./$(DEPDIR)/check_topology2d.Po
+ 	-rm -f ./$(DEPDIR)/check_topology3d.Po
+-	-rm -f ./$(DEPDIR)/check_toponoface2d.Po
+ 	-rm -f ./$(DEPDIR)/check_topoplus.Po
+ 	-rm -f ./$(DEPDIR)/check_toposnap.Po
+ 	-rm -f ./$(DEPDIR)/check_version.Po
+@@ -3122,7 +3000,6 @@
  	-rm -f ./$(DEPDIR)/check_virtualtable3.Po
  	-rm -f ./$(DEPDIR)/check_virtualtable4.Po
  	-rm -f ./$(DEPDIR)/check_virtualtable5.Po
@@ -258,7 +385,15 @@ diff -r -u libspatialite-5.0.1.orig/test/Makefile.in libspatialite-5.0.1/test/Ma
  	-rm -f ./$(DEPDIR)/check_virtualxpath.Po
  	-rm -f ./$(DEPDIR)/check_wfsin.Po
  	-rm -f ./$(DEPDIR)/check_wms.Po
-@@ -3251,10 +3159,6 @@
+@@ -3132,7 +3009,6 @@
+ 	-rm -f ./$(DEPDIR)/routing_test.Po
+ 	-rm -f ./$(DEPDIR)/shape_3d.Po
+ 	-rm -f ./$(DEPDIR)/shape_cp1252.Po
+-	-rm -f ./$(DEPDIR)/shape_primitives.Po
+ 	-rm -f ./$(DEPDIR)/shape_utf8_1.Po
+ 	-rm -f ./$(DEPDIR)/shape_utf8_1ex.Po
+ 	-rm -f ./$(DEPDIR)/shape_utf8_2.Po
+@@ -3251,17 +3127,12 @@
  	-rm -f ./$(DEPDIR)/check_shp_load.Po
  	-rm -f ./$(DEPDIR)/check_shp_load_3d.Po
  	-rm -f ./$(DEPDIR)/check_spatialindex.Po
@@ -269,7 +404,14 @@ diff -r -u libspatialite-5.0.1.orig/test/Makefile.in libspatialite-5.0.1/test/Ma
  	-rm -f ./$(DEPDIR)/check_srid_fncts.Po
  	-rm -f ./$(DEPDIR)/check_stored_proc.Po
  	-rm -f ./$(DEPDIR)/check_styling.Po
-@@ -3274,7 +3178,6 @@
+ 	-rm -f ./$(DEPDIR)/check_tempgeom.Po
+ 	-rm -f ./$(DEPDIR)/check_topology2d.Po
+ 	-rm -f ./$(DEPDIR)/check_topology3d.Po
+-	-rm -f ./$(DEPDIR)/check_toponoface2d.Po
+ 	-rm -f ./$(DEPDIR)/check_topoplus.Po
+ 	-rm -f ./$(DEPDIR)/check_toposnap.Po
+ 	-rm -f ./$(DEPDIR)/check_version.Po
+@@ -3274,7 +3145,6 @@
  	-rm -f ./$(DEPDIR)/check_virtualtable3.Po
  	-rm -f ./$(DEPDIR)/check_virtualtable4.Po
  	-rm -f ./$(DEPDIR)/check_virtualtable5.Po
@@ -277,3 +419,11 @@ diff -r -u libspatialite-5.0.1.orig/test/Makefile.in libspatialite-5.0.1/test/Ma
  	-rm -f ./$(DEPDIR)/check_virtualxpath.Po
  	-rm -f ./$(DEPDIR)/check_wfsin.Po
  	-rm -f ./$(DEPDIR)/check_wms.Po
+@@ -3284,7 +3154,6 @@
+ 	-rm -f ./$(DEPDIR)/routing_test.Po
+ 	-rm -f ./$(DEPDIR)/shape_3d.Po
+ 	-rm -f ./$(DEPDIR)/shape_cp1252.Po
+-	-rm -f ./$(DEPDIR)/shape_primitives.Po
+ 	-rm -f ./$(DEPDIR)/shape_utf8_1.Po
+ 	-rm -f ./$(DEPDIR)/shape_utf8_1ex.Po
+ 	-rm -f ./$(DEPDIR)/shape_utf8_2.Po
