@@ -5,7 +5,7 @@ package:
   version: {{ version }}
 
 source:
-  url: http://www.gaia-gis.it/gaia-sins/libspatialite-{{ version }}.tar.gz
+  url: https://www.gaia-gis.it/gaia-sins/libspatialite-sources/libspatialite-{{ version }}.tar.gz
   sha256: 43be2dd349daffe016dd1400c5d11285828c22fea35ca5109f21f3ed50605080
   patches:
     # Patch Win to fix build path
