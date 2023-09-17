@@ -1,12 +1,12 @@
-{% set version = "5.0.1" %}
+{% set version = "5.1.0" %}
 
 package:
   name: libspatialite
   version: {{ version }}
 
 source:
-  url: http://www.gaia-gis.it/gaia-sins/libspatialite-{{ version }}.tar.gz
-  sha256: eecbc94311c78012d059ebc0fae86ea5ef6eecb13303e6e82b3753c1b3409e98
+  url: https://www.gaia-gis.it/gaia-sins/libspatialite-sources/libspatialite-{{ version }}.tar.gz
+  sha256: 43be2dd349daffe016dd1400c5d11285828c22fea35ca5109f21f3ed50605080
   patches:
     # Patch Win to fix build path
     - 0001-win_fix_paths.patch  # [win]
@@ -15,10 +15,10 @@ source:
     # Skip some tests that fail
     - skip_tests.patch
     # GH71 build issue
-    - gh71_check_drop_rename.patch
+    #- gh71_check_drop_rename.patch
 
 build:
-  number: 29
+  number: 0
   skip: true  # [win and vc<14]
   run_exports:
     # No idea.  Staying with minor version pin.
@@ -39,7 +39,7 @@ requirements:
     - sqlite
     - geos
     - proj
-    - freexl
+    - freexl >=2
     - zlib
     - libxml2
     - librttopo
@@ -48,7 +48,7 @@ requirements:
     - sqlite
     - geos
     - proj
-    - freexl
+    - freexl >=2
     - zlib
     - libxml2
     - librttopo
