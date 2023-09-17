@@ -39,7 +39,7 @@ requirements:
     - sqlite
     - geos
     - proj
-    - freexl
+    - freexl >=2
     - zlib
     - libxml2
     - librttopo
@@ -48,7 +48,7 @@ requirements:
     - sqlite
     - geos
     - proj
-    - freexl
+    - freexl >=2
     - zlib
     - libxml2
     - librttopo
