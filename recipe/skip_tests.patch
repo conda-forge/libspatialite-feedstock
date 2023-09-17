@@ -1,6 +1,6 @@
 diff -urN libspatialite-5.1.0-orig/test/Makefile.am libspatialite-5.1.0/test/Makefile.am
 --- libspatialite-5.1.0-orig/test/Makefile.am	2023-09-17 11:28:28.531158194 -0500
-+++ libspatialite-5.1.0/test/Makefile.am	2023-09-17 11:29:12.934750299 -0500
++++ libspatialite-5.1.0/test/Makefile.am	2023-09-17 12:41:56.741470932 -0500
 @@ -9,7 +9,6 @@
  		check_geometry_cols \
  		check_tempgeom \
@@ -9,9 +9,17 @@ diff -urN libspatialite-5.1.0-orig/test/Makefile.am libspatialite-5.1.0/test/Mak
  		check_fdo1 \
  		check_fdo2 \
  		check_fdo3 \
+@@ -64,7 +63,6 @@
+ 		check_cutter \
+ 		check_topology2d \
+ 		check_topology3d \
+-		check_toponoface2d \
+ 		check_topoplus \
+ 		check_toposnap \
+ 		check_network2d \
 diff -urN libspatialite-5.1.0-orig/test/Makefile.in libspatialite-5.1.0/test/Makefile.in
 --- libspatialite-5.1.0-orig/test/Makefile.in	2023-09-17 11:28:28.531158194 -0500
-+++ libspatialite-5.1.0/test/Makefile.in	2023-09-17 11:29:08.528691547 -0500
++++ libspatialite-5.1.0/test/Makefile.in	2023-09-17 12:41:52.710418708 -0500
 @@ -91,7 +91,7 @@
  	check_init$(EXEEXT) check_init2$(EXEEXT) \
  	check_init_full$(EXEEXT) check_geom_aux$(EXEEXT) \
@@ -21,6 +29,15 @@ diff -urN libspatialite-5.1.0-orig/test/Makefile.in libspatialite-5.1.0/test/Mak
  	check_fdo1$(EXEEXT) check_fdo2$(EXEEXT) check_fdo3$(EXEEXT) \
  	check_fdo_bufovflw$(EXEEXT) check_md5$(EXEEXT) \
  	check_dbf_load$(EXEEXT) check_shp_load$(EXEEXT) \
+@@ -119,7 +119,7 @@
+ 	check_metacatalog$(EXEEXT) check_virtualelem$(EXEEXT) \
+ 	check_srid_fncts$(EXEEXT) check_control_points$(EXEEXT) \
+ 	check_cutter$(EXEEXT) check_topology2d$(EXEEXT) \
+-	check_topology3d$(EXEEXT) check_toponoface2d$(EXEEXT) \
++	check_topology3d$(EXEEXT) \
+ 	check_topoplus$(EXEEXT) check_toposnap$(EXEEXT) \
+ 	check_network2d$(EXEEXT) check_network3d$(EXEEXT) \
+ 	check_network_log$(EXEEXT) check_virtualknn2$(EXEEXT) \
 @@ -217,9 +217,6 @@
  check_add_tile_triggers_bad_table_name_OBJECTS =  \
  	check_add_tile_triggers_bad_table_name.$(OBJEXT)
@@ -31,7 +48,17 @@ diff -urN libspatialite-5.1.0-orig/test/Makefile.in libspatialite-5.1.0/test/Mak
  check_clone_table_SOURCES = check_clone_table.c
  check_clone_table_OBJECTS = check_clone_table.$(OBJEXT)
  check_clone_table_LDADD = $(LDADD)
-@@ -587,7 +584,7 @@
+@@ -489,9 +486,6 @@
+ check_topology3d_SOURCES = check_topology3d.c
+ check_topology3d_OBJECTS = check_topology3d.$(OBJEXT)
+ check_topology3d_LDADD = $(LDADD)
+-check_toponoface2d_SOURCES = check_toponoface2d.c
+-check_toponoface2d_OBJECTS = check_toponoface2d.$(OBJEXT)
+-check_toponoface2d_LDADD = $(LDADD)
+ check_topoplus_SOURCES = check_topoplus.c
+ check_topoplus_OBJECTS = check_topoplus.$(OBJEXT)
+ check_topoplus_LDADD = $(LDADD)
+@@ -587,7 +581,7 @@
  am__maybe_remake_depfiles = depfiles
  am__depfiles_remade = ./$(DEPDIR)/check_add_tile_triggers.Po \
  	./$(DEPDIR)/check_add_tile_triggers_bad_table_name.Po \
@@ -40,7 +67,15 @@ diff -urN libspatialite-5.1.0-orig/test/Makefile.in libspatialite-5.1.0/test/Mak
  	./$(DEPDIR)/check_control_points.Po \
  	./$(DEPDIR)/check_create.Po \
  	./$(DEPDIR)/check_createBaseTables.Po \
-@@ -689,7 +686,7 @@
+@@ -649,7 +643,6 @@
+ 	./$(DEPDIR)/check_stored_proc.Po ./$(DEPDIR)/check_styling.Po \
+ 	./$(DEPDIR)/check_tempgeom.Po ./$(DEPDIR)/check_topology2d.Po \
+ 	./$(DEPDIR)/check_topology3d.Po \
+-	./$(DEPDIR)/check_toponoface2d.Po \
+ 	./$(DEPDIR)/check_topoplus.Po ./$(DEPDIR)/check_toposnap.Po \
+ 	./$(DEPDIR)/check_version.Po \
+ 	./$(DEPDIR)/check_virtual_ovflw.Po \
+@@ -689,7 +682,7 @@
  am__v_CCLD_0 = @echo "  CCLD    " $@;
  am__v_CCLD_1 = 
  SOURCES = check_add_tile_triggers.c \
@@ -49,7 +84,16 @@ diff -urN libspatialite-5.1.0-orig/test/Makefile.in libspatialite-5.1.0/test/Mak
  	check_clone_table.c check_control_points.c check_create.c \
  	check_createBaseTables.c check_cutter.c check_dbf_load.c \
  	check_drop_rename.c check_dxf.c check_endian.c check_exif.c \
-@@ -736,7 +733,7 @@
+@@ -725,7 +718,7 @@
+ 	check_sql_stmt_extension.c check_sql_stmt_legacy.c \
+ 	check_sql_stmt_tiny.c check_srid_fncts.c check_stored_proc.c \
+ 	check_styling.c check_tempgeom.c check_topology2d.c \
+-	check_topology3d.c check_toponoface2d.c check_topoplus.c \
++	check_topology3d.c check_topoplus.c \
+ 	check_toposnap.c check_version.c check_virtual_ovflw.c \
+ 	check_virtualbbox.c check_virtualelem.c check_virtualknn2.c \
+ 	check_virtualtable1.c check_virtualtable2.c \
+@@ -736,7 +729,7 @@
  	shape_3d.c shape_cp1252.c shape_primitives.c shape_utf8_1.c \
  	shape_utf8_1ex.c shape_utf8_2.c
  DIST_SOURCES = check_add_tile_triggers.c \
@@ -58,7 +102,16 @@ diff -urN libspatialite-5.1.0-orig/test/Makefile.in libspatialite-5.1.0/test/Mak
  	check_clone_table.c check_control_points.c check_create.c \
  	check_createBaseTables.c check_cutter.c check_dbf_load.c \
  	check_drop_rename.c check_dxf.c check_endian.c check_exif.c \
-@@ -1371,10 +1368,6 @@
+@@ -772,7 +765,7 @@
+ 	check_sql_stmt_extension.c check_sql_stmt_legacy.c \
+ 	check_sql_stmt_tiny.c check_srid_fncts.c check_stored_proc.c \
+ 	check_styling.c check_tempgeom.c check_topology2d.c \
+-	check_topology3d.c check_toponoface2d.c check_topoplus.c \
++	check_topology3d.c check_topoplus.c \
+ 	check_toposnap.c check_version.c check_virtual_ovflw.c \
+ 	check_virtualbbox.c check_virtualelem.c check_virtualknn2.c \
+ 	check_virtualtable1.c check_virtualtable2.c \
+@@ -1371,10 +1364,6 @@
  	@rm -f check_add_tile_triggers_bad_table_name$(EXEEXT)
  	$(AM_V_CCLD)$(LINK) $(check_add_tile_triggers_bad_table_name_OBJECTS) $(check_add_tile_triggers_bad_table_name_LDADD) $(LIBS)
  
@@ -69,7 +122,17 @@ diff -urN libspatialite-5.1.0-orig/test/Makefile.in libspatialite-5.1.0/test/Mak
  check_clone_table$(EXEEXT): $(check_clone_table_OBJECTS) $(check_clone_table_DEPENDENCIES) $(EXTRA_check_clone_table_DEPENDENCIES) 
  	@rm -f check_clone_table$(EXEEXT)
  	$(AM_V_CCLD)$(LINK) $(check_clone_table_OBJECTS) $(check_clone_table_LDADD) $(LIBS)
-@@ -1803,7 +1796,6 @@
+@@ -1687,9 +1676,6 @@
+ 	@rm -f check_topology3d$(EXEEXT)
+ 	$(AM_V_CCLD)$(LINK) $(check_topology3d_OBJECTS) $(check_topology3d_LDADD) $(LIBS)
+ 
+-check_toponoface2d$(EXEEXT): $(check_toponoface2d_OBJECTS) $(check_toponoface2d_DEPENDENCIES) $(EXTRA_check_toponoface2d_DEPENDENCIES) 
+-	@rm -f check_toponoface2d$(EXEEXT)
+-	$(AM_V_CCLD)$(LINK) $(check_toponoface2d_OBJECTS) $(check_toponoface2d_LDADD) $(LIBS)
+ 
+ check_topoplus$(EXEEXT): $(check_topoplus_OBJECTS) $(check_topoplus_DEPENDENCIES) $(EXTRA_check_topoplus_DEPENDENCIES) 
+ 	@rm -f check_topoplus$(EXEEXT)
+@@ -1803,7 +1789,6 @@
  
  @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/check_add_tile_triggers.Po@am__quote@ # am--include-marker
  @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/check_add_tile_triggers_bad_table_name.Po@am__quote@ # am--include-marker
@@ -77,7 +140,15 @@ diff -urN libspatialite-5.1.0-orig/test/Makefile.in libspatialite-5.1.0/test/Mak
  @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/check_clone_table.Po@am__quote@ # am--include-marker
  @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/check_control_points.Po@am__quote@ # am--include-marker
  @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/check_create.Po@am__quote@ # am--include-marker
-@@ -2246,13 +2238,6 @@
+@@ -1882,7 +1867,6 @@
+ @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/check_tempgeom.Po@am__quote@ # am--include-marker
+ @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/check_topology2d.Po@am__quote@ # am--include-marker
+ @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/check_topology3d.Po@am__quote@ # am--include-marker
+-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/check_toponoface2d.Po@am__quote@ # am--include-marker
+ @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/check_topoplus.Po@am__quote@ # am--include-marker
+ @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/check_toposnap.Po@am__quote@ # am--include-marker
+ @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/check_version.Po@am__quote@ # am--include-marker
+@@ -2246,13 +2230,6 @@
  	--log-file $$b.log --trs-file $$b.trs \
  	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
  	"$$tst" $(AM_TESTS_FD_REDIRECT)
@@ -91,7 +162,21 @@ diff -urN libspatialite-5.1.0-orig/test/Makefile.in libspatialite-5.1.0/test/Mak
  check_fdo1.log: check_fdo1$(EXEEXT)
  	@p='check_fdo1$(EXEEXT)'; \
  	b='check_fdo1'; \
-@@ -3061,7 +3046,6 @@
+@@ -2631,13 +2608,6 @@
+ 	--log-file $$b.log --trs-file $$b.trs \
+ 	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+ 	"$$tst" $(AM_TESTS_FD_REDIRECT)
+-check_toponoface2d.log: check_toponoface2d$(EXEEXT)
+-	@p='check_toponoface2d$(EXEEXT)'; \
+-	b='check_toponoface2d'; \
+-	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
+-	--log-file $$b.log --trs-file $$b.trs \
+-	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+-	"$$tst" $(AM_TESTS_FD_REDIRECT)
+ check_topoplus.log: check_topoplus$(EXEEXT)
+ 	@p='check_topoplus$(EXEEXT)'; \
+ 	b='check_topoplus'; \
+@@ -3061,7 +3031,6 @@
  distclean: distclean-recursive
  		-rm -f ./$(DEPDIR)/check_add_tile_triggers.Po
  	-rm -f ./$(DEPDIR)/check_add_tile_triggers_bad_table_name.Po
@@ -99,7 +184,15 @@ diff -urN libspatialite-5.1.0-orig/test/Makefile.in libspatialite-5.1.0/test/Mak
  	-rm -f ./$(DEPDIR)/check_clone_table.Po
  	-rm -f ./$(DEPDIR)/check_control_points.Po
  	-rm -f ./$(DEPDIR)/check_create.Po
-@@ -3214,7 +3198,6 @@
+@@ -3140,7 +3109,6 @@
+ 	-rm -f ./$(DEPDIR)/check_tempgeom.Po
+ 	-rm -f ./$(DEPDIR)/check_topology2d.Po
+ 	-rm -f ./$(DEPDIR)/check_topology3d.Po
+-	-rm -f ./$(DEPDIR)/check_toponoface2d.Po
+ 	-rm -f ./$(DEPDIR)/check_topoplus.Po
+ 	-rm -f ./$(DEPDIR)/check_toposnap.Po
+ 	-rm -f ./$(DEPDIR)/check_version.Po
+@@ -3214,7 +3182,6 @@
  maintainer-clean: maintainer-clean-recursive
  		-rm -f ./$(DEPDIR)/check_add_tile_triggers.Po
  	-rm -f ./$(DEPDIR)/check_add_tile_triggers_bad_table_name.Po
@@ -107,3 +200,11 @@ diff -urN libspatialite-5.1.0-orig/test/Makefile.in libspatialite-5.1.0/test/Mak
  	-rm -f ./$(DEPDIR)/check_clone_table.Po
  	-rm -f ./$(DEPDIR)/check_control_points.Po
  	-rm -f ./$(DEPDIR)/check_create.Po
+@@ -3293,7 +3260,6 @@
+ 	-rm -f ./$(DEPDIR)/check_tempgeom.Po
+ 	-rm -f ./$(DEPDIR)/check_topology2d.Po
+ 	-rm -f ./$(DEPDIR)/check_topology3d.Po
+-	-rm -f ./$(DEPDIR)/check_toponoface2d.Po
+ 	-rm -f ./$(DEPDIR)/check_topoplus.Po
+ 	-rm -f ./$(DEPDIR)/check_toposnap.Po
+ 	-rm -f ./$(DEPDIR)/check_version.Po
