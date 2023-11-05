@@ -1,7 +1,7 @@
 
 :: configure step doesn't run on Windows. Set these
 :: manually
-set CF_FLAGS="/DGEOS_3100=1 /DGEOS_3110=1"
+set CF_FLAGS=/DGEOS_3100=1 /DGEOS_3110=1
 
 nmake /f makefile64.vc
 if errorlevel 1 exit 1
