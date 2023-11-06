@@ -1,6 +1,6 @@
-diff -ru libspatialite-5.1.0-orig/makefile64.vc libspatialite-5.1.0/makefile64.vc
---- libspatialite-5.1.0-orig/makefile64.vc	2023-11-06 08:42:52.257245934 +1000
-+++ libspatialite-5.1.0/makefile64.vc	2023-11-06 08:43:10.165569026 +1000
+diff -ru libspatialite-5.1.0_orig/makefile64.vc libspatialite-5.1.0/makefile64.vc
+--- libspatialite-5.1.0_orig/makefile64.vc	2023-11-07 07:59:16.545669104 +1000
++++ libspatialite-5.1.0/makefile64.vc	2023-11-07 07:59:58.769176502 +1000
 @@ -3,6 +3,7 @@
  # NMAKE Makefile to build libspatialite on Windows
  #
@@ -34,9 +34,9 @@ diff -ru libspatialite-5.1.0-orig/makefile64.vc libspatialite-5.1.0/makefile64.v
  	if exist $(SPATIALITE_DLL).manifest mt -manifest \
  		$(SPATIALITE_DLL).manifest -outputresource:$(SPATIALITE_DLL);2
  		
-diff -ru libspatialite-5.1.0-orig/makefile_mod64.vc libspatialite-5.1.0/makefile_mod64.vc
---- libspatialite-5.1.0-orig/makefile_mod64.vc	2023-11-06 08:42:52.257245934 +1000
-+++ libspatialite-5.1.0/makefile_mod64.vc	2023-11-06 08:43:10.169569100 +1000
+diff -ru libspatialite-5.1.0_orig/makefile_mod64.vc libspatialite-5.1.0/makefile_mod64.vc
+--- libspatialite-5.1.0_orig/makefile_mod64.vc	2023-11-07 07:59:16.545669104 +1000
++++ libspatialite-5.1.0/makefile_mod64.vc	2023-11-07 07:59:58.769176502 +1000
 @@ -3,6 +3,7 @@
  # NMAKE Makefile to build libspatialite on Windows
  #
@@ -70,9 +70,9 @@ diff -ru libspatialite-5.1.0-orig/makefile_mod64.vc libspatialite-5.1.0/makefile
  	if exist $(MOD_SPATIALITE_DLL).manifest mt -manifest \
  		$(MOD_SPATIALITE_DLL).manifest -outputresource:$(MOD_SPATIALITE_DLL);2
  		
-diff -ru libspatialite-5.1.0-orig/makefile_mod.vc libspatialite-5.1.0/makefile_mod.vc
---- libspatialite-5.1.0-orig/makefile_mod.vc	2023-11-06 08:42:52.257245934 +1000
-+++ libspatialite-5.1.0/makefile_mod.vc	2023-11-06 08:43:10.169569100 +1000
+diff -ru libspatialite-5.1.0_orig/makefile_mod.vc libspatialite-5.1.0/makefile_mod.vc
+--- libspatialite-5.1.0_orig/makefile_mod.vc	2023-11-07 07:59:16.545669104 +1000
++++ libspatialite-5.1.0/makefile_mod.vc	2023-11-07 07:59:58.769176502 +1000
 @@ -3,6 +3,7 @@
  # NMAKE Makefile to build libspatialite on Windows
  #
@@ -106,9 +106,9 @@ diff -ru libspatialite-5.1.0-orig/makefile_mod.vc libspatialite-5.1.0/makefile_m
  	if exist $(MOD_SPATIALITE_DLL).manifest mt -manifest \
  		$(MOD_SPATIALITE_DLL).manifest -outputresource:$(MOD_SPATIALITE_DLL);2
  		
-diff -ru libspatialite-5.1.0-orig/makefile.vc libspatialite-5.1.0/makefile.vc
---- libspatialite-5.1.0-orig/makefile.vc	2023-11-06 08:42:52.257245934 +1000
-+++ libspatialite-5.1.0/makefile.vc	2023-11-06 08:43:10.169569100 +1000
+diff -ru libspatialite-5.1.0_orig/makefile.vc libspatialite-5.1.0/makefile.vc
+--- libspatialite-5.1.0_orig/makefile.vc	2023-11-07 07:59:16.545669104 +1000
++++ libspatialite-5.1.0/makefile.vc	2023-11-07 07:59:58.769176502 +1000
 @@ -3,6 +3,7 @@
  # NMAKE Makefile to build libspatialite on Windows
  #
@@ -142,15 +142,15 @@ diff -ru libspatialite-5.1.0-orig/makefile.vc libspatialite-5.1.0/makefile.vc
  	if exist $(SPATIALITE_DLL).manifest mt -manifest \
  		$(SPATIALITE_DLL).manifest -outputresource:$(SPATIALITE_DLL);2
  		
-diff -ru libspatialite-5.1.0-orig/nmake64.opt libspatialite-5.1.0/nmake64.opt
---- libspatialite-5.1.0-orig/nmake64.opt	2023-11-06 08:42:52.257245934 +1000
-+++ libspatialite-5.1.0/nmake64.opt	2023-11-06 08:44:11.402686725 +1000
-@@ -3,7 +3,7 @@
+diff -ru libspatialite-5.1.0_orig/src/headers/spatialite/gaiaconfig-msvc.h libspatialite-5.1.0/src/headers/spatialite/gaiaconfig-msvc.h
+--- libspatialite-5.1.0_orig/src/headers/spatialite/gaiaconfig-msvc.h	2023-11-07 07:59:16.513669474 +1000
++++ libspatialite-5.1.0/src/headers/spatialite/gaiaconfig-msvc.h	2023-11-07 08:01:40.919965780 +1000
+@@ -15,6 +15,8 @@
  
- # Uncomment the first for an optimized build, or the second for debug.
- OPTFLAGS=	/nologo /Ox /fp:precise /W4 /MD /D_CRT_SECURE_NO_WARNINGS \
--		/DDLL_EXPORT /DYY_NO_UNISTD_H
-+		/DDLL_EXPORT /DYY_NO_UNISTD_H $(CF_FLAGS)
- #OPTFLAGS=	/nologo /Zi /MD /Fdspatialite.pdb /DDLL_EXPORT
+ /* Should be defined in order to enable GEOS_370 support. */
+ #define GEOS_370 1
++#define GEOS_3100 1
++#define GEOS_3110 1
  
- # Set the version number for the DLL.  Normally we leave this blank since
+ /* Should be defined in order to enable GEOS_ADVANCED support. */
+ #define GEOS_ADVANCED 1
