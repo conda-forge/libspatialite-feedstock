@@ -31,5 +31,21 @@ libfreexl = ctypes.CDLL(path)
 db = sqlite3.connect(':memory:')
 db.enable_load_extension(True)
 db.execute("SELECT load_extension(?)", [path])
+# Test if geos basic support is available
+db.execute("SELECT ST_Buffer(ST_GeomFromText('POINT (5 5)'), 5) AS geom")
+# Test if geos-advanced is available
+db.execute("SELECT GEOSMinimumRotatedRectangle(ST_GeomFromText('POINT (5 5)')) AS geom")
+# Test if geos 3100 support is available
+db.execute("SELECT GeosMakeValid(ST_GeomFromText('POINT (5 5)')) AS geom")
+# Test if geos 3110 support is available
+sql = """
+    SELECT HilbertCode(
+               ST_GeomFromText('POINT (5 5)'),
+               ST_GeomFromText('POLYGON ((0 0, 0 10, 10 10, 10 0, 0 0))'),
+               5
+           ) AS geom
+"""
+db.execute(sql)
+
 db.enable_load_extension(False)
 db.close()
