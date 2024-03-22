@@ -17,11 +17,11 @@ geos:
 libiconv:
 - '1'
 libxml2:
-- '2.12'
+- '2'
 macos_machine:
 - x86_64-apple-darwin13.4.0
 proj:
-- 9.3.1
+- 9.4.0
 sqlite:
 - '3'
 target_platform:
