@@ -1,6 +1,10 @@
-diff -urN libspatialite-5.1.0-orig/test/Makefile.am libspatialite-5.1.0/test/Makefile.am
---- libspatialite-5.1.0-orig/test/Makefile.am	2023-09-17 11:28:28.531158194 -0500
-+++ libspatialite-5.1.0/test/Makefile.am	2023-09-17 13:35:33.845765648 -0500
+Only in libspatialite-5.1.0: Makefile.am.orig
+Only in libspatialite-5.1.0: Makefile.am.rej
+Only in libspatialite-5.1.0: Makefile.in.orig
+Only in libspatialite-5.1.0: Makefile.in.rej
+diff -ur libspatialite-5.1.0.orig/test/Makefile.am libspatialite-5.1.0/test/Makefile.am
+--- libspatialite-5.1.0.orig/test/Makefile.am	2024-03-25 08:09:55.206680911 +1000
++++ libspatialite-5.1.0/test/Makefile.am	2024-03-25 08:16:12.416689250 +1000
 @@ -9,7 +9,6 @@
  		check_geometry_cols \
  		check_tempgeom \
@@ -9,7 +13,13 @@ diff -urN libspatialite-5.1.0-orig/test/Makefile.am libspatialite-5.1.0/test/Mak
  		check_fdo1 \
  		check_fdo2 \
  		check_fdo3 \
-@@ -31,10 +30,6 @@
+@@ -25,21 +24,15 @@
+ 		shape_utf8_2 \
+ 		shape_3d \
+ 		check_clone_table \
+-		check_xls_load \
+ 		check_math_funcs \
+ 		check_gaia_util \
  		check_gaia_utf8 \
  		check_extension \
  		check_recover_geom \
@@ -20,7 +30,12 @@ diff -urN libspatialite-5.1.0-orig/test/Makefile.am libspatialite-5.1.0/test/Mak
  		check_multithread \
  		check_virtualtable1 \
  		check_virtualtable2 \
-@@ -64,7 +59,6 @@
+ 		check_virtualtable3 \
+-		check_virtualtable4 \
+ 		check_virtualtable5 \
+ 		check_virtualtable6 \
+ 		check_virtual_ovflw \
+@@ -64,7 +57,6 @@
  		check_cutter \
  		check_topology2d \
  		check_topology3d \
@@ -28,7 +43,7 @@ diff -urN libspatialite-5.1.0-orig/test/Makefile.am libspatialite-5.1.0/test/Mak
  		check_topoplus \
  		check_toposnap \
  		check_network2d \
-@@ -128,7 +122,6 @@
+@@ -128,7 +120,6 @@
  	fnmatch4win.h \
  	scandir4win.h \
  	test_helpers.h \
@@ -36,9 +51,9 @@ diff -urN libspatialite-5.1.0-orig/test/Makefile.am libspatialite-5.1.0/test/Mak
  	shapetest1.dbf \
  	shapetest1.prj \
  	shapetest1.qpj \
-diff -urN libspatialite-5.1.0-orig/test/Makefile.in libspatialite-5.1.0/test/Makefile.in
---- libspatialite-5.1.0-orig/test/Makefile.in	2023-09-17 11:28:28.531158194 -0500
-+++ libspatialite-5.1.0/test/Makefile.in	2023-09-17 13:35:15.671525911 -0500
+diff -ur libspatialite-5.1.0.orig/test/Makefile.in libspatialite-5.1.0/test/Makefile.in
+--- libspatialite-5.1.0.orig/test/Makefile.in	2024-03-25 08:09:55.206680911 +1000
++++ libspatialite-5.1.0/test/Makefile.in	2024-03-25 08:16:06.752822510 +1000
 @@ -91,7 +91,7 @@
  	check_init$(EXEEXT) check_init2$(EXEEXT) \
  	check_init_full$(EXEEXT) check_geom_aux$(EXEEXT) \
@@ -48,8 +63,12 @@ diff -urN libspatialite-5.1.0-orig/test/Makefile.in libspatialite-5.1.0/test/Mak
  	check_fdo1$(EXEEXT) check_fdo2$(EXEEXT) check_fdo3$(EXEEXT) \
  	check_fdo_bufovflw$(EXEEXT) check_md5$(EXEEXT) \
  	check_dbf_load$(EXEEXT) check_shp_load$(EXEEXT) \
-@@ -102,9 +102,7 @@
- 	check_xls_load$(EXEEXT) check_math_funcs$(EXEEXT) \
+@@ -99,14 +99,12 @@
+ 	shape_primitives$(EXEEXT) shape_utf8_1$(EXEEXT) \
+ 	shape_utf8_1ex$(EXEEXT) shape_utf8_2$(EXEEXT) \
+ 	shape_3d$(EXEEXT) check_clone_table$(EXEEXT) \
+-	check_xls_load$(EXEEXT) check_math_funcs$(EXEEXT) \
++	check_math_funcs$(EXEEXT) \
  	check_gaia_util$(EXEEXT) check_gaia_utf8$(EXEEXT) \
  	check_extension$(EXEEXT) check_recover_geom$(EXEEXT) \
 -	check_sql_stmt$(EXEEXT) check_sql_stmt_tiny$(EXEEXT) \
@@ -57,8 +76,11 @@ diff -urN libspatialite-5.1.0-orig/test/Makefile.in libspatialite-5.1.0/test/Mak
 -	check_sql_stmt_extension$(EXEEXT) check_multithread$(EXEEXT) \
 +	check_multithread$(EXEEXT) \
  	check_virtualtable1$(EXEEXT) check_virtualtable2$(EXEEXT) \
- 	check_virtualtable3$(EXEEXT) check_virtualtable4$(EXEEXT) \
+-	check_virtualtable3$(EXEEXT) check_virtualtable4$(EXEEXT) \
++	check_virtualtable3$(EXEEXT) \
  	check_virtualtable5$(EXEEXT) check_virtualtable6$(EXEEXT) \
+ 	check_virtual_ovflw$(EXEEXT) check_mbrcache$(EXEEXT) \
+ 	check_spatialindex$(EXEEXT) check_exif$(EXEEXT) \
 @@ -119,7 +117,7 @@
  	check_metacatalog$(EXEEXT) check_virtualelem$(EXEEXT) \
  	check_srid_fncts$(EXEEXT) check_control_points$(EXEEXT) \
@@ -107,7 +129,27 @@ diff -urN libspatialite-5.1.0-orig/test/Makefile.in libspatialite-5.1.0/test/Mak
  check_topoplus_SOURCES = check_topoplus.c
  check_topoplus_OBJECTS = check_topoplus.$(OBJEXT)
  check_topoplus_LDADD = $(LDADD)
-@@ -587,7 +567,7 @@
+@@ -522,9 +502,6 @@
+ check_virtualtable3_SOURCES = check_virtualtable3.c
+ check_virtualtable3_OBJECTS = check_virtualtable3.$(OBJEXT)
+ check_virtualtable3_LDADD = $(LDADD)
+-check_virtualtable4_SOURCES = check_virtualtable4.c
+-check_virtualtable4_OBJECTS = check_virtualtable4.$(OBJEXT)
+-check_virtualtable4_LDADD = $(LDADD)
+ check_virtualtable5_SOURCES = check_virtualtable5.c
+ check_virtualtable5_OBJECTS = check_virtualtable5.$(OBJEXT)
+ check_virtualtable5_LDADD = $(LDADD)
+@@ -540,9 +517,6 @@
+ check_wms_SOURCES = check_wms.c
+ check_wms_OBJECTS = check_wms.$(OBJEXT)
+ check_wms_LDADD = $(LDADD)
+-check_xls_load_SOURCES = check_xls_load.c
+-check_xls_load_OBJECTS = check_xls_load.$(OBJEXT)
+-check_xls_load_LDADD = $(LDADD)
+ check_zipshp_SOURCES = check_zipshp.c
+ check_zipshp_OBJECTS = check_zipshp.$(OBJEXT)
+ check_zipshp_LDADD = $(LDADD)
+@@ -587,7 +561,7 @@
  am__maybe_remake_depfiles = depfiles
  am__depfiles_remade = ./$(DEPDIR)/check_add_tile_triggers.Po \
  	./$(DEPDIR)/check_add_tile_triggers_bad_table_name.Po \
@@ -116,7 +158,7 @@ diff -urN libspatialite-5.1.0-orig/test/Makefile.in libspatialite-5.1.0/test/Mak
  	./$(DEPDIR)/check_control_points.Po \
  	./$(DEPDIR)/check_create.Po \
  	./$(DEPDIR)/check_createBaseTables.Po \
-@@ -641,15 +621,10 @@
+@@ -641,15 +615,10 @@
  	./$(DEPDIR)/check_sequence.Po ./$(DEPDIR)/check_shp_load.Po \
  	./$(DEPDIR)/check_shp_load_3d.Po \
  	./$(DEPDIR)/check_spatialindex.Po \
@@ -132,7 +174,20 @@ diff -urN libspatialite-5.1.0-orig/test/Makefile.in libspatialite-5.1.0/test/Mak
  	./$(DEPDIR)/check_topoplus.Po ./$(DEPDIR)/check_toposnap.Po \
  	./$(DEPDIR)/check_version.Po \
  	./$(DEPDIR)/check_virtual_ovflw.Po \
-@@ -689,7 +664,7 @@
+@@ -659,11 +628,10 @@
+ 	./$(DEPDIR)/check_virtualtable1.Po \
+ 	./$(DEPDIR)/check_virtualtable2.Po \
+ 	./$(DEPDIR)/check_virtualtable3.Po \
+-	./$(DEPDIR)/check_virtualtable4.Po \
+ 	./$(DEPDIR)/check_virtualtable5.Po \
+ 	./$(DEPDIR)/check_virtualtable6.Po \
+ 	./$(DEPDIR)/check_virtualxpath.Po ./$(DEPDIR)/check_wfsin.Po \
+-	./$(DEPDIR)/check_wms.Po ./$(DEPDIR)/check_xls_load.Po \
++	./$(DEPDIR)/check_wms.Po \
+ 	./$(DEPDIR)/check_zipshp.Po ./$(DEPDIR)/geojson_test.Po \
+ 	./$(DEPDIR)/routing_test.Po ./$(DEPDIR)/shape_3d.Po \
+ 	./$(DEPDIR)/shape_cp1252.Po ./$(DEPDIR)/shape_primitives.Po \
+@@ -689,7 +657,7 @@
  am__v_CCLD_0 = @echo "  CCLD    " $@;
  am__v_CCLD_1 = 
  SOURCES = check_add_tile_triggers.c \
@@ -141,7 +196,7 @@ diff -urN libspatialite-5.1.0-orig/test/Makefile.in libspatialite-5.1.0/test/Mak
  	check_clone_table.c check_control_points.c check_create.c \
  	check_createBaseTables.c check_cutter.c check_dbf_load.c \
  	check_drop_rename.c check_dxf.c check_endian.c check_exif.c \
-@@ -721,11 +696,10 @@
+@@ -721,22 +689,21 @@
  	check_multithread.c check_network2d.c check_network3d.c \
  	check_network_log.c check_recover_geom.c \
  	check_relations_fncts.c check_sequence.c check_shp_load.c \
@@ -156,7 +211,12 @@ diff -urN libspatialite-5.1.0-orig/test/Makefile.in libspatialite-5.1.0/test/Mak
  	check_toposnap.c check_version.c check_virtual_ovflw.c \
  	check_virtualbbox.c check_virtualelem.c check_virtualknn2.c \
  	check_virtualtable1.c check_virtualtable2.c \
-@@ -736,7 +710,7 @@
+-	check_virtualtable3.c check_virtualtable4.c \
++	check_virtualtable3.c \
+ 	check_virtualtable5.c check_virtualtable6.c \
+ 	check_virtualxpath.c check_wfsin.c check_wms.c \
+-	check_xls_load.c check_zipshp.c geojson_test.c routing_test.c \
++	check_zipshp.c geojson_test.c routing_test.c \
  	shape_3d.c shape_cp1252.c shape_primitives.c shape_utf8_1.c \
  	shape_utf8_1ex.c shape_utf8_2.c
  DIST_SOURCES = check_add_tile_triggers.c \
@@ -165,7 +225,7 @@ diff -urN libspatialite-5.1.0-orig/test/Makefile.in libspatialite-5.1.0/test/Mak
  	check_clone_table.c check_control_points.c check_create.c \
  	check_createBaseTables.c check_cutter.c check_dbf_load.c \
  	check_drop_rename.c check_dxf.c check_endian.c check_exif.c \
-@@ -768,11 +742,10 @@
+@@ -768,18 +735,17 @@
  	check_multithread.c check_network2d.c check_network3d.c \
  	check_network_log.c check_recover_geom.c \
  	check_relations_fncts.c check_sequence.c check_shp_load.c \
@@ -180,7 +240,16 @@ diff -urN libspatialite-5.1.0-orig/test/Makefile.in libspatialite-5.1.0/test/Mak
  	check_toposnap.c check_version.c check_virtual_ovflw.c \
  	check_virtualbbox.c check_virtualelem.c check_virtualknn2.c \
  	check_virtualtable1.c check_virtualtable2.c \
-@@ -1197,7 +1170,6 @@
+-	check_virtualtable3.c check_virtualtable4.c \
++	check_virtualtable3.c \
+ 	check_virtualtable5.c check_virtualtable6.c \
+ 	check_virtualxpath.c check_wfsin.c check_wms.c \
+-	check_xls_load.c check_zipshp.c geojson_test.c routing_test.c \
++	check_zipshp.c geojson_test.c routing_test.c \
+ 	shape_3d.c shape_cp1252.c shape_primitives.c shape_utf8_1.c \
+ 	shape_utf8_1ex.c shape_utf8_2.c
+ RECURSIVE_TARGETS = all-recursive check-recursive cscopelist-recursive \
+@@ -1197,7 +1163,6 @@
  	fnmatch4win.h \
  	scandir4win.h \
  	test_helpers.h \
@@ -188,7 +257,7 @@ diff -urN libspatialite-5.1.0-orig/test/Makefile.in libspatialite-5.1.0/test/Mak
  	shapetest1.dbf \
  	shapetest1.prj \
  	shapetest1.qpj \
-@@ -1371,10 +1343,6 @@
+@@ -1371,10 +1336,6 @@
  	@rm -f check_add_tile_triggers_bad_table_name$(EXEEXT)
  	$(AM_V_CCLD)$(LINK) $(check_add_tile_triggers_bad_table_name_OBJECTS) $(check_add_tile_triggers_bad_table_name_LDADD) $(LIBS)
  
@@ -199,7 +268,7 @@ diff -urN libspatialite-5.1.0-orig/test/Makefile.in libspatialite-5.1.0/test/Mak
  check_clone_table$(EXEEXT): $(check_clone_table_OBJECTS) $(check_clone_table_DEPENDENCIES) $(EXTRA_check_clone_table_DEPENDENCIES) 
  	@rm -f check_clone_table$(EXEEXT)
  	$(AM_V_CCLD)$(LINK) $(check_clone_table_OBJECTS) $(check_clone_table_LDADD) $(LIBS)
-@@ -1647,22 +1615,6 @@
+@@ -1647,22 +1608,6 @@
  	@rm -f check_spatialindex$(EXEEXT)
  	$(AM_V_CCLD)$(LINK) $(check_spatialindex_OBJECTS) $(check_spatialindex_LDADD) $(LIBS)
  
@@ -222,7 +291,7 @@ diff -urN libspatialite-5.1.0-orig/test/Makefile.in libspatialite-5.1.0/test/Mak
  check_srid_fncts$(EXEEXT): $(check_srid_fncts_OBJECTS) $(check_srid_fncts_DEPENDENCIES) $(EXTRA_check_srid_fncts_DEPENDENCIES) 
  	@rm -f check_srid_fncts$(EXEEXT)
  	$(AM_V_CCLD)$(LINK) $(check_srid_fncts_OBJECTS) $(check_srid_fncts_LDADD) $(LIBS)
-@@ -1687,9 +1639,6 @@
+@@ -1687,9 +1632,6 @@
  	@rm -f check_topology3d$(EXEEXT)
  	$(AM_V_CCLD)$(LINK) $(check_topology3d_OBJECTS) $(check_topology3d_LDADD) $(LIBS)
  
@@ -232,7 +301,29 @@ diff -urN libspatialite-5.1.0-orig/test/Makefile.in libspatialite-5.1.0/test/Mak
  
  check_topoplus$(EXEEXT): $(check_topoplus_OBJECTS) $(check_topoplus_DEPENDENCIES) $(EXTRA_check_topoplus_DEPENDENCIES) 
  	@rm -f check_topoplus$(EXEEXT)
-@@ -1803,7 +1752,6 @@
+@@ -1731,10 +1673,6 @@
+ 	@rm -f check_virtualtable3$(EXEEXT)
+ 	$(AM_V_CCLD)$(LINK) $(check_virtualtable3_OBJECTS) $(check_virtualtable3_LDADD) $(LIBS)
+ 
+-check_virtualtable4$(EXEEXT): $(check_virtualtable4_OBJECTS) $(check_virtualtable4_DEPENDENCIES) $(EXTRA_check_virtualtable4_DEPENDENCIES) 
+-	@rm -f check_virtualtable4$(EXEEXT)
+-	$(AM_V_CCLD)$(LINK) $(check_virtualtable4_OBJECTS) $(check_virtualtable4_LDADD) $(LIBS)
+-
+ check_virtualtable5$(EXEEXT): $(check_virtualtable5_OBJECTS) $(check_virtualtable5_DEPENDENCIES) $(EXTRA_check_virtualtable5_DEPENDENCIES) 
+ 	@rm -f check_virtualtable5$(EXEEXT)
+ 	$(AM_V_CCLD)$(LINK) $(check_virtualtable5_OBJECTS) $(check_virtualtable5_LDADD) $(LIBS)
+@@ -1755,10 +1693,6 @@
+ 	@rm -f check_wms$(EXEEXT)
+ 	$(AM_V_CCLD)$(LINK) $(check_wms_OBJECTS) $(check_wms_LDADD) $(LIBS)
+ 
+-check_xls_load$(EXEEXT): $(check_xls_load_OBJECTS) $(check_xls_load_DEPENDENCIES) $(EXTRA_check_xls_load_DEPENDENCIES) 
+-	@rm -f check_xls_load$(EXEEXT)
+-	$(AM_V_CCLD)$(LINK) $(check_xls_load_OBJECTS) $(check_xls_load_LDADD) $(LIBS)
+-
+ check_zipshp$(EXEEXT): $(check_zipshp_OBJECTS) $(check_zipshp_DEPENDENCIES) $(EXTRA_check_zipshp_DEPENDENCIES) 
+ 	@rm -f check_zipshp$(EXEEXT)
+ 	$(AM_V_CCLD)$(LINK) $(check_zipshp_OBJECTS) $(check_zipshp_LDADD) $(LIBS)
+@@ -1803,7 +1737,6 @@
  
  @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/check_add_tile_triggers.Po@am__quote@ # am--include-marker
  @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/check_add_tile_triggers_bad_table_name.Po@am__quote@ # am--include-marker
@@ -240,7 +331,7 @@ diff -urN libspatialite-5.1.0-orig/test/Makefile.in libspatialite-5.1.0/test/Mak
  @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/check_clone_table.Po@am__quote@ # am--include-marker
  @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/check_control_points.Po@am__quote@ # am--include-marker
  @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/check_create.Po@am__quote@ # am--include-marker
-@@ -1872,17 +1820,12 @@
+@@ -1872,17 +1805,12 @@
  @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/check_shp_load.Po@am__quote@ # am--include-marker
  @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/check_shp_load_3d.Po@am__quote@ # am--include-marker
  @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/check_spatialindex.Po@am__quote@ # am--include-marker
@@ -258,7 +349,21 @@ diff -urN libspatialite-5.1.0-orig/test/Makefile.in libspatialite-5.1.0/test/Mak
  @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/check_topoplus.Po@am__quote@ # am--include-marker
  @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/check_toposnap.Po@am__quote@ # am--include-marker
  @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/check_version.Po@am__quote@ # am--include-marker
-@@ -2246,13 +2189,6 @@
+@@ -1893,13 +1821,11 @@
+ @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/check_virtualtable1.Po@am__quote@ # am--include-marker
+ @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/check_virtualtable2.Po@am__quote@ # am--include-marker
+ @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/check_virtualtable3.Po@am__quote@ # am--include-marker
+-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/check_virtualtable4.Po@am__quote@ # am--include-marker
+ @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/check_virtualtable5.Po@am__quote@ # am--include-marker
+ @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/check_virtualtable6.Po@am__quote@ # am--include-marker
+ @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/check_virtualxpath.Po@am__quote@ # am--include-marker
+ @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/check_wfsin.Po@am__quote@ # am--include-marker
+ @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/check_wms.Po@am__quote@ # am--include-marker
+-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/check_xls_load.Po@am__quote@ # am--include-marker
+ @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/check_zipshp.Po@am__quote@ # am--include-marker
+ @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/geojson_test.Po@am__quote@ # am--include-marker
+ @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/routing_test.Po@am__quote@ # am--include-marker
+@@ -2246,13 +2172,6 @@
  	--log-file $$b.log --trs-file $$b.trs \
  	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
  	"$$tst" $(AM_TESTS_FD_REDIRECT)
@@ -272,7 +377,21 @@ diff -urN libspatialite-5.1.0-orig/test/Makefile.in libspatialite-5.1.0/test/Mak
  check_fdo1.log: check_fdo1$(EXEEXT)
  	@p='check_fdo1$(EXEEXT)'; \
  	b='check_fdo1'; \
-@@ -2400,34 +2336,6 @@
+@@ -2358,13 +2277,6 @@
+ 	--log-file $$b.log --trs-file $$b.trs \
+ 	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+ 	"$$tst" $(AM_TESTS_FD_REDIRECT)
+-check_xls_load.log: check_xls_load$(EXEEXT)
+-	@p='check_xls_load$(EXEEXT)'; \
+-	b='check_xls_load'; \
+-	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
+-	--log-file $$b.log --trs-file $$b.trs \
+-	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+-	"$$tst" $(AM_TESTS_FD_REDIRECT)
+ check_math_funcs.log: check_math_funcs$(EXEEXT)
+ 	@p='check_math_funcs$(EXEEXT)'; \
+ 	b='check_math_funcs'; \
+@@ -2400,34 +2312,6 @@
  	--log-file $$b.log --trs-file $$b.trs \
  	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
  	"$$tst" $(AM_TESTS_FD_REDIRECT)
@@ -307,7 +426,21 @@ diff -urN libspatialite-5.1.0-orig/test/Makefile.in libspatialite-5.1.0/test/Mak
  check_multithread.log: check_multithread$(EXEEXT)
  	@p='check_multithread$(EXEEXT)'; \
  	b='check_multithread'; \
-@@ -2631,13 +2539,6 @@
+@@ -2456,13 +2340,6 @@
+ 	--log-file $$b.log --trs-file $$b.trs \
+ 	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+ 	"$$tst" $(AM_TESTS_FD_REDIRECT)
+-check_virtualtable4.log: check_virtualtable4$(EXEEXT)
+-	@p='check_virtualtable4$(EXEEXT)'; \
+-	b='check_virtualtable4'; \
+-	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
+-	--log-file $$b.log --trs-file $$b.trs \
+-	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+-	"$$tst" $(AM_TESTS_FD_REDIRECT)
+ check_virtualtable5.log: check_virtualtable5$(EXEEXT)
+ 	@p='check_virtualtable5$(EXEEXT)'; \
+ 	b='check_virtualtable5'; \
+@@ -2631,13 +2508,6 @@
  	--log-file $$b.log --trs-file $$b.trs \
  	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
  	"$$tst" $(AM_TESTS_FD_REDIRECT)
@@ -321,7 +454,7 @@ diff -urN libspatialite-5.1.0-orig/test/Makefile.in libspatialite-5.1.0/test/Mak
  check_topoplus.log: check_topoplus$(EXEEXT)
  	@p='check_topoplus$(EXEEXT)'; \
  	b='check_topoplus'; \
-@@ -3061,7 +2962,6 @@
+@@ -3061,7 +2931,6 @@
  distclean: distclean-recursive
  		-rm -f ./$(DEPDIR)/check_add_tile_triggers.Po
  	-rm -f ./$(DEPDIR)/check_add_tile_triggers_bad_table_name.Po
@@ -329,7 +462,7 @@ diff -urN libspatialite-5.1.0-orig/test/Makefile.in libspatialite-5.1.0/test/Mak
  	-rm -f ./$(DEPDIR)/check_clone_table.Po
  	-rm -f ./$(DEPDIR)/check_control_points.Po
  	-rm -f ./$(DEPDIR)/check_create.Po
-@@ -3130,17 +3030,12 @@
+@@ -3130,17 +2999,12 @@
  	-rm -f ./$(DEPDIR)/check_shp_load.Po
  	-rm -f ./$(DEPDIR)/check_shp_load_3d.Po
  	-rm -f ./$(DEPDIR)/check_spatialindex.Po
@@ -347,7 +480,21 @@ diff -urN libspatialite-5.1.0-orig/test/Makefile.in libspatialite-5.1.0/test/Mak
  	-rm -f ./$(DEPDIR)/check_topoplus.Po
  	-rm -f ./$(DEPDIR)/check_toposnap.Po
  	-rm -f ./$(DEPDIR)/check_version.Po
-@@ -3214,7 +3109,6 @@
+@@ -3151,13 +3015,11 @@
+ 	-rm -f ./$(DEPDIR)/check_virtualtable1.Po
+ 	-rm -f ./$(DEPDIR)/check_virtualtable2.Po
+ 	-rm -f ./$(DEPDIR)/check_virtualtable3.Po
+-	-rm -f ./$(DEPDIR)/check_virtualtable4.Po
+ 	-rm -f ./$(DEPDIR)/check_virtualtable5.Po
+ 	-rm -f ./$(DEPDIR)/check_virtualtable6.Po
+ 	-rm -f ./$(DEPDIR)/check_virtualxpath.Po
+ 	-rm -f ./$(DEPDIR)/check_wfsin.Po
+ 	-rm -f ./$(DEPDIR)/check_wms.Po
+-	-rm -f ./$(DEPDIR)/check_xls_load.Po
+ 	-rm -f ./$(DEPDIR)/check_zipshp.Po
+ 	-rm -f ./$(DEPDIR)/geojson_test.Po
+ 	-rm -f ./$(DEPDIR)/routing_test.Po
+@@ -3214,7 +3076,6 @@
  maintainer-clean: maintainer-clean-recursive
  		-rm -f ./$(DEPDIR)/check_add_tile_triggers.Po
  	-rm -f ./$(DEPDIR)/check_add_tile_triggers_bad_table_name.Po
@@ -355,7 +502,7 @@ diff -urN libspatialite-5.1.0-orig/test/Makefile.in libspatialite-5.1.0/test/Mak
  	-rm -f ./$(DEPDIR)/check_clone_table.Po
  	-rm -f ./$(DEPDIR)/check_control_points.Po
  	-rm -f ./$(DEPDIR)/check_create.Po
-@@ -3283,17 +3177,12 @@
+@@ -3283,17 +3144,12 @@
  	-rm -f ./$(DEPDIR)/check_shp_load.Po
  	-rm -f ./$(DEPDIR)/check_shp_load_3d.Po
  	-rm -f ./$(DEPDIR)/check_spatialindex.Po
@@ -373,3 +520,17 @@ diff -urN libspatialite-5.1.0-orig/test/Makefile.in libspatialite-5.1.0/test/Mak
  	-rm -f ./$(DEPDIR)/check_topoplus.Po
  	-rm -f ./$(DEPDIR)/check_toposnap.Po
  	-rm -f ./$(DEPDIR)/check_version.Po
+@@ -3304,13 +3160,11 @@
+ 	-rm -f ./$(DEPDIR)/check_virtualtable1.Po
+ 	-rm -f ./$(DEPDIR)/check_virtualtable2.Po
+ 	-rm -f ./$(DEPDIR)/check_virtualtable3.Po
+-	-rm -f ./$(DEPDIR)/check_virtualtable4.Po
+ 	-rm -f ./$(DEPDIR)/check_virtualtable5.Po
+ 	-rm -f ./$(DEPDIR)/check_virtualtable6.Po
+ 	-rm -f ./$(DEPDIR)/check_virtualxpath.Po
+ 	-rm -f ./$(DEPDIR)/check_wfsin.Po
+ 	-rm -f ./$(DEPDIR)/check_wms.Po
+-	-rm -f ./$(DEPDIR)/check_xls_load.Po
+ 	-rm -f ./$(DEPDIR)/check_zipshp.Po
+ 	-rm -f ./$(DEPDIR)/geojson_test.Po
+ 	-rm -f ./$(DEPDIR)/routing_test.Po
