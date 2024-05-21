@@ -18,8 +18,8 @@ source:
     #- gh71_check_drop_rename.patch
 
 build:
-  number: 5
-  skip: true  # [win and vc<14]
+  number: 6
+  skip: true  # [(win and vc<14) or ppc64le]
   run_exports:
     # No idea.  Staying with minor version pin.
     - {{ pin_subpackage('libspatialite', max_pin='x.x') }}
@@ -34,6 +34,7 @@ requirements:
     - gnuconfig  # [unix]
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
+    - {{ stdlib("c") }}
   host:
     - libiconv  # [osx]
     - sqlite
