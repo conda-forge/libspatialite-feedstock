@@ -18,7 +18,7 @@ source:
     #- gh71_check_drop_rename.patch
 
 build:
-  number: 11
+  number: 12
   run_exports:
     # No idea.  Staying with minor version pin.
     - {{ pin_subpackage('libspatialite', max_pin='x.x') }}
