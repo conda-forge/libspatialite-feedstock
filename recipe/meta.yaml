@@ -18,7 +18,7 @@ source:
     #- gh71_check_drop_rename.patch
 
 build:
-  number: 15
+  number: 16
   run_exports:
     # No idea.  Staying with minor version pin.
     - {{ pin_subpackage('libspatialite', max_pin='x.x') }}
@@ -41,7 +41,7 @@ requirements:
     - proj
     - freexl >=2
     - zlib
-    - libxml2
+    - libxml2-devel
     - librttopo
   run:
     - libiconv  # [osx]
@@ -50,7 +50,7 @@ requirements:
     - proj
     - freexl >=2
     - zlib
-    - libxml2
+    - libxml2-devel
     - librttopo
 
 about:
