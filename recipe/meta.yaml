@@ -14,8 +14,6 @@ source:
     - 0002-osx_fix_lib_ext.patch  # [osx]
     # Skip some tests that fail
     - skip_tests.patch
-    # GH71 build issue
-    #- gh71_check_drop_rename.patch
 
 build:
   number: 16
