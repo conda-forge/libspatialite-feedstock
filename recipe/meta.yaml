@@ -13,7 +13,7 @@ source:
     # Patch configure for OSX to make sure we get dylib, not so
     - 0002-osx_fix_lib_ext.patch  # [osx]
     # Skip some tests that fail
-    - skip_tests.patch
+    - 0003-skip_tests.patch
 
 build:
   number: 16
