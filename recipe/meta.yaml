@@ -13,12 +13,12 @@ source:
     # Patch configure for OSX to make sure we get dylib, not so
     - 0002-osx_fix_lib_ext.patch  # [osx]
     # Skip some tests that fail
-    - skip_tests.patch
-    # GH71 build issue
-    #- gh71_check_drop_rename.patch
+    - 0003-skip_tests.patch
+    # Guard deprecated nanohttp cleanup for libxml2 2.14 where HTTP may be disabled
+    - 0004-guard-nanohttp-cleanup.patch
 
 build:
-  number: 15
+  number: 16
   run_exports:
     # No idea.  Staying with minor version pin.
     - {{ pin_subpackage('libspatialite', max_pin='x.x') }}
@@ -41,7 +41,7 @@ requirements:
     - proj
     - freexl >=2
     - zlib
-    - libxml2
+    - libxml2-devel
     - librttopo
   run:
     - libiconv  # [osx]
@@ -50,7 +50,7 @@ requirements:
     - proj
     - freexl >=2
     - zlib
-    - libxml2
+    - libxml2-devel
     - librttopo
 
 about:
