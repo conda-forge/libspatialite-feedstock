@@ -14,6 +14,8 @@ source:
     - 0002-osx_fix_lib_ext.patch  # [osx]
     # Skip some tests that fail
     - 0003-skip_tests.patch
+    # Guard deprecated nanohttp cleanup for libxml2 2.14 where HTTP may be disabled
+    - 0004-guard-nanohttp-cleanup.patch
 
 build:
   number: 16
