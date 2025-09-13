@@ -17,8 +17,14 @@ source:
     # Guard deprecated nanohttp cleanup for libxml2 2.14 where HTTP may be disabled
     - 0004-guard-nanohttp-cleanup.patch
 
+{% set build = 17 %}
+{% if license_family == "gpl" %}
+  {% set build = build + 100 %}
+{% endif %}
+
 build:
-  number: 16
+  number: {{ build }}
+  string: {{ license_family }}_h{{ PKG_HASH }}_{{ PKG_BUILDNUM }}
   run_exports:
     # No idea.  Staying with minor version pin.
     - {{ pin_subpackage('libspatialite', max_pin='x.x') }}
@@ -42,7 +48,9 @@ requirements:
     - freexl >=2
     - zlib
     - libxml2-devel
+  {% if license_family == "gpl" %}
     - librttopo
+  {% endif %}
   run:
     - libiconv  # [osx]
     - sqlite
@@ -51,7 +59,9 @@ requirements:
     - freexl >=2
     - zlib
     - libxml2-devel
+  {% if license_family == "gpl" %}
     - librttopo
+  {% endif %}
 
 about:
   home: https://www.gaia-gis.it/fossil/libspatialite/index
