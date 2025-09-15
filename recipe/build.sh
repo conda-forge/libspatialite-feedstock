@@ -8,10 +8,13 @@ export CFLAGS="-I${PREFIX}/include  ${CFLAGS}"
 # The license_family from conda_build_config.yaml defines if RTTOPO is supported.
 if [ "$license_family" = "gpl" ]; then
     ENABLE_RTTOPO="yes"
+    ENABLE_GCP="yes"
 else
     ENABLE_RTTOPO="no"
+    ENABLE_GCP="no"
 fi
 export ENABLE_RTTOPO
+export ENABLE_GCP
 
 # these files have hardcoded paths in them.  We don't need .la files anyway, so just remove it.
 # if [ -f ${PREFIX}/${HOST}/lib/libstdc++.la ]; then
@@ -32,7 +35,7 @@ cp "${RECIPE_DIR}/config/config.sub" .
             --enable-static=no \
             --enable-minizip=no \
             --enable-rttopo=${ENABLE_RTTOPO} \
-            --enable-gcp=yes
+            --enable-gcp=${ENABLE_GCP}
 
 make
 if [[ "${CONDA_BUILD_CROSS_COMPILATION:-}" != "1" || "${CROSSCOMPILING_EMULATOR}" != "" ]]; then
