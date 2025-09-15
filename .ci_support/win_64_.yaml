@@ -13,7 +13,7 @@ geos:
 libxml2_devel:
 - '2.14'
 proj:
-- '9.6'
+- '9.7'
 sqlite:
 - '3'
 target_platform:

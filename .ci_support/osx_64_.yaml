@@ -27,7 +27,7 @@ libxml2_devel:
 macos_machine:
 - x86_64-apple-darwin13.4.0
 proj:
-- '9.6'
+- '9.7'
 sqlite:
 - '3'
 target_platform:
