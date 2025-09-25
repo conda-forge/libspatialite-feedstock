@@ -8,8 +8,11 @@ jobs:
     vmImage: windows-2022
   strategy:
     matrix:
-      win_64_:
-        CONFIG: win_64_
+      win_64_license_familygpl:
+        CONFIG: win_64_license_familygpl
+        UPLOAD_PACKAGES: 'True'
+      win_64_license_familylgpl:
+        CONFIG: win_64_license_familylgpl
         UPLOAD_PACKAGES: 'True'
   timeoutInMinutes: 360
   variables:

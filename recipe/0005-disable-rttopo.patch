@@ -1,0 +1,20 @@
+diff --git forkSrcPrefix/src/spatialite/spatialite.c forkDstPrefix/src/spatialite/spatialite.c
+index 9cc0572fa68c360a7820ddc72f24dd6eeacae114..43e287661fcb0588d3685eb50cbc1beaff9b3b2a 100644
+--- forkSrcPrefix/src/spatialite/spatialite.c
++++ forkDstPrefix/src/spatialite/spatialite.c
+@@ -3071,6 +3071,7 @@ fnct_InitSpatialMetaDataFull (sqlite3_context * context, int argc,
+     if (retval != 1)
+ 	goto error;
+ 
++#ifdef ENABLE_RTTOPO		/* only if RtTopo support is available */
+ /* executing CreateVectorCoveragesTables() */
+     sql = sqlite3_mprintf ("SELECT CreateVectorCoveragesTables()");
+     retval = do_execute_sql_with_retval (sqlite, sql, &errMsg);
+@@ -3078,7 +3079,6 @@ fnct_InitSpatialMetaDataFull (sqlite3_context * context, int argc,
+     if (retval != 1)
+ 	goto error;
+ 
+-#ifdef ENABLE_RTTOPO		/* only if RtTopo support is available */
+ /* executing CreateTopoTables() */
+     sql = sqlite3_mprintf ("SELECT CreateTopoTables()");
+     retval = do_execute_sql_with_retval (sqlite, sql, &errMsg);
