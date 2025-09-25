@@ -2,6 +2,7 @@
 
 {% set build = 18 %}
 {% if license_family == "gpl" %}
+  # gpl gets a higher build number since we want to favor the build where librttopo is included
   {% set build = build + 100 %}
 {% endif %}
 
