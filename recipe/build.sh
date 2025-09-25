@@ -9,12 +9,12 @@ export CFLAGS="-I${PREFIX}/include  ${CFLAGS}"
 if [ "$license_family" = "gpl" ]; then
     ENABLE_RTTOPO="yes"
     ENABLE_GCP="yes"
-    XFAIL_TESTS="check_init_full \
-                 check_drop_rename"
+    XFAIL_TESTS=""
 else
     ENABLE_RTTOPO="no"
     ENABLE_GCP="no"
-    XFAIL_TESTS=""
+    XFAIL_TESTS="check_init_full \
+                 check_drop_rename"
 fi
 export ENABLE_RTTOPO
 export ENABLE_GCP
