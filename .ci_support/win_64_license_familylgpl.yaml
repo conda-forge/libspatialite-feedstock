@@ -15,7 +15,7 @@ libxml2_devel:
 license_family:
 - lgpl
 proj:
-- '9.6'
+- '9.7'
 sqlite:
 - '3'
 target_platform:
