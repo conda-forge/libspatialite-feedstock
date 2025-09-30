@@ -24,7 +24,7 @@ source:
     - 0004-guard-nanohttp-cleanup.patch
   {% if license_family != "gpl" %}
     # Disable rttopo support when GPL is not allowed
-    - 0005-disable-rttopo.patch
+    - 0005-create_vector_coverages-without-rttopo.patch
   {% endif %}
 
 build:
