@@ -13,8 +13,7 @@ if [ "$license_family" = "gpl" ]; then
 else
     ENABLE_RTTOPO="no"
     ENABLE_GCP="no"
-    XFAIL_TESTS="check_init_full \
-                 check_drop_rename"
+    XFAIL_TESTS="check_init_full"
 fi
 export ENABLE_RTTOPO
 export ENABLE_GCP
