@@ -25,7 +25,7 @@ source:
   {% if license_family != "gpl" %}
     # Disable rttopo support when GPL is not allowed
     - 0005-create_vector_coverages-without-rttopo.patch
-    - 0006-win_fix_lgpl_defines.patch # [win]
+    - 0006-win_fix_lgpl_defines.patch  # [win]
   {% endif %}
 
 build:
