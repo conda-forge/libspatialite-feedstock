@@ -5,6 +5,19 @@ cp $BUILD_PREFIX/share/gnuconfig/config.* .
 export LDFLAGS="-L${PREFIX}/lib ${LDFLAGS}"
 export CFLAGS="-I${PREFIX}/include  ${CFLAGS}"
 
+# The license_family from conda_build_config.yaml defines if RTTOPO is supported.
+if [ "$license_family" = "gpl" ]; then
+    ENABLE_RTTOPO="yes"
+    ENABLE_GCP="yes"
+    XFAIL_TESTS=""
+else
+    ENABLE_RTTOPO="no"
+    ENABLE_GCP="no"
+    XFAIL_TESTS="check_init_full"
+fi
+export ENABLE_RTTOPO
+export ENABLE_GCP
+
 # these files have hardcoded paths in them.  We don't need .la files anyway, so just remove it.
 # if [ -f ${PREFIX}/${HOST}/lib/libstdc++.la ]; then
 #    find ${PREFIX} -name "*.la" -print0 | xargs -0 rm
@@ -23,11 +36,11 @@ cp "${RECIPE_DIR}/config/config.sub" .
             --build=${BUILD} \
             --enable-static=no \
             --enable-minizip=no \
-            --enable-rttopo=yes \
-            --enable-gcp=yes
+            --enable-rttopo=${ENABLE_RTTOPO} \
+            --enable-gcp=${ENABLE_GCP}
 
 make
 if [[ "${CONDA_BUILD_CROSS_COMPILATION:-}" != "1" || "${CROSSCOMPILING_EMULATOR}" != "" ]]; then
-make check || (cat test/test-suite.log; exit 1)
+make check XFAIL_TESTS="${XFAIL_TESTS}" || (cat test/test-suite.log; exit 1)
 fi
 make install

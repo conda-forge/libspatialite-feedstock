@@ -1,0 +1,55 @@
+From a3e3570086b7d2a6478db7f83d7834864828b67b Mon Sep 17 00:00:00 2001
+From: deltamarnix <deltamarnix@users.noreply.github.com>
+Date: Tue, 30 Sep 2025 08:05:46 +0200
+Subject: [PATCH] Fix CreateVectorCoveragesTable()
+
+Original patch from Sandro Furieri
+---
+ src/spatialite/extra_tables.c | 10 +++-------
+ 1 file changed, 3 insertions(+), 7 deletions(-)
+
+diff --git a/src/spatialite/extra_tables.c b/src/spatialite/extra_tables.c
+index e40b8d8..fd52936 100644
+--- a/src/spatialite/extra_tables.c
++++ b/src/spatialite/extra_tables.c
+@@ -2881,6 +2881,7 @@ create_vector_coverages (sqlite3 * sqlite)
+ 	"AND v.virt_geometry IS NOT NULL AND v.virt_name = x.virt_name "
+ 	"AND v.virt_geometry = x.virt_geometry)\n"
+ 	"LEFT JOIN spatial_ref_sys AS s ON (x.srid = s.srid)\n"
++#ifdef ENABLE_RTTOPO		/* only if RtTopo support is available */
+ 	"UNION\n"
+ 	"SELECT v.coverage_name AS coverage_name, v.title AS title, v.abstract AS abstract, "
+ 	"v.is_queryable AS is_queryable, v.min_scale AS min_scale, v.max_scale AS max_scale, "
+@@ -2903,6 +2904,7 @@ create_vector_coverages (sqlite3 * sqlite)
+ 	"FROM vector_coverages AS v\n"
+ 	"JOIN networks AS x ON (v.network_name IS NOT NULL AND v.network_name = x.network_name)\n"
+ 	"LEFT JOIN spatial_ref_sys AS s ON (x.srid = s.srid)\n"
++#endif
+ 	"UNION\n"
+ 	"SELECT v.coverage_name AS coverage_name, v.title AS title, v.abstract AS abstract, "
+ 	"v.is_queryable AS is_queryable, v.min_scale AS min_scale, v.max_scale AS max_scale, "
+@@ -2955,6 +2957,7 @@ createVectorCoveragesTable (void *p_sqlite)
+ /* attempting to create Topologies and Networks tables */
+     do_create_topologies (sqlite);
+     do_create_networks (sqlite);
++#endif /* end ENABLE_RTTOPO conditionals */
+ 
+ /* checking if already defined */
+     ok_table = check_vector_coverages (sqlite);
+@@ -2991,13 +2994,6 @@ createVectorCoveragesTable (void *p_sqlite)
+ 	goto error;
+     return 1;
+ 
+-#else
+-
+-    spatialite_e
+-	("CreateVectorCoveragesTable() error: libspatialite was built by disabling Topology\n");
+-
+-#endif /* end ENABLE_RTTOPO conditionals */
+-
+   error:
+     return 0;
+ }
+-- 
+2.50.1.windows.1
+
