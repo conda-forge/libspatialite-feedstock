@@ -9,7 +9,7 @@ channel_targets:
 cxx_compiler:
 - vs2022
 geos:
-- 3.14.0
+- 3.14.1
 libxml2_devel:
 - '2.14'
 license_family:
