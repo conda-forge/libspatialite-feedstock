@@ -29,7 +29,7 @@ license_family:
 macos_machine:
 - arm64-apple-darwin20.0.0
 proj:
-- '9.7'
+- '9.8'
 sqlite:
 - '3'
 target_platform:
