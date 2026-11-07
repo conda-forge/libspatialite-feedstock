@@ -30,6 +30,9 @@ source:
       then: 0005-create_vector_coverages-without-rttopo.patch
     - if: win and license_family != "gpl"
       then: 0006-win_fix_lgpl_defines.patch
+    # SQLite >= 3.54 refuses ALTER TABLE ... ADD COLUMN rowid; skip the
+    # shadowed-rowid checks in check_spatialindex in that case
+    - 0007-skip-shadowed-rowid-test-sqlite-3.54.patch
 
 build:
   number: ${{ build }}
