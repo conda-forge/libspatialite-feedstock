@@ -33,6 +33,9 @@ source:
     # SQLite >= 3.54 refuses ALTER TABLE ... ADD COLUMN rowid; skip the
     # shadowed-rowid checks in check_spatialindex in that case
     - 0007-skip-shadowed-rowid-test-sqlite-3.54.patch
+    # check_topoplus picks a vertex by edge id, which depends on the ordering
+    # of GEOS overlay output; use the vertex coordinates instead
+    - 0008-topoplus-dirty-node-by-coordinates.patch
 
 build:
   number: ${{ build }}
