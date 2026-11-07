@@ -40,7 +40,7 @@ requirements:
     - autoconf  # [linux]
     - automake  # [linux]
     - libtool   # [linux]
-    - pkg-config  # [not win]
+    - pkgconf   # [not win]
     - make  # [unix]
     - gnuconfig  # [unix]
     - {{ compiler('c') }}
