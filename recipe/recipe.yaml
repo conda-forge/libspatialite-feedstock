@@ -1,0 +1,112 @@
+schema_version: 1
+
+context:
+  version: "5.1.0"
+  build_number: 23
+  # gpl gets a higher build number since we want to favor the build where
+  # librttopo is included
+  build: ${{ build_number + 100 if license_family == "gpl" else build_number }}
+
+package:
+  name: libspatialite
+  version: ${{ version }}
+
+source:
+  url: https://www.gaia-gis.it/gaia-sins/libspatialite-sources/libspatialite-${{ version }}.tar.gz
+  sha256: 43be2dd349daffe016dd1400c5d11285828c22fea35ca5109f21f3ed50605080
+  patches:
+    # Patch Win to fix build path
+    - if: win
+      then: 0001-win_fix_paths.patch
+    # Patch configure for OSX to make sure we get dylib, not so
+    - if: osx
+      then: 0002-osx_fix_lib_ext.patch
+    # Skip some tests that fail
+    - 0003-skip_tests.patch
+    # Guard deprecated nanohttp cleanup for libxml2 2.14 where HTTP may be disabled
+    - 0004-guard-nanohttp-cleanup.patch
+    # Disable rttopo support when GPL is not allowed
+    - if: license_family != "gpl"
+      then: 0005-create_vector_coverages-without-rttopo.patch
+    - if: win and license_family != "gpl"
+      then: 0006-win_fix_lgpl_defines.patch
+
+build:
+  number: ${{ build }}
+  string: ${{ license_family }}_h${{ hash }}_${{ build }}
+
+requirements:
+  build:
+    - if: linux
+      then:
+        - autoconf
+        - automake
+        - libtool
+    - if: unix
+      then:
+        - pkgconf
+        - make
+        - gnuconfig
+    - ${{ compiler('c') }}
+    - ${{ compiler('cxx') }}
+    - ${{ stdlib('c') }}
+  host:
+    - if: osx
+      then: libiconv
+    - sqlite
+    - geos
+    - proj
+    - freexl >=2
+    - zlib
+    - libxml2-devel
+    - if: license_family == "gpl"
+      then: librttopo
+  run:
+    - if: osx
+      then: libiconv
+    - sqlite
+    - geos
+    - proj
+    - freexl >=2
+    - zlib
+    - libxml2-devel
+    - if: license_family == "gpl"
+      then: librttopo
+  run_exports:
+    # No idea.  Staying with minor version pin.
+    - ${{ pin_subpackage('libspatialite', upper_bound='x.x') }}
+
+tests:
+  - script:
+      - python run_test.py
+    requirements:
+      run:
+        - python
+    files:
+      recipe:
+        - run_test.py
+  - if: win
+    then:
+      script:
+        - call test-spatialite.bat ${{ license_family }}
+      requirements:
+        build:
+          - ${{ compiler('c') }}
+      files:
+        recipe:
+          - test-spatialite.c
+          - test-spatialite.bat
+
+about:
+  homepage: https://www.gaia-gis.it/fossil/libspatialite/index
+  license: MPL-1.1
+  license_file: COPYING
+  summary: Extend the SQLite core to support fully fledged Spatial SQL capabilities
+
+extra:
+  recipe-maintainers:
+    - akrherz
+    - danclewley
+    - gillins
+    - ocefpaf
+    - xylar
