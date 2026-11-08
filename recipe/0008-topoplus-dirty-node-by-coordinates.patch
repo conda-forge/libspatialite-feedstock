@@ -1,0 +1,17 @@
+diff -ruN libspatialite-5.1.0/test/check_topoplus.c libspatialite-5.1.0-patch/test/check_topoplus.c
+--- libspatialite-5.1.0/test/check_topoplus.c	2026-11-07 21:45:58.163073496 +0100
++++ libspatialite-5.1.0-patch/test/check_topoplus.c	2026-11-07 21:45:58.198158697 +0100
+@@ -1508,10 +1508,12 @@
+       }
+ 
+ /* dirtying the Topology */
++/* a node at the 33rd vertex of edge 13 with GEOS < 3.15: edge ids depend
++   on the ordering of GEOS overlay output, so use the vertex coordinates */
+     ret =
+ 	sqlite3_exec (handle,
+ 		      "INSERT INTO elba_node (node_id, containing_face, geom) "
+-		      "SELECT NULL, NULL, ST_PointN(geom, 33) FROM elba_edge WHERE edge_id = 13",
++		      "VALUES (NULL, NULL, MakePoint(603089.5027594642, 4733184.704134429, 32632))",
+ 		      NULL, NULL, &err_msg);
+     if (ret != SQLITE_OK)
+       {

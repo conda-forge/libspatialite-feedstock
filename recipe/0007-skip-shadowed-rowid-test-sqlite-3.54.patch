@@ -1,0 +1,20 @@
+diff -ruN libspatialite-5.1.0/test/check_spatialindex.c libspatialite-5.1.0-patch/test/check_spatialindex.c
+--- libspatialite-5.1.0/test/check_spatialindex.c	2023-08-04 09:51:40.000000000 +0200
++++ libspatialite-5.1.0-patch/test/check_spatialindex.c	2026-11-07 21:09:58.162093789 +0100
+@@ -1377,6 +1377,16 @@
+     ret =
+ 	sqlite3_exec (handle, "ALTER TABLE Councils ADD COLUMN rowid", NULL,
+ 		      NULL, &err_msg);
++    if (ret != SQLITE_OK && sqlite3_libversion_number () >= 3054000)
++      {
++	  /* SQLite >= 3.54 refuses to add a column that shadows ROWID, so the
++	     remaining shadowed-rowid checks cannot be set up this way */
++	  fprintf (stderr,
++		   "skipping shadowed rowid checks: ALTER TABLE refused: %s\n",
++		   err_msg);
++	  sqlite3_free (err_msg);
++	  return 0;
++      }
+     if (ret != SQLITE_OK)
+       {
+ 	  fprintf (stderr, "ALTER TABLE error: %s\n", err_msg);
