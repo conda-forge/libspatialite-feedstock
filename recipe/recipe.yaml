@@ -2,10 +2,10 @@ schema_version: 1
 
 context:
   version: "5.1.0"
-  build_number: 23
+  build_number: 24
   # gpl gets a higher build number since we want to favor the build where
   # librttopo is included
-  build: ${{ build_number + 100 if license_family == "gpl" else build_number }}
+  build: 24
 
 package:
   name: libspatialite
